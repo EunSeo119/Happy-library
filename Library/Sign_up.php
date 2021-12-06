@@ -13,14 +13,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+     <link rel="stylesheet" href="./css/bootstrap.min.css" type="text/css">
+     <link rel="stylesheet" href="./css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="./css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="./css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="./css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="./css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="./css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="./css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="./css/style.css" type="text/css"> 
 
     <style> 
     body {  
@@ -236,33 +237,67 @@
                         <h3>회원가입</h3>
                         <hr>
                     </div>
+                    <form action="register.php" method="post" class="form form-signup">
                     <div class="container"> 
                         <div class="input-form-backgroud row"  > 
                             <div class="input-form col-md-12 mx-auto"> 
                                 <form class="validation-form" novalidate> 
-                                    <div class="col" >
+                                    <div class="row">
+                                        <div class="col-md-9 mb-3"> 
+                                            <label for="userid">ID</label> 
+                                            <input type="text" class="form-control" name="user_ID" placeholder="" value="" required> 
+                                            <div class="invalid-feedback"> 이름을 입력해주세요. </div> 
+                                        </div>
+                                        <div class="col-md-3">
+                                            <button class="btn btn-primary btn-sm btn-block" type="submit">ID 중복 확인</button>
+                                        </div>
+                                    </div>
+                                    <div class="row">
                                         <div class="col-md-6 mb-3"> 
-                                            <label for="id">ID</label> 
-                                            <input type="text" class="form-control" id="id" placeholder="" value="" required> 
+                                            <label for="userpwd">비밀번호</label> 
+                                            <input type="text" class="form-control" id ="pwd1" name="password" placeholder="" value="" required> 
                                             <div class="invalid-feedback"> 별명을 입력해주세요. </div> 
                                         </div>
                                         <div class="col-md-6 mb-3"> 
-                                            <label for="pwd">비밀번호</label> 
-                                            <input type="text" class="form-control" id="pwd" placeholder="" value="" required> 
+                                            <label for="pwdc">비밀번호 확인</label> 
+                                            <input type="text" class="form-control" id="pwd2" placeholder="" value="" required> 
                                             <div class="invalid-feedback"> 별명을 입력해주세요. </div> 
                                         </div>
                                     </div>   
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3"> 
+                                            <label for="username">이름</label> 
+                                            <input type="text" class="form-control" name="user_name" placeholder="" value="" required> 
+                                            <div class="invalid-feedback"> 이름을 입력해주세요. </div> 
+                                        </div>
+                                    <div class=" col-md-6 mb-3"> 
+                                    <label for="email">이메일</label> 
+                                    <input type="email" class="form-control" name="email" placeholder="you@example.com" required> 
+                                    <div class="invalid-feedback"> 이메일을 입력해주세요. </div>
+                                 </div>
+                                </div>
+                                    <hr class="mb-4"> 
+                                    <div class="custom-control custom-checkbox"> 
+                                        <input type="checkbox" class="custom-control-input" id="aggrement" required> 
+                                        <label class="custom-control-label" for="aggrement">개인정보 수집 및 이용에 동의합니다.</label>
+                                     </div> 
                                      <div class="mb-4"></div>
-                                      <button class="btn btn-primary btn-lg btn-block" style="margin:auto;width:30%;" type="submit">로그인</button> 
+                                      <button class="btn btn-primary btn-lg btn-block" id="signup-button" style="margin:auto;width:30%;" type="submit">가입 완료</button> 
                                     </form> 
                                 </div> 
                             </div>
                         </div>
                 </div>
+                </form>
             </div>
         </div>
     </section>
     <!-- Hero Section End -->
+
+    <script>
+
+
+    </script>
 
     <!-- Footer Section Begin -->
     <footer class="footer spad">
