@@ -1,13 +1,6 @@
 <?php
-
- session_start();
- 
- $host = 'localhost';
- $user = 'root';
- $pw = 'qwer1234!';
- $dbName = 'library';
- 
- $mysqli = new mysqli($host, $user, $pw, $dbName);
+  include "include/session.php";
+  include "include/dbConnect.php";
 ?>
 
 <!DOCTYPE html>
@@ -131,7 +124,18 @@
                                 </ul>
                             </div>
                             <div class="header__top__right__auth">
-                                <a href="#"><i class="fa fa-user"></i> Login</a>
+                            <?php
+                     if(empty($_SESSION['ses_userid'])){
+                    ?>
+                <a href="sign_in.php" id="signin" onclick="Login()">로그인</a>
+                <a href="sign_up.php" id="signup" onclick="Signup()">회원가입</a>
+                <?php
+                }else{
+                ?>
+                <a href="logout.php" id="signout">로그아웃</a>
+                <?php
+                 }
+                ?>
                             </div>
                         </div>
                     </div>
