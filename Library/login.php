@@ -3,7 +3,7 @@
 
 $host = 'localhost';
 $user = 'root';
-$pw = '1234';
+$pw = '';
 $dbName = 'library';
 
 $mysqli = new mysqli($host, $user, $pw, $dbName);
@@ -26,7 +26,7 @@ $sql = "SELECT * FROM User WHERE user_ID = '{$ID}' AND password = '{$PW}'";
     if ($mysqli->query($sql)!=null) {
         // $_SESSION['ses_userid'] = $row['User_ID'];
         // $_SESSION['ses_userdpm'] = $row['memberdpm'];
-        echo("<script>location.replace('../php/index.html');</script>"); 
+        echo("<script>location.replace('.//index.php');</script>"); 
     // var_dump( $_SESSION );
 
     }

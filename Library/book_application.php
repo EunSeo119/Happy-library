@@ -194,20 +194,12 @@
                     <div class="hero__categories">
                         <div class="hero__categories__all">
                             <i class="fa fa-bars"></i>
-                            <span>도서관 이용</span>
+                            <span>Communication</span>
                         </div>
                         <ul>
                             <li><a href="./book_application.php">희망 도서 신청</a></li>
-                            <li><a href="#">Vegetables</a></li>
-                            <li><a href="#">Fruit & Nut Gifts</a></li>
-                            <li><a href="#">Fresh Berries</a></li>
-                            <li><a href="#">Ocean Foods</a></li>
-                            <li><a href="#">Butter & Eggs</a></li>
-                            <li><a href="#">Fastfood</a></li>
-                            <li><a href="#">Fresh Onion</a></li>
-                            <li><a href="#">Papayaya & Crisps</a></li>
-                            <li><a href="#">Oatmeal</a></li>
-                            <li><a href="#">Fresh Bananas</a></li>
+                            <li><a href="./review_contest.php">감상문 공모전</a></li>
+                            <li><a href="#">공지사항</a></li>
                         </ul>
                     </div>
                 </div>
@@ -263,7 +255,7 @@
                                         <input type="text" class="form-control" name="book_name" placeholder="" value="" required> 
                                         </div>
                                     </div>
-                                    <div class="mb-4"></div>
+                                    <div class="mb-2"></div>
 
                                     <div class="row">
                                         <div class="col-md-3 mb-3"> 
@@ -273,7 +265,7 @@
                                         <input type="text" class="form-control" name="book_author" placeholder="" value="" required> 
                                         </div>
                                     </div>
-                                    <div class="mb-4"></div>
+                                    <div class="mb-2"></div>
 
                                     <div class="row">
                                         <div class="col-md-3 mb-3"> 
@@ -283,7 +275,7 @@
                                         <input type="text" class="form-control" name="book_publisher" placeholder="" value="" required> 
                                         </div>
                                     </div>
-                                    <div class="mb-4"></div>
+                                    <div class="mb-2"></div>
 
                                     <div class="row">
                                         <div class="col-md-3 mb-3"> 
@@ -293,7 +285,7 @@
                                         <input type="text" class="form-control" name="book_year" placeholder="" value="" required> 
                                         </div>
                                     </div>
-                                    <div class="mb-4"></div>
+                                    <div class="mb-2"></div>
 
                                     <div class="row">
                                         <div class="col-md-3 mb-3"> 
@@ -303,14 +295,14 @@
                                         <input type="text" class="form-control" name="book_ISBN" placeholder="" value="" required> 
                                         </div>
                                     </div>
-                                    <div class="mb-4"></div>
+                                    <div class="mb-2"></div>
 
                                     <div class="row">
                                         <div class="col-md-3 mb-3"> 
                                             <label for="userid">희망 사유</label> 
                                         </div>
                                         <div class="col-md-9">
-                                        <input type="text" class="form-control" name="book_reason" placeholder="" value="" required> 
+                                        <textarea style="height:300px;word-wrap:break-word" class="form-control" name="book_reason" placeholder="" value="" required></textarea>
                                         </div>
                                     </div>
                                     <div class="mb-4"></div>
