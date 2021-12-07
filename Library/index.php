@@ -1,8 +1,3 @@
-<?php
-  include "include/session.php";
-  include "include/dbConnect.php";
-?>
-
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -124,18 +119,7 @@
                                 </ul>
                             </div>
                             <div class="header__top__right__auth">
-                            <?php
-                     if(empty($_SESSION['ses_userid'])){
-                    ?>
-                <a href="sign_in.php" id="signin" onclick="Login()">로그인</a>
-                <a href="sign_up.php" id="signup" onclick="Signup()">회원가입</a>
-                <?php
-                }else{
-                ?>
-                <a href="logout.php" id="signout">로그아웃</a>
-                <?php
-                 }
-                ?>
+                                <a href="#"><i class="fa fa-user"></i> Login</a>
                             </div>
                         </div>
                     </div>
