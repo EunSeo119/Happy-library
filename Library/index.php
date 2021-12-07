@@ -24,8 +24,8 @@
 
     <style type="text/css">
  #pop{
-  width:300px; height:410px; background:darkgray;
-  position:absolute; top:100px; left:100px; text-align:center;
+  width:396px; height:588px; background:white;
+  position:absolute; top:80px; left:200px; text-align:center;
   border:2px solid darkgray;
    }
 
@@ -790,7 +790,7 @@
     <script src="js/main.js"></script>
 
     <div id="pop">
-  <img style="height:370px;" src="https://cdn.pixabay.com/photo/2021/12/01/18/17/cat-6838844_960_720.jpg">
+  <img src="./img/popup.jpg">
   <div style="float:right;">
     <button id="close" style="width:50px; margin:auto;">닫기</button>
   </div>
