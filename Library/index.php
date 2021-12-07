@@ -21,6 +21,24 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+
+    <style type="text/css">
+ #pop{
+  width:300px; height:410px; background:darkgray;
+  position:absolute; top:100px; left:100px; text-align:center;
+  border:2px solid darkgray;
+   }
+
+</style>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+      $('#close').click(function() {
+        $('#pop').hide();
+      });
+    });
+ </script>
+ 
 </head>
 
 <body>
@@ -772,6 +790,12 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
 
+    <div id="pop">
+  <img style="height:370px;" src="https://cdn.pixabay.com/photo/2021/12/01/18/17/cat-6838844_960_720.jpg">
+  <div style="float:right;">
+    <button id="close" style="width:50px; margin:auto;">닫기</button>
+  </div>
+    </div>
 
 
 </body>
