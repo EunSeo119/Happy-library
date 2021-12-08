@@ -13,7 +13,8 @@ $row = $res->fetch_array(MYSQLI_BOTH);
 
 if ($row!=null) {
     $_SESSION['ses_userid'] = $row['user_ID'];
-    echo("<script>location.replace('index.php');</script>"); 
+    $_SESSION['ses_username'] = $row['user_name'];
+    echo("<script>location.replace('mypage.php');</script>"); 
 
 }
 if($row  == null){
