@@ -32,7 +32,22 @@
          /* padding: 32px;  */
          background: #fff; 
         } 
-         </style>
+
+        .span1 {
+            display: inline-block;
+            /*background: yellow;*/
+            width: 200px;
+            height: 50px;
+            margin: 20px;
+            padding: 10px;
+            }        
+    </style>
+
+    <script>
+    function button1_click(s) {
+        window.location.href='list.php';
+    }
+    </script>    
 </head>
 
 <body>        
@@ -272,8 +287,10 @@
 
                                 </div>
                                     <hr class="mb-4"> 
-                                     <div class="mb-4"></div>
-                                      <button class="btn btn-primary btn-lg btn-block" id="signup-button" style="margin:auto;width:30%;" type="submit">등록</button> 
+                                     <div class="mb-4" style="text-align: center;">
+                                            <button class="btn btn-primary btn-lg btn-block span1" id="signup-button" style="margin:auto;width:12%;" type="submit">저장</button> 
+                                            <button class="btn btn-primary btn-lg btn-block span1" id="signup-button" style="margin:auto;width:12%;" onclick="button1_click();">목록</button>
+                                     </div>
                                     </form> 
                                 </div> 
                             </div>

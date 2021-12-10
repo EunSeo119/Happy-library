@@ -255,61 +255,56 @@ function button1_click(s) {
                     </div>
 
 
-<div>
+                    <div>
 
-	<div  style="float: left;">
-		<h3>도서등록</h3>
-						
-	</div>
+                        <div  style="float: left;">
+                            <h3>도서등록</h3>
+                                            
+                        </div>
 
+                    </div>
+                        <br><br>
+                        <hr>
+                        <div class="container"> 
+                            <div class=""  > 
+                                <div class="shoping__cart__table"> 
 
-	<div class="col-md-3"  style="float: right;">
-		<button class="btn btn-primary btn-sm btn-block"  onclick="button1_click();"> 등록</button>
-	</div>	
+                                
 
-</div>
-	<br><br>
-	<hr>
-                    <div class="container"> 
-                        <div class="input-form-backgroud row"  > 
-                            <div class="input-form col-md-12 mx-auto"> 
+                                    <table style="width: 100%;">
+                                        <thead>
+                                        <tr>
+                                            <th>번호</th>
+                                            <th>도서명</th>
+                                            <th>이름</th>
+                                            <th>이메일</th>
+                                            <th>등록일</th>
+                                            <th>내용</th>
+                                        </tr>
+                                        </head>
 
-<table style="width: 100%;">
-<th>
-	<td>번호</td>
-	<td>도서명</td>
-	<td>이름</td>
-	<td>이메일</td>
-	<td>등록일</td>
-    <td>내용</td>
-</th>
+                                        <?php
+                                        if($result->num_rows > 0){
+                                            // Output data of each row
+                                            while($row = $result->fetch_assoc()){
+                                                echo "<tr>";
+                                                echo "<td>" . $row["id"]. "</td>" 
+                                                . "<td>" . $row["book_name"]. "</td>" 
+                                                . "<td>" . $row["name"]. "</td>" 
+                                                . "<td>" . $row["email"]. "</td>" 
+                                                . "<td>" . $row["reg_date"]. "</td>"
+                                                . "<td>" . $row["content"]. "</td>" ;
+                                                echo "</tr>";
+                                            }
+                                        }else{
+                                            echo "0 results";
+                                        }
+                                        ?>
 
-<?php
-if($result->num_rows > 0){
-	// Output data of each row
-	while($row = $result->fetch_assoc()){
-		echo "<tr>";
-		echo "<td>" . $row["id"]. "</td>" 
-		   . "<td>" . $row["book_name"]. "</td>" 
-		   . "<td>" . $row["name"]. "</td>" 
-		   . "<td>" . $row["email"]. "</td>" 
-		   . "<td>" . $row["reg_date"]. "</td>"
-           . "<td>" . $row["content"]. "</td>" ;
-		echo "</tr>";
-	}
-}else{
-	echo "0 results";
-}
-?>
-
-
-	<td></td>
-	<td></td>
-	<td></td>
-	<td></td>
-	<td></td>
-</tr>
-</table>
+                                        </tr>
+                                    </table>
+                                    <br>
+                                    <button class="btn btn-primary btn-lg btn-block" id="signup-button" style="margin:auto;width:11%;"  onclick="button1_click();">등록</button> 
 
 
                                 </div> 
@@ -318,6 +313,7 @@ if($result->num_rows > 0){
                 </div>
                 
             </div>
+
         </div>
     </section>
     <!-- Hero Section End -->
