@@ -9,10 +9,12 @@ $mysqli = new mysqli($host, $user, $pw, $dbName);
 
  $mysqli -> set_charset("utf8");
 
- $user_ID=$_POST["user_ID"];
- $password=($_POST["password"]);
- $user_name=($_POST["user_name"]);
- $EMAIL=$_POST['email'];
+ $book_name=$_POST["book_name"];
+ $book_author=($_POST["book_author"]);
+ $book_publisher=($_POST["book_publisher"]);
+ $book_year_of_publication=$_POST['book_year_of_publication'];
+ $ISBN=($_POST["ISBN"]);
+ $reason_for_hope=$_POST['reason_for_hope'];
 
  $sql = "insert into user (user_id, password , user_name, email)";             // (입력받음)insert into 테이블명 (column-list)
  $sql = $sql. "values('$user_ID', '$password', '$user_name','$EMAIL')";         // calues(column-list에 넣을 value-list)
