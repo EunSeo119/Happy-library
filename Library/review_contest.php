@@ -226,30 +226,17 @@
                         </div>
                     </div>
                     <div>
-                        <h3>희망 도서 신청</h3>
+                        <h3>감상문 공모전</h3>
                         <hr>
                     </div>
-                    <div>
-                        <h5>이용안내</h5>
-                        <div class="mb-4"></div>
-                        <h6>- 다음 도서는 구입 대상에서 제외되니, 이점 양지하시어 신청 바랍니다.</h6>
-                        <div style="margin: 100px, 0px, 10px, 0px;">&nbsp;&nbsp;&nbsp;&nbsp;- 신간도서 주문 중이거나 정리중인 도서<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;- 참고서 및 수험서, 개인 학습용 문제집 등<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;- 개인적 신념에 의한 종교자료<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;- 출간된 지 3년이 지난 자료(소장 필요한 경우는 예외)<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;- 내용이 선정적이거나 폭력성이 짙은 도서<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;- 비회원이 신청한 도서 또는 상업적 판매를 위해 신청한 도서<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;- 오락성 만화물 및 전집류, 판타지 및 무협지, 로맨스 소설류 등<div>
-                        <div class="mb-4"></div>
-
-                    <form action="bookApplication.php" method="post" class="form form-book-application">
+                    <form action="reviewContest.php" method="post" class="form form-review-contest">
                     <div class="container"> 
                         <div class="input-form-backgroud row"  > 
                             <div class="input-form col-md-12 mx-auto"> 
                                 <form class="validation-form" novalidate> 
                                     <div class="row">
                                         <div class="col-md-3 mb-3"> 
-                                            <label for="userid">희망 도서명</label> 
+                                            <label for="userid">도서명</label> 
                                         </div>
                                         <div class="col-md-9">
                                         <input type="text" class="form-control" name="book_name" placeholder="" value="" required> 
@@ -269,42 +256,14 @@
 
                                     <div class="row">
                                         <div class="col-md-3 mb-3"> 
-                                            <label for="userid">출판사명</label> 
+                                            <label for="userid">감상평</label> 
                                         </div>
                                         <div class="col-md-9">
-                                        <input type="text" class="form-control" name="book_publisher" placeholder="" value="" required> 
+                                        <textarea style="height:500px;word-wrap:break-word" class="form-control" name="book_review" placeholder="" value="" required></textarea>
                                         </div>
                                     </div>
                                     <div class="mb-2"></div>
 
-                                    <div class="row">
-                                        <div class="col-md-3 mb-3"> 
-                                            <label for="userid">출판년도</label> 
-                                        </div>
-                                        <div class="col-md-9">
-                                        <input type="text" class="form-control" name="book_year" placeholder="" value="" required> 
-                                        </div>
-                                    </div>
-                                    <div class="mb-2"></div>
-
-                                    <div class="row">
-                                        <div class="col-md-3 mb-3"> 
-                                            <label for="userid">ISBN</label> 
-                                        </div>
-                                        <div class="col-md-9">
-                                        <input type="text" class="form-control" name="book_ISBN" placeholder="" value="" required> 
-                                        </div>
-                                    </div>
-                                    <div class="mb-2"></div>
-
-                                    <div class="row">
-                                        <div class="col-md-3 mb-3"> 
-                                            <label for="userid">희망 사유</label> 
-                                        </div>
-                                        <div class="col-md-9">
-                                        <textarea style="height:300px;word-wrap:break-word" class="form-control" name="book_reason" placeholder="" value="" required></textarea>
-                                        </div>
-                                    </div>
                                     <div class="mb-4"></div>
 
                                       <button class="btn btn-primary btn-lg btn-block" id="signup-button" style="margin:auto;width:30%;" type="submit">신청하기</button> 
@@ -401,6 +360,7 @@
     <script src="js/mixitup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+
 
 
 </body>
