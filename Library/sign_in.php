@@ -40,9 +40,105 @@
         <div class="loader"></div>
     </div>
 
+    <!-- Humberger Begin -->
+    <div class="humberger__menu__overlay"></div>
+    <div class="humberger__menu__wrapper">
+        <div class="humberger__menu__logo">
+            <a href="#"><img src="img/logo.png" alt=""></a>
+        </div>
+        <div class="humberger__menu__cart">
+            <ul>
+                <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+            </ul>
+            <div class="header__cart__price">item: <span>$150.00</span></div>
+        </div>
+        <div class="humberger__menu__widget">
+            <div class="header__top__right__language">
+                <img src="img/language.png" alt="">
+                <div>English</div>
+                <span class="arrow_carrot-down"></span>
+                <ul>
+                    <li><a href="#">Spanis</a></li>
+                    <li><a href="#">English</a></li>
+                </ul>
+            </div>
+            <div class="header__top__right__auth">
+                <a href="#"><i class="fa fa-user"></i> Login</a>
+            </div>
+        </div>
+        <nav class="humberger__menu__nav mobile-menu">
+            <ul>
+                <li class="active"><a href="./index.html">BORROW</a></li>
+                <li><a href="./shop-grid.html">RANKING</a></li>
+                <li><a href="#">communication</a>
+                    <ul class="header__menu__dropdown">
+                        <li><a href="./shop-details.html">Shop Details</a></li>
+                        <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                        <li><a href="./checkout.html">Check Out</a></li>
+                        <li><a href="./blog-details.html">Blog Details</a></li>
+                    </ul>
+                </li>
+                <li><a href="./blog.html">Login</a></li>
+            </ul>
+        </nav>
+
+        <div id="mobile-menu-wrap"></div>
+        <div class="header__top__right__social">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
+            <a href="#"><i class="fa fa-pinterest-p"></i></a>
+        </div>
+        <div class="humberger__menu__contact">
+            <ul>
+                <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
+                <li>Free Shipping for all Order of $99</li>
+            </ul>
+        </div>
+    </div>
+    <!-- Humberger End -->
+
     <!-- Header Section Begin -->
   <header class="header">
+        <div class="header__top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="header__top__left">
+                            <ul>
+                                <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
+                                <li>Free Shipping for all Order of $99</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="header__top__right">
+                            <div class="header__top__right__social">
+                                <a href="#"><i class="fa fa-facebook"></i></a>  
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                                <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                            </div>
+                            <div class="header__top__right__language">
+                                <img src="img/language.png" alt="">
+                                <div>English</div>
+                                <span class="arrow_carrot-down"></span>
+                                <ul>
+                                    <li><a href="#">Spanis</a></li>
+                                    <li><a href="#">English</a></li>
+                                </ul>
+                            </div>
+                            <div class="header__top__right__auth">
+                                <a href="#"><i class="fa fa-user"></i> Login</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="container">
+
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo">
@@ -70,7 +166,6 @@
                             </li>
                             <li><a href="./blog.html">COMMUNITY</a></li>
                         </ul>
-                        <li><a href="./shop-grid.html">login</a>
                     </nav>
                 </div>
                 <div class="col-lg-3">
@@ -98,20 +193,11 @@
                     <div class="hero__categories">
                         <div class="hero__categories__all">
                             <i class="fa fa-bars"></i>
-                            <span>All departments</span>
+                            <span>로그인</span>
                         </div>
                         <ul>
-                            <li><a href="#">Fresh Meat</a></li>
-                            <li><a href="#">Vegetables</a></li>
-                            <li><a href="#">Fruit & Nut Gifts</a></li>
-                            <li><a href="#">Fresh Berries</a></li>
-                            <li><a href="#">Ocean Foods</a></li>
-                            <li><a href="#">Butter & Eggs</a></li>
-                            <li><a href="#">Fastfood</a></li>
-                            <li><a href="#">Fresh Onion</a></li>
-                            <li><a href="#">Papayaya & Crisps</a></li>
-                            <li><a href="#">Oatmeal</a></li>
-                            <li><a href="#">Fresh Bananas</a></li>
+                            <li><a href="sign_in.php">로그인</a></li>
+                            <li><a href="sign_up.php">회원가입</a></li>
                         </ul>
                     </div>
                 </div>
@@ -138,27 +224,33 @@
                         </div>
                     </div>
                     <div>
-                        <h3>회원가입</h3>
+                        <h3>로그인</h3>
                         <hr>
                     </div>
-                    <div class="container"> 
-                        <div > 
+                    <h4>HAPPY LIBRARY 방문을 환영합니다.</h4> 
+                    <div class="container" style="margin-top: 50px; margin-bottom:100px;"> 
+                        <div >
                         <form action="login.php" method="post" class="form form-login" id="login">
                             <div class="input-form col-md-12 mx-auto"> 
                                 <form class="validation-form" novalidate> 
-                                    <div class="row">
-                                        <div class="col-md-6" >
-                                            <div class="mb-3"> 
-                                                <input type="text" class="form-control" name = "user_ID" id="id" placeholder="아이디를 입력하세요" value="" required> 
+                                <div class="row">
+                                <div class="col-md-4">
+                                    <img src="img/login.png" style="float:left;"></img>
+                                </div>    
+                                <div class="col-md-6">
+                                    <div class="row-md-4" style="margin-top:10px;"> 
+                                                <input type="text" class="form-control" name = "user_ID" id="id" autofocus placeholder="아이디를 입력하세요" value="" required> 
                                                 <div class="invalid-feedback"> 별명을 입력해주세요. </div> 
-                                            </div>
-                                            <div class=" mb-3">  
-                                                <input type="text" class="form-control" name="password" id="pwd" placeholder="비밀번호를 입력하세요" value="" required> 
-                                                <div class="invalid-feedback"> 별명을 입력해주세요. </div> 
-                                            </div>
-                                        </div>   
-                                        <button class="btn btn-primary btn-lg btn-block" type="submit">로그인</button> 
                                     </div>
+                                            <div class="row-md-4" style="margin-top:10px;">  
+                                                <input type="password" class="form-control" name="password" id="pwd"autofocus placeholder="비밀번호를 입력하세요" value="" required> 
+                                                <div class="invalid-feedback"> 별명을 입력해주세요. </div> 
+                                            </div>
+                                            <div class="row-md-4" style="margin-top:10px;">
+                                            <button class="btn2   btn btn-success btn-lg btn-block" id="signup-button" style="margin:auto;width:50%;" type="submit">가입 완료</button> 
+                                            </div>
+                                    </div>  
+                                </div>                          
                                 </form>  
                             </div>
                         </form>

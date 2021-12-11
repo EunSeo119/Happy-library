@@ -30,6 +30,15 @@
 /* Template default CSS
 /*----------------------------------------*/
 
+
+.btn2{
+	background: #7fad39;
+	border : 0;
+	outline: 0;
+	margin :auto;
+	width: 30%;
+}
+
 html,
 body {
 	height: 100%;
