@@ -221,4 +221,26 @@
         $button.parent().find('input').val(newVal);
     });
 
+    //유지현 추가
+    $('#btn-loan').on('click', function(){
+        $('#loan-result').show();
+        $(this).text('대출중').prop('disabled', true).css({backgroundColor:'#C4C4C4', color:'black'});
+        $('#btn-view-ebook').show();
+    });
+    $('#icon-heart-on-book span').on('click', function(){
+        if($(this).hasClass('icon_heart_alt')) {
+            $(this).removeClass('icon_heart_alt').addClass('icon_heart').css('color','red');
+        } else {
+            $(this).removeClass('icon_heart').addClass('icon_heart_alt').css('color','black');
+        }
+        
+    });
+    $('#btn-view-ebook').on('click', function(){
+        $('#view-ebook-pop').show();
+    });
+    $('.close-ebook-view').on('click', function(){
+        $('#view-ebook-pop').hide();
+    });
+    //유지현 추가 끝
+
 })(jQuery);

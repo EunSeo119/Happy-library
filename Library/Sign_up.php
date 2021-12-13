@@ -197,17 +197,8 @@
                             <span>All departments</span>
                         </div>
                         <ul>
-                            <li><a href="#">Fresh Meat</a></li>
-                            <li><a href="#">Vegetables</a></li>
-                            <li><a href="#">Fruit & Nut Gifts</a></li>
-                            <li><a href="#">Fresh Berries</a></li>
-                            <li><a href="#">Ocean Foods</a></li>
-                            <li><a href="#">Butter & Eggs</a></li>
-                            <li><a href="#">Fastfood</a></li>
-                            <li><a href="#">Fresh Onion</a></li>
-                            <li><a href="#">Papayaya & Crisps</a></li>
-                            <li><a href="#">Oatmeal</a></li>
-                            <li><a href="#">Fresh Bananas</a></li>
+                            <li><a href="./sign_in.php">로그인</a></li>
+                            <li><a href="./Sign_up.php">회원가입</a></li>
                         </ul>
                     </div>
                 </div>
@@ -248,8 +239,8 @@
                                             <input type="text" class="form-control" name="user_ID" placeholder="" value="" required> 
                                             <div class="invalid-feedback"> 이름을 입력해주세요. </div> 
                                         </div>
-                                        <div class="col-md-3">
-                                            <button class="btn btn-primary btn-sm btn-block" type="submit">ID 중복 확인</button>
+                                        <div class="col-md-3 text-center">
+                                            <button class="btn2 btn btn-success btn-sm btn-block" style="width:100%;float: none; margin-top: 35px;"  type="submit">ID 중복 확인</button>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -282,7 +273,7 @@
                                         <label class="custom-control-label" for="aggrement">개인정보 수집 및 이용에 동의합니다.</label>
                                      </div> 
                                      <div class="mb-4"></div>
-                                      <button class="btn btn-primary btn-lg btn-block" id="signup-button" style="margin:auto;width:30%;" type="submit">가입 완료</button> 
+                                      <button class="btn2   btn btn-success btn-lg btn-block" id="signup-button" style="margin:auto;width:30%;" type="submit">로그인</button> 
                                     </form> 
                                 </div> 
                             </div>
@@ -382,3 +373,5 @@
 </body>
 
 </html>
+
+

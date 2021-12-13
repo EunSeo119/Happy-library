@@ -3,8 +3,8 @@
  include "include/dbConnect.php";
 
 if(empty($_SESSION['ses_userid'])){
-        echo ("<script>alert('로그인이 필요합니다.');
-            location.replace('sign_in.php');</script>");
+        //echo ("<script>alert('로그인이 필요합니다.');
+        //location.replace('sign_in.php');</script>");
 }?>
 
 <!DOCTYPE html>
@@ -203,45 +203,16 @@ if(empty($_SESSION['ses_userid'])){
                     <div class="hero__categories">
                         <div class="hero__categories__all">
                             <i class="fa fa-bars"></i>
-                            <span>All departments</span>
+                            <span>My Page</span>
                         </div>
                         <ul>
-                            <li><a href="#">Fresh Meat</a></li>
-                            <li><a href="#">Vegetables</a></li>
-                            <li><a href="#">Fruit & Nut Gifts</a></li>
-                            <li><a href="#">Fresh Berries</a></li>
-                            <li><a href="#">Ocean Foods</a></li>
-                            <li><a href="#">Butter & Eggs</a></li>
-                            <li><a href="#">Fastfood</a></li>
-                            <li><a href="#">Fresh Onion</a></li>
-                            <li><a href="#">Papayaya & Crisps</a></li>
-                            <li><a href="#">Oatmeal</a></li>
-                            <li><a href="#">Fresh Bananas</a></li>
+                            <!-- <li><a href="#">회원정보</a></li> -->
+                            <li><a href="#currnet-loan-list">대출내역</a></li>
+                            <li><a href="#old-loan-list">반납내역</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-9">
-                    <div class="hero__search">
-                        <div class="hero__search__form">
-                            <form action="#">
-                                <div class="hero__search__categories">
-                                    All Categories
-                                    <span class="arrow_carrot-down"></span>
-                                </div>
-                                <input type="text" placeholder="What do yo u need?">
-                                <button type="submit" class="site-btn">SEARCH</button>
-                            </form>
-                        </div>
-                        <div class="hero__search__phone">
-                            <div class="hero__search__phone__icon">
-                                <i class="fa fa-phone"></i>
-                            </div>
-                            <div class="hero__search__phone__text">
-                                <h5>+65 11.188.888</h5>
-                                <span>support 24/7 time</span>
-                            </div>
-                        </div>
-                    </div>
                     <div class="container">
                         <h3>마이페이지</h3>
                         <hr>
@@ -254,13 +225,102 @@ if(empty($_SESSION['ses_userid'])){
                         }
                         ?>
                         
-                        <div style="margin-top:20px;"> 
-                            <label>대출 목록</label>
+                        <div style="margin-top:20px;" id="currnet-loan-list"> 
+                            <label>대출 내역</label>
                             <div>
+                                <table class="table table-bordered table-sm text-center">
+                                    <thead>
+                                        <tr class='table-active'>
+                                            <td scope="col">번호</td>
+                                            <td scope="col">등록번호</td>
+                                            <td scope="col">자료명</td>
+                                            <td scope="col">저자</td>
+                                            <td scope="col">대출일</td>
+                                            <td scope="col">반납예정일</td>
+                                            <td scope="col">연체일</td>
+                                            <td scope="col">반납/연장</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>B10100101</td>
+                                            <td>정의는 무엇인가</td>
+                                            <td>마이클 샌델</td>
+                                            <td>2021-12-01</td>
+                                            <td>2021-12-31</td>
+                                            <td>0</td>
+                                            <td><button class="btn btn-success btn-sm">반납</button> <button class="btn btn-danger btn-sm">연장</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>B989745445</td>
+                                            <td>사피엔스</td>
+                                            <td>유발 하라리</td>
+                                            <td>2021-11-28</td>
+                                            <td>2021-12-27</td>
+                                            <td>0</td>
+                                            <td><button class="btn btn-success btn-sm">반납</button> <button class="btn btn-danger btn-sm">연장</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>B087524215</td>
+                                            <td>총균쇠</td>
+                                            <td>재러드 다이아몬드</td>
+                                            <td>2021-11-10</td>
+                                            <td>2021-12-09</td>
+                                            <td>5</td>
+                                            <td><button class="btn btn-success btn-sm">반납</button> <button class="btn btn-danger btn-sm">연장</button></td>
+                                        </tr>
 
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
+                        <div style="margin-top:50px;" id="old-loan-list"> 
+                            <label>반납 내역</label>
+                            <div>
+                                <table class="table table-bordered table-sm text-center">
+                                    <thead>
+                                        <tr class='table-active'>
+                                            <td scope="col">번호</td>
+                                            <td scope="col">등록번호</td>
+                                            <td scope="col">자료명</td>
+                                            <td scope="col">저자</td>
+                                            <td scope="col">대출일</td>
+                                            <td scope="col">반납일</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>B10100101</td>
+                                            <td>정의는 무엇인가</td>
+                                            <td>마이클 샌델</td>
+                                            <td>2021-11-01</td>
+                                            <td>2021-11-21</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>B989745445</td>
+                                            <td>사피엔스</td>
+                                            <td>유발 하라리</td>
+                                            <td>2021-11-28</td>
+                                            <td>2021-12-27</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>B087524215</td>
+                                            <td>총균쇠</td>
+                                            <td>재러드 다이아몬드</td>
+                                            <td>2021-11-10</td>
+                                            <td>2021-12-09</td>
+                                        </tr>
 
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
         </div>
