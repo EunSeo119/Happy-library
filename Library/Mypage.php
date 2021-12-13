@@ -3,8 +3,8 @@
  include "include/dbConnect.php";
 
 if(empty($_SESSION['ses_userid'])){
-        //echo ("<script>alert('로그인이 필요합니다.');
-        //location.replace('sign_in.php');</script>");
+        echo ("<script>alert('로그인이 필요합니다.');
+        location.replace('sign_in.php');</script>");
 }?>
 
 <!DOCTYPE html>
@@ -242,17 +242,33 @@ if(empty($_SESSION['ses_userid'])){
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>B10100101</td>
-                                            <td>정의는 무엇인가</td>
-                                            <td>마이클 샌델</td>
-                                            <td>2021-12-01</td>
+                                    <?php
+                                    $UID = $_SESSION['ses_userid'];
+                                     $sql = "SELECT * FROM loan WHERE loanNum = $UID";
+                                    // $bookid=.$row['bookNum']; 
+                                     $result = mysqli_query($dbConnect, $sql);
+                                     $x= 0;
+                                
+                                 if (mysqli_num_rows($result) > 0) {
+                                    while($row = mysqli_fetch_assoc($result)) {
+                                        echo "<tr>
+                                        <td>" $x+1 "</td>";    
+                                        echo "<td>" . $row["loanNum"]. "</td>";
+                                        echo"    <td>". $row["bookNum"]."</td>";
+                                        echo "<td>" . $row[""]. "</td>";
+                                          echo"  <td>2021-12-01</td>
                                             <td>2021-12-31</td>
-                                            <td>0</td>
-                                            <td><button class="btn btn-success btn-sm">반납</button> <button class="btn btn-danger btn-sm">연장</button></td>
-                                        </tr>
-                                        <tr>
+                                            <td>0</td>";
+                                        echo "<td><button class='btn btn-success btn-sm'>반납</button> <button class='btn btn-danger btn-sm'>연장</button></td>";
+                                    }
+                                }
+                                else{
+                                    echo "테이블에 데이터가 없습니다.";
+                                    }
+                                       ?>
+                                       <td><button class="btn btn-success btn-sm">반납</button> <button class="btn btn-danger btn-sm">연장</button></td>
+                                      </tr> 
+                                       <tr>
                                             <td>2</td>
                                             <td>B989745445</td>
                                             <td>사피엔스</td>
