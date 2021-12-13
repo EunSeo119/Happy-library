@@ -276,10 +276,9 @@ function button1_click(s) {
                                         <tr>
                                             <th>번호</th>
                                             <th>도서명</th>
-                                            <th>이름</th>
-                                            <th>이메일</th>
+                                            <th>저자</th>
+                                            <th>출판사</th>
                                             <th>등록일</th>
-                                            <th>내용</th>
                                         </tr>
                                         </head>
 
@@ -287,14 +286,16 @@ function button1_click(s) {
                                         if($result->num_rows > 0){
                                             // Output data of each row
                                             while($row = $result->fetch_assoc()){
+                                                $date = date_create($row["reg_date"]);
                                                 echo "<tr>";
                                                 echo "<td>" . $row["id"]. "</td>" 
-                                                . "<td>" . $row["book_name"]. "</td>" 
-                                                . "<td>" . $row["name"]. "</td>" 
-                                                . "<td>" . $row["email"]. "</td>" 
-                                                . "<td>" . $row["reg_date"]. "</td>"
-                                                . "<td>" . $row["content"]. "</td>" ;
+                                                . "<td>" . "<a href='../book_detail.php?id=" . $row["id"]. "'>"  . $row["subject"]. "</a>" . "</td>" 
+                                                . "<td>" . $row["author"]. "</td>" 
+                                                . "<td>" . $row["publisher"]. "</td>" 
+                                                . "<td>" . date_format($date, 'Y-m-d'). "</td>";
                                                 echo "</tr>";
+
+
                                             }
                                         }else{
                                             echo "0 results";

@@ -1,3 +1,21 @@
+<?php
+include_once 'bookreg/dbconfig.php';
+
+// Select a database
+$dbname = "testdb";
+mysqli_select_db($conn, $dbname) or die('DB selection failed');
+
+//파라미터 검사
+if(!isset($_GET["keyword"])) {
+    $keyword = "";
+}else{
+    $keyword = $_GET["keyword"];
+}
+$sql = "SELECT * FROM book where author like '%".$keyword."%' ";
+$result = $conn->query($sql);
+
+?>
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -21,6 +39,15 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+
+
+    <script>
+    function button1_click() {
+        keyword = document.getElementById('keyword').value;
+        document.frm.action = "search.php?keyword="+keyword;
+        document.frm.submit();
+    }
+    </script>      
 </head>
 
 <body>
@@ -196,12 +223,12 @@
                 <div class="col-lg-9">
                     <div class="hero__search">
                         <div class="hero__search__form">
-                            <form action="#">
+                            <form action="search.php">
                                 <div class="hero__search__categories">
                                     All Categories
                                     <span class="arrow_carrot-down"></span>
                                 </div>
-                                <input type="text" placeholder="What do yo u need?">
+                                <input type="text" name="keyword" placeholder="What do yo u need?">
                                 <button type="submit" class="site-btn">SEARCH</button>
                             </form>
                         </div>
@@ -412,13 +439,13 @@
                 </div>
                 <div class="col-lg-9 col-md-7">
                     <div class="hero__search__form">
-                            <form action="#">
+                            <form action="" name="frm">
                                 <div class="hero__search__categories">
                                     All Categories
                                     <span class="arrow_carrot-down"></span>
                                 </div>
-                                <input type="text" placeholder="What do yo u need?">
-                                <button type="submit" class="site-btn">SEARCH</button>
+                                <input type="text" id="keyword" name="keyword" placeholder="What do yo u need?">
+                                <button type="submit" class="site-btn" onclick="button1_click();">SEARCH</button>
                             </form>
                     </div>
                     <!-- 많이 검색한거 -->
@@ -428,114 +455,43 @@
                         </div>
                         <div class="row">
                             <div class="product__discount__slider owl-carousel">
-                                <div class="col-lg-4">
-                                    <div class="product__discount__item">
-                                        <div class="product__discount__item__pic set-bg"
-                                            data-setbg="img/product/discount/pd-1.jpg">
-                                            <div class="product__discount__percent">-20%</div>
-                                            <ul class="product__item__pic__hover">
-                                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product__discount__item__text">
-                                            <span>Dried Fruit</span>
-                                            <h5><a href="#">Raisin’n’nuts</a></h5>
-                                            <div class="product__item__price">$30.00 <span>$36.00</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="product__discount__item">
-                                        <div class="product__discount__item__pic set-bg"
-                                            data-setbg="img/product/discount/pd-2.jpg">
-                                            <div class="product__discount__percent">-20%</div>
-                                            <ul class="product__item__pic__hover">
-                                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product__discount__item__text">
-                                            <span>Vegetables</span>
-                                            <h5><a href="#">Vegetables’package</a></h5>
-                                            <div class="product__item__price">$30.00 <span>$36.00</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="product__discount__item">
-                                        <div class="product__discount__item__pic set-bg"
-                                            data-setbg="img/product/discount/pd-3.jpg">
-                                            <div class="product__discount__percent">-20%</div>
-                                            <ul class="product__item__pic__hover">
-                                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product__discount__item__text">
-                                            <span>Dried Fruit</span>
-                                            <h5><a href="#">Mixed Fruitss</a></h5>
-                                            <div class="product__item__price">$30.00 <span>$36.00</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="product__discount__item">
-                                        <div class="product__discount__item__pic set-bg"
-                                            data-setbg="img/product/discount/pd-4.jpg">
-                                            <div class="product__discount__percent">-20%</div>
-                                            <ul class="product__item__pic__hover">
-                                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product__discount__item__text">
-                                            <span>Dried Fruit</span>
-                                            <h5><a href="#">Raisin’n’nuts</a></h5>
-                                            <div class="product__item__price">$30.00 <span>$36.00</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="product__discount__item">
-                                        <div class="product__discount__item__pic set-bg"
-                                            data-setbg="img/product/discount/pd-5.jpg">
-                                            <div class="product__discount__percent">-20%</div>
-                                            <ul class="product__item__pic__hover">
-                                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product__discount__item__text">
-                                            <span>Dried Fruit</span>
-                                            <h5><a href="#">Raisin’n’nuts</a></h5>
-                                            <div class="product__item__price">$30.00 <span>$36.00</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="product__discount__item">
-                                        <div class="product__discount__item__pic set-bg"
-                                            data-setbg="img/product/discount/pd-6.jpg">
-                                            <div class="product__discount__percent">-20%</div>
-                                            <ul class="product__item__pic__hover">
-                                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product__discount__item__text">
-                                            <span>Dried Fruit</span>
-                                            <h5><a href="#">Raisin’n’nuts</a></h5>
-                                            <div class="product__item__price">$30.00 <span>$36.00</span></div>
-                                        </div>
-                                    </div>
-                                </div>
+
+
+                                <?php
+                                if($result->num_rows > 0){
+                                    // Output data of each row
+                                    while($row = $result->fetch_assoc()){
+                                        $date = date_create($row["reg_date"]);
+
+
+                                        echo(
+                                            "<div class='col-lg-4'>														  "
+                                           ."    <div class='product__discount__item'>									  "
+                                           ."        <div class='product__discount__item__pic set-bg'					  "
+                                           ."            data-setbg='" . "/upload/" . $row["image_file"]. "'>			  "
+                                           ."            <ul class='product__item__pic__hover'>							  "
+                                           ."                <li><a href='#'><i class='fa fa-heart'></i></a></li>		  "
+                                           ."                <li><a href='#'><i class='fa fa-retweet'></i></a></li>		  "
+                                           ."                <li><a href='#'><i class='fa fa-shopping-cart'></i></a></li> "
+                                           ."            </ul>															  "
+                                           ."        </div>																  "
+                                           ."        <div class='product__discount__item__text'>						  "
+                                           ."            <span>" . $row["subject"]. "</span>											 "
+                                           ."            <h5>" . $row["author"]. "</h5>							          "
+                                           ."            <div class='product__item__price'>" . $row["publisher"] . "</div>"
+                                           ."        </div>																  "
+                                           ."    </div>																	  "
+                                           ."</div>																		  ");
+
+                                    }
+                                }else{
+                                    echo "0 results";
+                                }
+
+                                ?>
+
+
+
                             </div>
                         </div>
                     </div>
@@ -629,3 +585,8 @@
 </body>
 
 </html>
+
+
+<?php
+$conn->close();
+?>

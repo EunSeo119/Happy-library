@@ -252,40 +252,51 @@
                         <h3>도서등록</h3>
                         <hr>
                     </div>
-                    <form action="insert.php" method="post" class="form form-signup">
+                    <form action="insert.php" enctype="multipart/form-data" method="post" class="form form-signup">
                     <div class="container"> 
                         <div class="input-form-backgroud row"  > 
                             <div class="input-form col-md-12 mx-auto"> 
                                 <form class="validation-form" novalidate> 
                                     <div class="row">
                                         <div class="col-md-9 mb-3"> 
-                                            <label for="book_name">도서명</label> 
-                                            <input type="text" class="form-control" name="book_name" placeholder="" value="" required> 
-                                            <div class="invalid-feedback"> 이름을 입력해주세요. </div> 
+                                            <label for="subject">도서명</label> 
+                                            <input type="text" class="form-control" name="subject" placeholder="" value="" required> 
+                                            <div class="invalid-feedback"> 도서명을 입력해주세요. </div> 
                                         </div>
                                     </div>
   
                                     <div class="row">
-                                        <div class="col-md-6 mb-3"> 
-                                            <label for="username">이름</label> 
-                                            <input type="text" class="form-control" name="name" placeholder="" value="" required> 
-                                            <div class="invalid-feedback"> 이름을 입력해주세요. </div> 
+                                        <div class="col-md-9 mb-2"> 
+                                            <label for="author">저자</label> 
+                                            <input type="text" class="form-control" name="author" placeholder="" value="" required> 
+                                            <div class="invalid-feedback"> 저자를 입력해주세요. </div> 
                                         </div>
-                                    <div class=" col-md-6 mb-3"> 
-                                    <label for="email">이메일</label> 
-                                    <input type="email" class="form-control" name="email" placeholder="you@example.com" required> 
-                                    <div class="invalid-feedback"> 이메일을 입력해주세요. </div>
-                                 </div>
+                                    </div>
 
-                                 <div class="row">
-                                        <div class="col-md-9 mb-3"> 
-                                            <label for="content">도서 설명</label> 
-                                            <input type="text" class="form-control" name="content" placeholder="" value="" required> 
-                                            <div class="invalid-feedback"> 설명을 입력해주세요. </div> 
+                                    <div class="row">
+                                        <div class="col-md-9 mb-2"> 
+                                            <label for="publisher">출판사</label> 
+                                            <input type="text" class="form-control" name="publisher" placeholder="" value="" required> 
+                                            <div class="invalid-feedback"> 출판사를 입력해주세요. </div> 
                                         </div>
-                                    </div>                                 
+                                    </div>
 
-                                </div>
+                                    <div class="row">
+                                        <div class="col-md-9 mb-2"> 
+                                            <label for="comment">책설명</label> 
+                                            <input type="text" class="form-control" name="comment" placeholder="" value="" required> 
+                                            <div class="invalid-feedback"> 책설명을 입력해주세요. </div> 
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-9 mb-2"> 
+                                            <label for="image_file">이미지</label> 
+                                            <input type="file" class="form-control" name="image_file" placeholder="" value="" required> 
+                                            
+                                        </div>
+                                    </div>                                    
+
                                     <hr class="mb-4"> 
                                      <div class="mb-4" style="text-align: center;">
                                             <button class="btn btn-primary btn-lg btn-block span1" id="signup-button" style="margin:auto;width:12%;" type="submit">저장</button> 
