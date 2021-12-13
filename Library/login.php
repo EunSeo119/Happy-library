@@ -16,7 +16,7 @@ $res = $dbConnect->query($sql);
 $row = $res->fetch_array(MYSQLI_BOTH);
 
 if ($row!=null) {
-    $_SESSION['ses_userid'] = $row['user_ID'];
+    $_SESSION['ses_userid'] = $row['id'];
     $_SESSION['ses_username'] = $row['user_name'];
     echo("<script>location.replace('mypage.php');</script>"); 
     }
