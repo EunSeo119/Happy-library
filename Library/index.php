@@ -56,7 +56,7 @@
     <div class="humberger__menu__overlay"></div>
     <div class="humberger__menu__wrapper">
         <div class="humberger__menu__logo">
-            <a href="#"><img src="img/logo.png" alt=""></a>
+            <a href="#"><img src=".img/library_logo.png" alt=""></a>
         </div>
         <div class="humberger__menu__cart">
             <ul>
@@ -111,38 +111,42 @@
     </div>
     <!-- Humberger End -->
 
-    <!-- Header Section Begin -->
-    <header class="header">
-        <div class="header__top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6">
-                        <div class="header__top__left">
-                            <ul>
-                                <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
-                                <li>Free Shipping for all Order of $99</li>
-                            </ul>
-                        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="header__logo">
+                        <a href="./index.php"><img src="./img/library_logo.png" alt=""></a>
                     </div>
-                    <div class="col-lg-6 col-md-6">
-                        <div class="header__top__right">
-                            <div class="header__top__right__social">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-linkedin"></i></a>
-                                <a href="#"><i class="fa fa-pinterest-p"></i></a>
-                            </div>
-                            <div class="header__top__right__language">
-                                <img src="img/language.png" alt="">
-                                <div>English</div>
-                                <span class="arrow_carrot-down"></span>
-                                <ul>
-                                    <li><a href="#">Spanis</a></li>
-                                    <li><a href="#">English</a></li>
+                </div>
+                <div class="col-lg-6">
+                    <nav class="header__menu">
+                        <ul>
+                            <li><a href="./index.php">Borrow</a>
+</li>
+                            <li><a href="./shop-grid.php">Ranking</a>
+                            <ul class="header__menu__dropdown">
+                                    <li><a href="./shop-details.php">대출 많은 도서</a></li>
+                                    <li><a href="./shoping-cart.php">신규 도서</a></li>
+                                    <li><a href="./checkout.php">별점 높은 도서</a></li>
                                 </ul>
-                            </div>
-                            <div class="header__top__right__auth">
-                            <?php
+</li>
+                            <li><a href="#">Communication</a>
+                                <ul class="header__menu__dropdown">
+                                    <li><a href="./book_application.php">희망 도서 신청</a></li>
+                                    <li><a href="./review_contest.php">감상문 공모전</a></li>
+                                    <li><a href="./checkout.php">공지사항</a></li>
+                                    <li><a href="./checkout.php">이용안내</a></li>
+
+                                </ul>
+                            </li>
+                            <li><a href="./blog.php">My page</a>
+</li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-3">
+                    <div class="header__cart">
+                                                    <?php
                      if(empty($_SESSION['ses_userid'])){
                     ?>
                 <a href="sign_in.php" id="signin" onclick="Login()">로그인</a>
@@ -154,63 +158,6 @@
                 <?php
                  }
                 ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="header__logo">
-                        <a href="./index.php"><img src="img/logo.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <nav class="header__menu">
-                        <ul>
-                            <li><a href="./index.php">Borrow</a>
-                            <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.php">대출/예약 현황</a></li>
-                                    <li><a href="./shoping-cart.php">대출/반납 기록</a></li>
-                                    <li><a href="./checkout.php">분실 기록</a></li>
-                                    <li><a href="./blog-details.php">자료 검색</a></li>
-                                </ul>
-</li>
-                            <li><a href="./shop-grid.php">Ranking</a>
-                            <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.php">인기 도서</a></li>
-                                    <li><a href="./shoping-cart.php">신규 도서</a></li>
-                                    <li><a href="./checkout.php">수상 도서</a></li>
-                                    <li><a href="./blog-details.php">리뷰</a></li>
-                                </ul>
-</li>
-                            <li><a href="#">Communication</a>
-                                <ul class="header__menu__dropdown">
-                                    <li><a href="./book_application.php">희망 도서 신청</a></li>
-                                    <li><a href="./review_contest.php">감상문 공모전</a></li>
-                                    <li><a href="./checkout.php">공지사항</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="./blog.php">My page</a>
-                            <ul class="header__menu__dropdown">
-                                    <li><a href="./sign_in.php">로그인</a></li>
-                                    <li><a href="./Sign_up.php">회원가입</a></li>
-                                    <li><a href="./checkout.php">마이페이지</a></li>
-                                </ul>
-</li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="col-lg-3">
-                    <div class="header__cart">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
-                        </ul>
-                        <div class="header__cart__price">item: <span>$150.00</span></div>
-                    </div>
                 </div>
             </div>
             <div class="humberger__open">
@@ -228,10 +175,6 @@
                     <div class="hero__search">
                         <div class="hero__search__form__main" >
                             <form action="#">
-                                <div class="hero__search__categories">
-                                    All Categories
-                                    <span class="arrow_carrot-down"></span>
-                                </div>
                                 <input type="text" placeholder="What do yo u need?">
                                 <button type="submit" class="site-btn">SEARCH</button>
                             </form>
@@ -239,10 +182,9 @@
                     </div>
                     <div class="hero__item set-bg" data-setbg="https://cdn.pixabay.com/photo/2021/01/21/16/49/books-5937823_960_720.jpg">
                         <div class="hero__text">
-                            <span>FRUIT FRESH</span>
-                            <h2>Vegetable <br />100% Organic</h2>
-                            <p>Free Pickup and Delivery Available</p>
-                            <a href="#" class="primary-btn">SHOP NOW</a>
+                            <span>E-BOOK</span>
+                            <h2>HAPPY <br />LIBRARY</h2>
+                            <a href="#" class="primary-btn">책 둘러보기</a>
                         </div>
                     </div>
                 </div>
@@ -257,38 +199,45 @@
             <div class="row">
                 <div class="categories__slider owl-carousel">
                     <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="img/categories/cat-1.jpg">
-                            <h5><a href="#">이용안내</a></h5>
+                        <div class="categories__item"  style="text-align : center;"><a href="#">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2370/2370264.png" style="height:100px; width:100px;display: block; margin: auto;">
+
+                            <h5>이용 안내</a></h5>
                         </div>
                     </div>
                     <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="img/categories/cat-2.jpg">
-                            <h5><a href="#">희망 도서 신청</a></h5>
+                    <div class="categories__item"  style="text-align : center;"><a href="./book_application.php">
+                        <img src="https://cdn-icons.flaticon.com/png/512/2702/premium/2702162.png?token=exp=1639130313~hmac=c641567ab326f0eb64c1c45062282430" style="height:100px; width:100px;display: block; margin: auto;">
+
+                            <h5>희망 도서 신청</a></h5>
                         </div>
                     </div>
                     <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="img/categories/cat-3.jpg">
-                            <h5><a href="#">분실 기록</a></h5>
+                    <div class="categories__item"  style="text-align : center;"><a href="#">
+                    <img src="https://cdn-icons.flaticon.com/png/512/2765/premium/2765565.png?token=exp=1639134771~hmac=b1e41f50dc87f250423db37916827c61" style="height:100px; width:100px;display: block; margin: auto;">
+
+                            <h5>자료 검색</a></h5>
                         </div>
                     </div>
                     <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="img/categories/cat-4.jpg">
-                            <h5><a href="#">자료 검색</a></h5>
+                    <div class="categories__item"  style="text-align : center;"><a href="#">
+                    <img src="https://cdn-icons-png.flaticon.com/512/5517/5517593.png" style="height:100px; width:100px;display: block; margin: auto;">
+
+                            <h5>감상문 공모전</a></h5>
                         </div>
                     </div>
                     <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="img/categories/cat-5.jpg">
-                            <h5><a href="#">감상문 공모전</a></h5>
+                    <div class="categories__item"  style="text-align : center;"><a href="#">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3893/3893612.png" style="height:100px; width:100px;display: block; margin: auto;">
+
+                            <h5>공지사항</a></h5>
                         </div>
                     </div>
                     <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="img/categories/cat-5.jpg">
-                            <h5><a href="#">공지사항</a></h5>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="img/categories/cat-5.jpg">
-                            <h5><a href="#">마이페이지</a></h5>
+                    <div class="categories__item"  style="text-align : center;"><a href="#">
+                    <img src="https://cdn-icons.flaticon.com/png/512/2102/premium/2102647.png?token=exp=1639130547~hmac=519e64dda15bb804094000a8cda68dfe" style="height:100px; width:100px;display: block; margin: auto;">
+
+                            <h5>마이페이지</a></h5>
                         </div>
                     </div>
 
@@ -298,177 +247,13 @@
     </section>
     <!-- Categories Section End -->
 
-    <!-- Featured Section Begin -->
-    <section class="featured spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title">
-                        <h2>Featured Product</h2>
-                    </div>
-                    <div class="featured__controls">
-                        <ul>
-                            <li class="active" data-filter="*">All</li>
-                            <li data-filter=".oranges">Oranges</li>
-                            <li data-filter=".fresh-meat">Fresh Meat</li>
-                            <li data-filter=".vegetables">Vegetables</li>
-                            <li data-filter=".fastfood">Fastfood</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="row featured__filter">
-                <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-1.jpg">
-                            <ul class="featured__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>$30.00</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables fastfood">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-2.jpg">
-                            <ul class="featured__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>$30.00</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables fresh-meat">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-3.jpg">
-                            <ul class="featured__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>$30.00</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood oranges">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-4.jpg">
-                            <ul class="featured__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>$30.00</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat vegetables">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-5.jpg">
-                            <ul class="featured__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>$30.00</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fastfood">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-6.jpg">
-                            <ul class="featured__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>$30.00</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat vegetables">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-7.jpg">
-                            <ul class="featured__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>$30.00</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood vegetables">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-8.jpg">
-                            <ul class="featured__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>$30.00</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Featured Section End -->
-
-    <!-- Banner Begin -->
-    <div class="banner">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="banner__pic">
-                        <img src="img/banner/banner-1.jpg" alt="">
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="banner__pic">
-                        <img src="img/banner/banner-2.jpg" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Banner End -->
-
-    <!-- Latest Product Section Begin -->
-    <section class="latest-product spad">
+        <!-- Latest Product Section Begin -->
+        <section class="latest-product spad">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-6">
                     <div class="latest-product__text">
-                        <h4>Latest Products</h4>
+                        <h4>대출 많은 도서</h4>
                         <div class="latest-product__slider owl-carousel">
                             <div class="latest-prdouct__slider__item">
                                 <a href="#" class="latest-product__item">
@@ -533,7 +318,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="latest-product__text">
-                        <h4>Top Rated Products</h4>
+                        <h4>신규 도서</h4>
                         <div class="latest-product__slider owl-carousel">
                             <div class="latest-prdouct__slider__item">
                                 <a href="#" class="latest-product__item">
@@ -598,7 +383,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="latest-product__text">
-                        <h4>Review Products</h4>
+                        <h4>별점 높은 도서</h4>
                         <div class="latest-product__slider owl-carousel">
                             <div class="latest-prdouct__slider__item">
                                 <a href="#" class="latest-product__item">
@@ -665,6 +450,26 @@
         </div>
     </section>
     <!-- Latest Product Section End -->
+
+    <!-- Banner Begin -->
+    <div class="banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="banner__pic">
+                        <img src="img/banner/banner-1.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="banner__pic">
+                        <img src="img/banner/banner-2.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Banner End -->
+
 
     <!-- Blog Section Begin -->
     <section class="from-blog spad">
@@ -734,7 +539,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__about__logo">
-                            <a href="./index.php"><img src="img/logo.png" alt=""></a>
+                            <a href="./index.php"><img src="./img/library_logo.png" alt=""></a>
                         </div>
                         <ul>
                             <li>Address: 60-49 Road 11378 New York</li>
@@ -805,12 +610,12 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
 
-    <div id="pop">
+    <!-- <div id="pop">
   <img src="./img/popup.jpg">
   <div style="float:right;">
     <button id="close" style="width:50px; margin:auto;">닫기</button>
   </div>
-    </div>
+    </div> -->
 
 
 </body>

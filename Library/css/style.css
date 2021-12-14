@@ -30,6 +30,15 @@
 /* Template default CSS
 /*----------------------------------------*/
 
+
+.btn2{
+	background: #7fad39;
+	border : 0;
+	outline: 0;
+	margin :auto;
+	width: 30%;
+}
+
 html,
 body {
 	height: 100%;
@@ -815,7 +824,7 @@ ol {
 -----------------------*/
 
 .categories__item {
-	height: 270px;
+	height: 150px;
 	position: relative;
 }
 
@@ -823,19 +832,16 @@ ol {
 	position: absolute;
 	left: 0;
 	width: 100%;
-	padding: 0 20px;
 	bottom: 20px;
 	text-align: center;
 }
 
 .categories__item h5 a {
-	font-size: 18px;
+	font-size: 16px;
 	color: #1c1c1c;
 	font-weight: 700;
 	text-transform: uppercase;
 	letter-spacing: 2px;
-	padding: 12px 0 10px;
-	background: #ffffff;
 	display: block;
 }
 
@@ -3523,3 +3529,25 @@ ol {
 		font-size: 24px;
 	}
 }
+
+/* 유지현 추가 시작 */
+#view-ebook-pop {
+	width: 700px;
+	height: 800px;
+	border: 5px solid #636363;
+	padding: 20px;
+	background-color: #ffffff;
+	border-radius: 10px;
+	color: #333;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	display: none;
+}
+.close-ebook-view {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+}
+/* 유지현 추가 끝 */

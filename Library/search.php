@@ -1,3 +1,21 @@
+<?php
+include_once 'bookreg/dbconfig.php';
+
+// Select a database
+$dbname = "testdb";
+mysqli_select_db($conn, $dbname) or die('DB selection failed');
+
+//파라미터 검사
+if(!isset($_GET["keyword"])) {
+    $keyword = "";
+}else{
+    $keyword = $_GET["keyword"];
+}
+$sql = "SELECT * FROM book where author like '%".$keyword."%' ";
+$result = $conn->query($sql);
+
+?>
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -21,6 +39,15 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+
+
+    <script>
+    function button1_click() {
+        keyword = document.getElementById('keyword').value;
+        document.frm.action = "search.php?keyword="+keyword;
+        document.frm.submit();
+    }
+    </script>      
 </head>
 
 <body>
@@ -196,12 +223,12 @@
                 <div class="col-lg-9">
                     <div class="hero__search">
                         <div class="hero__search__form">
-                            <form action="#">
+                            <form action="search.php">
                                 <div class="hero__search__categories">
                                     All Categories
                                     <span class="arrow_carrot-down"></span>
                                 </div>
-                                <input type="text" placeholder="What do yo u need?">
+                                <input type="text" name="keyword" placeholder="What do yo u need?">
                                 <button type="submit" class="site-btn">SEARCH</button>
                             </form>
                         </div>
@@ -227,11 +254,10 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>Vegetable’s Package</h2>
+                        <h2>Organi Shop</h2>
                         <div class="breadcrumb__option">
                             <a href="./index.php">Home</a>
-                            <a href="./index.php">Vegetables</a>
-                            <span>Vegetable’s Package</span>
+                            <span>Shop</span>
                         </div>
                     </div>
                 </div>
@@ -240,227 +266,241 @@
     </section>
     <!-- Breadcrumb Section End -->
 
-    <!-- Product Details Section Begin -->
-    <section class="product-details spad">
+    <!-- Product Section Begin -->
+    <section class="product spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 col-md-6">
-                    <div class="product__details__pic">
-                        <div class="product__details__pic__item">
-                            <img class="product__details__pic__item--large"
-                                src="img/product/details/product-details-1.jpg" alt="">
+                <div class="col-lg-3 col-md-5">
+                    <div class="sidebar">
+                        <div class="sidebar__item">
+                            <h4>Department</h4>
+                            <ul>
+                                <li><a href="#">Fresh Meat</a></li>
+                                <li><a href="#">Vegetables</a></li>
+                                <li><a href="#">Fruit & Nut Gifts</a></li>
+                                <li><a href="#">Fresh Berries</a></li>
+                                <li><a href="#">Ocean Foods</a></li>
+                                <li><a href="#">Butter & Eggs</a></li>
+                                <li><a href="#">Fastfood</a></li>
+                                <li><a href="#">Fresh Onion</a></li>
+                                <li><a href="#">Papayaya & Crisps</a></li>
+                                <li><a href="#">Oatmeal</a></li>
+                            </ul>
                         </div>
-                        <div class="product__details__pic__slider owl-carousel">
-                            <img data-imgbigurl="img/product/details/product-details-2.jpg"
-                                src="img/product/details/thumb-1.jpg" alt="">
-                            <img data-imgbigurl="img/product/details/product-details-3.jpg"
-                                src="img/product/details/thumb-2.jpg" alt="">
-                            <img data-imgbigurl="img/product/details/product-details-5.jpg"
-                                src="img/product/details/thumb-3.jpg" alt="">
-                            <img data-imgbigurl="img/product/details/product-details-4.jpg"
-                                src="img/product/details/thumb-4.jpg" alt="">
+                        <div class="sidebar__item">
+                            <h4>Price</h4>
+                            <div class="price-range-wrap">
+                                <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
+                                    data-min="10" data-max="540">
+                                    <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
+                                    <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
+                                    <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
+                                </div>
+                                <div class="range-slider">
+                                    <div class="price-input">
+                                        <input type="text" id="minamount">
+                                        <input type="text" id="maxamount">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sidebar__item sidebar__item__color--option">
+                            <h4>Colors</h4>
+                            <div class="sidebar__item__color sidebar__item__color--white">
+                                <label for="white">
+                                    White
+                                    <input type="radio" id="white">
+                                </label>
+                            </div>
+                            <div class="sidebar__item__color sidebar__item__color--gray">
+                                <label for="gray">
+                                    Gray
+                                    <input type="radio" id="gray">
+                                </label>
+                            </div>
+                            <div class="sidebar__item__color sidebar__item__color--red">
+                                <label for="red">
+                                    Red
+                                    <input type="radio" id="red">
+                                </label>
+                            </div>
+                            <div class="sidebar__item__color sidebar__item__color--black">
+                                <label for="black">
+                                    Black
+                                    <input type="radio" id="black">
+                                </label>
+                            </div>
+                            <div class="sidebar__item__color sidebar__item__color--blue">
+                                <label for="blue">
+                                    Blue
+                                    <input type="radio" id="blue">
+                                </label>
+                            </div>
+                            <div class="sidebar__item__color sidebar__item__color--green">
+                                <label for="green">
+                                    Green
+                                    <input type="radio" id="green">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="sidebar__item">
+                            <h4>Popular Size</h4>
+                            <div class="sidebar__item__size">
+                                <label for="large">
+                                    Large
+                                    <input type="radio" id="large">
+                                </label>
+                            </div>
+                            <div class="sidebar__item__size">
+                                <label for="medium">
+                                    Medium
+                                    <input type="radio" id="medium">
+                                </label>
+                            </div>
+                            <div class="sidebar__item__size">
+                                <label for="small">
+                                    Small
+                                    <input type="radio" id="small">
+                                </label>
+                            </div>
+                            <div class="sidebar__item__size">
+                                <label for="tiny">
+                                    Tiny
+                                    <input type="radio" id="tiny">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="sidebar__item">
+                            <div class="latest-product__text">
+                                <h4>Latest Products</h4>
+                                <div class="latest-product__slider owl-carousel">
+                                    <div class="latest-prdouct__slider__item">
+                                        <a href="#" class="latest-product__item">
+                                            <div class="latest-product__item__pic">
+                                                <img src="img/latest-product/lp-1.jpg" alt="">
+                                            </div>
+                                            <div class="latest-product__item__text">
+                                                <h6>Crab Pool Security</h6>
+                                                <span>$30.00</span>
+                                            </div>
+                                        </a>
+                                        <a href="#" class="latest-product__item">
+                                            <div class="latest-product__item__pic">
+                                                <img src="img/latest-product/lp-2.jpg" alt="">
+                                            </div>
+                                            <div class="latest-product__item__text">
+                                                <h6>Crab Pool Security</h6>
+                                                <span>$30.00</span>
+                                            </div>
+                                        </a>
+                                        <a href="#" class="latest-product__item">
+                                            <div class="latest-product__item__pic">
+                                                <img src="img/latest-product/lp-3.jpg" alt="">
+                                            </div>
+                                            <div class="latest-product__item__text">
+                                                <h6>Crab Pool Security</h6>
+                                                <span>$30.00</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="latest-prdouct__slider__item">
+                                        <a href="#" class="latest-product__item">
+                                            <div class="latest-product__item__pic">
+                                                <img src="img/latest-product/lp-1.jpg" alt="">
+                                            </div>
+                                            <div class="latest-product__item__text">
+                                                <h6>Crab Pool Security</h6>
+                                                <span>$30.00</span>
+                                            </div>
+                                        </a>
+                                        <a href="#" class="latest-product__item">
+                                            <div class="latest-product__item__pic">
+                                                <img src="img/latest-product/lp-2.jpg" alt="">
+                                            </div>
+                                            <div class="latest-product__item__text">
+                                                <h6>Crab Pool Security</h6>
+                                                <span>$30.00</span>
+                                            </div>
+                                        </a>
+                                        <a href="#" class="latest-product__item">
+                                            <div class="latest-product__item__pic">
+                                                <img src="img/latest-product/lp-3.jpg" alt="">
+                                            </div>
+                                            <div class="latest-product__item__text">
+                                                <h6>Crab Pool Security</h6>
+                                                <span>$30.00</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6">
-                    <div class="product__details__text">
-                        <h3>Vetgetable’s Package</h3>
-                        <div class="product__details__rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-half-o"></i>
-                            <span>(18 reviews)</span>
-                        </div>
-                        <div class="product__details__price">$50.00</div>
-                        <p>Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam
-                            vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Vestibulum ac diam sit amet
-                            quam vehicula elementum sed sit amet dui. Proin eget tortor risus.</p>
-                        <div class="product__details__quantity">
-                            <div class="quantity">
-                                <div class="pro-qty">
-                                    <input type="text" value="1">
+                <div class="col-lg-9 col-md-7">
+                    <div class="hero__search__form">
+                            <form action="" name="frm">
+                                <div class="hero__search__categories">
+                                    All Categories
+                                    <span class="arrow_carrot-down"></span>
                                 </div>
-                            </div>
-                        </div>
-                        <a href="#" class="primary-btn">ADD TO CARD</a>
-                        <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
-                        <ul>
-                            <li><b>Availability</b> <span>In Stock</span></li>
-                            <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
-                            <li><b>Weight</b> <span>0.5 kg</span></li>
-                            <li><b>Share on</b>
-                                <div class="share">
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-instagram"></i></a>
-                                    <a href="#"><i class="fa fa-pinterest"></i></a>
-                                </div>
-                            </li>
-                        </ul>
+                                <input type="text" id="keyword" name="keyword" placeholder="What do yo u need?">
+                                <button type="submit" class="site-btn" onclick="button1_click();">SEARCH</button>
+                            </form>
                     </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="product__details__tab">
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"
-                                    aria-selected="true">Description</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab"
-                                    aria-selected="false">Information</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab"
-                                    aria-selected="false">Reviews <span>(1)</span></a>
-                            </li>
-                        </ul>
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="tabs-1" role="tabpanel">
-                                <div class="product__details__tab__desc">
-                                    <h6>Products Infomation</h6>
-                                    <p>Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.
-                                        Pellentesque in ipsum id orci porta dapibus. Proin eget tortor risus. Vivamus
-                                        suscipit tortor eget felis porttitor volutpat. Vestibulum ac diam sit amet quam
-                                        vehicula elementum sed sit amet dui. Donec rutrum congue leo eget malesuada.
-                                        Vivamus suscipit tortor eget felis porttitor volutpat. Curabitur arcu erat,
-                                        accumsan id imperdiet et, porttitor at sem. Praesent sapien massa, convallis a
-                                        pellentesque nec, egestas non nisi. Vestibulum ac diam sit amet quam vehicula
-                                        elementum sed sit amet dui. Vestibulum ante ipsum primis in faucibus orci luctus
-                                        et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam
-                                        vel, ullamcorper sit amet ligula. Proin eget tortor risus.</p>
-                                        <p>Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Lorem
-                                        ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit aliquet
-                                        elit, eget tincidunt nibh pulvinar a. Cras ultricies ligula sed magna dictum
-                                        porta. Cras ultricies ligula sed magna dictum porta. Sed porttitor lectus
-                                        nibh. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.
-                                        Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed
-                                        porttitor lectus nibh. Vestibulum ac diam sit amet quam vehicula elementum
-                                        sed sit amet dui. Proin eget tortor risus.</p>
-                                </div>
-                            </div>
-                            <div class="tab-pane" id="tabs-2" role="tabpanel">
-                                <div class="product__details__tab__desc">
-                                    <h6>Products Infomation</h6>
-                                    <p>Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.
-                                        Pellentesque in ipsum id orci porta dapibus. Proin eget tortor risus.
-                                        Vivamus suscipit tortor eget felis porttitor volutpat. Vestibulum ac diam
-                                        sit amet quam vehicula elementum sed sit amet dui. Donec rutrum congue leo
-                                        eget malesuada. Vivamus suscipit tortor eget felis porttitor volutpat.
-                                        Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Praesent
-                                        sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum ac
-                                        diam sit amet quam vehicula elementum sed sit amet dui. Vestibulum ante
-                                        ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
-                                        Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula.
-                                        Proin eget tortor risus.</p>
-                                    <p>Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Lorem
-                                        ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit aliquet
-                                        elit, eget tincidunt nibh pulvinar a. Cras ultricies ligula sed magna dictum
-                                        porta. Cras ultricies ligula sed magna dictum porta. Sed porttitor lectus
-                                        nibh. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.</p>
-                                </div>
-                            </div>
-                            <div class="tab-pane" id="tabs-3" role="tabpanel">
-                                <div class="product__details__tab__desc">
-                                    <h6>Products Infomation</h6>
-                                    <p>Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.
-                                        Pellentesque in ipsum id orci porta dapibus. Proin eget tortor risus.
-                                        Vivamus suscipit tortor eget felis porttitor volutpat. Vestibulum ac diam
-                                        sit amet quam vehicula elementum sed sit amet dui. Donec rutrum congue leo
-                                        eget malesuada. Vivamus suscipit tortor eget felis porttitor volutpat.
-                                        Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Praesent
-                                        sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum ac
-                                        diam sit amet quam vehicula elementum sed sit amet dui. Vestibulum ante
-                                        ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
-                                        Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula.
-                                        Proin eget tortor risus.</p>
-                                </div>
-                            </div>
+                    <!-- 많이 검색한거 -->
+                    <div class="product__discount">
+                        <div class="section-title product__discount__title">
+                            <h2>Recommend</h2>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Product Details Section End -->
+                        <div class="row">
+                            <div class="product__discount__slider owl-carousel">
 
-    <!-- Related Product Section Begin -->
-    <section class="related-product">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title related__product__title">
-                        <h2>Related Product</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/product/product-1.jpg">
-                            <ul class="product__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>$30.00</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/product/product-2.jpg">
-                            <ul class="product__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>$30.00</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/product/product-3.jpg">
-                            <ul class="product__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>$30.00</h5>
+
+                                <?php
+                                if($result->num_rows > 0){
+                                    // Output data of each row
+                                    while($row = $result->fetch_assoc()){
+                                        $date = date_create($row["reg_date"]);
+
+
+                                        echo(
+                                            "<div class='col-lg-4'>														  "
+                                           ."    <div class='product__discount__item'>									  "
+                                           ."        <div class='product__discount__item__pic set-bg'					  "
+                                           ."            data-setbg='" . "/upload/" . $row["image_file"]. "'>			  "
+                                           ."            <ul class='product__item__pic__hover'>							  "
+                                           ."                <li><a href='#'><i class='fa fa-heart'></i></a></li>		  "
+                                           ."                <li><a href='#'><i class='fa fa-retweet'></i></a></li>		  "
+                                           ."                <li><a href='#'><i class='fa fa-shopping-cart'></i></a></li> "
+                                           ."            </ul>															  "
+                                           ."        </div>																  "
+                                           ."        <div class='product__discount__item__text'>						  "
+                                           ."            <span>" . $row["subject"]. "</span>											 "
+                                           ."            <h5>" . $row["author"]. "</h5>							          "
+                                           ."            <div class='product__item__price'>" . $row["publisher"] . "</div>"
+                                           ."        </div>																  "
+                                           ."    </div>																	  "
+                                           ."</div>																		  ");
+
+                                    }
+                                }else{
+                                    echo "0 results";
+                                }
+
+                                ?>
+
+
+
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/product/product-7.jpg">
-                            <ul class="product__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>$30.00</h5>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
     </section>
-    <!-- Related Product Section End -->
+    <!-- Product Section End -->
 
     <!-- Footer Section Begin -->
     <footer class="footer spad">
@@ -541,6 +581,12 @@
     <script src="js/main.js"></script>
 
 
+
 </body>
 
 </html>
+
+
+<?php
+$conn->close();
+?>
