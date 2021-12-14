@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 $book_id = isset($_GET["id"]) ? (int)$_GET["id"] : 0;
 
@@ -727,4 +728,3 @@ $result = $conn->query($sql);
 
 <?php
 $conn->close();
-?>
