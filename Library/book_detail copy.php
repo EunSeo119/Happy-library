@@ -4,7 +4,7 @@ $book_id = $_GET["id"];
 include_once 'bookreg/dbconfig.php';
 
 // Select a database
-$dbname = "library";
+$dbname = "testdb";
 mysqli_select_db($conn, $dbname) or die('DB selection failed');
 
 //파라미터 검사
@@ -15,6 +15,24 @@ if(!isset($_GET["keyword"])) {
 }
 $sql = "SELECT * FROM review ";
 $result = $conn->query($sql);
+
+$sql2 = "SELECT * FROM book where id ='".$book_id."' ";
+$result2 = $conn->query($sql2);
+if($result2->num_rows > 0){
+    while($row2 = $result2->fetch_assoc()){
+      $b_id = $row2[id];
+      $b_subject= $row2[subject];
+      //$b_author = $row[author];
+      //$b_publisher = $row[3];
+      //$b_comment = $row[4];
+      //$b_status = $row[5];
+      //$b_star_point = $row[6];
+      $b_image_file = $row2[image_file];
+      //$b_reg_date = $row[8];
+    }
+}else{
+    echo "0 results";
+}
 
 
 ?>
@@ -291,7 +309,7 @@ $result = $conn->query($sql);
                     <div class="product__details__pic">
                         <div class="product__details__pic__item">
                             <img class="product__details__pic__item--large"
-                                src="https://image.aladin.co.kr/product/28271/42/cover500/k742835998_1.jpg" alt="">
+                                src=" <?php echo("/upload/" . $b_image_file) ?> " alt="">
                         </div>
                         <div class="product__details__pic__slider owl-carousel">
                             <img data-imgbigurl="img/product/details/product-details-2.jpg"
@@ -515,7 +533,7 @@ $result = $conn->query($sql);
                                           ."     </div>								   "
                                           ."   </td>								   "
                                           ."   <td class='px-4 py-3 text-sm'>					   "
-                                          ."     " . $row["reg_date"]. "							   "
+                                          ."     " .$date . "							   "
                                           ."   </td>								   "
                                           ." </tr>								   "
                                           );
