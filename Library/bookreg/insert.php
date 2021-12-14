@@ -25,8 +25,8 @@ if (count($_FILES)) {
 
 $host = 'localhost';
 $user = 'root';
-$pw = '1234';
-$dbName = 'testdb';
+$pw = 'ekdms57661!';
+$dbName = 'library';
 
 $mysqli = new mysqli($host, $user, $pw, $dbName);
 

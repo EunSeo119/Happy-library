@@ -142,41 +142,50 @@
 
             <div class="row">
                 <div class="col-lg-3">
-                    <div class="header__logo">
-                        <a href="./index.php">HAPPY LIBRARY</a>
+                <div class="header__logo">
+                        <a href="./index.php"><img src="./img/library_logo.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="./index.php">Home</a></li>
-                            <li><a href="./shop-grid.php">BORROW</a>
+                            <li><a href="./index.php">Borrow</a>
+</li>
+                            <li><a href="./shop-grid.php">Ranking</a>
+                            <ul class="header__menu__dropdown">
+                                    <li><a href="./shop-details.php">대출 많은 도서</a></li>
+                                    <li><a href="./shoping-cart.php">신규 도서</a></li>
+                                    <li><a href="./checkout.php">별점 높은 도서</a></li>
+                                </ul>
+</li>
+                            <li><a href="#">Communication</a>
                                 <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.php">Shop Details</a></li>
-                                    <li><a href="./shoping-cart.php">Shoping Cart</a></li>
-                                    <li><a href="./checkout.php">Check Out</a></li>
-                                    <li><a href="./blog-details.php">Blog Details</a></li>
-                                </ul></li>
-                            <li><a href="#">RANKING</a>
-                                <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.php">Shop Details</a></li>
-                                    <li><a href="./shoping-cart.php">Shoping Cart</a></li>
-                                    <li><a href="./checkout.php">Check Out</a></li>
-                                    <li><a href="./blog-details.php">Blog Details</a></li>
+                                    <li><a href="./book_application.php">희망 도서 신청</a></li>
+                                    <li><a href="./review_contest_list.php">감상문 공모전</a></li>
+                                    <li><a href="./notice.php">공지사항</a></li>
+                                    <li><a href="./checkout.php">이용안내</a></li>
+
                                 </ul>
                             </li>
-                            <li><a href="./blog.php">COMMUNITY</a></li>
+                            <li><a href="./blog.php">My page</a>
+</li>
                         </ul>
                     </nav>
                 </div>
                 <div class="col-lg-3">
                     <div class="header__cart">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
-                        </ul>
-                        <div class="header__cart__price">item: <span>$150.00</span></div>
-                    </div>
+                                                    <?php
+                     if(empty($_SESSION['ses_userid'])){
+                    ?>
+                <a href="sign_in.php" id="signin" onclick="Login()">로그인</a>
+                <a href="sign_up.php" id="signup" onclick="Signup()">회원가입</a>
+                <?php
+                }else{
+                ?>
+                <a href="logout.php" id="signout">로그아웃</a>
+                <?php
+                 }
+                ?>
                 </div>
             </div>
             <div class="humberger__open">
@@ -204,27 +213,7 @@
                     </div>
                 </div>
                 <div class="col-lg-9">
-                    <div class="hero__search">
-                        <div class="hero__search__form">
-                            <form action="#">
-                                <div class="hero__search__categories">
-                                    All Categories
-                                    <span class="arrow_carrot-down"></span>
-                                </div>
-                                <input type="text" placeholder="What do yo u need?">
-                                <button type="submit" class="site-btn">SEARCH</button>
-                            </form>
-                        </div>
-                        <div class="hero__search__phone">
-                            <div class="hero__search__phone__icon">
-                                <i class="fa fa-phone"></i>
-                            </div>
-                            <div class="hero__search__phone__text">
-                                <h5>+65 11.188.888</h5>
-                                <span>support 24/7 time</span>
-                            </div>
-                        </div>
-                    </div>
+                    
                     <div>
                         <h3>희망 도서 신청</h3>
                         <hr>

@@ -1,6 +1,18 @@
 <?php
   include "include/session.php";
   include "include/dbConnect.php";
+  include_once 'bookreg/dbconfig.php';
+
+// Select a database
+$dbname = "library";
+mysqli_select_db($conn, $dbname) or die('DB selection failed');
+$sql = "SELECT * FROM book";
+$result = $conn->query($sql);
+$sql2 = "SELECT * FROM book ORDER BY subject" ;
+$result2 = $conn->query($sql2);
+$sql3 = "SELECT * FROM book ORDER BY subject" ;
+$result3 = $conn->query($sql3);
+
 ?>
 
 <!DOCTYPE html>
@@ -134,7 +146,7 @@
                                 <ul class="header__menu__dropdown">
                                     <li><a href="./book_application.php">희망 도서 신청</a></li>
                                     <li><a href="./review_contest.php">감상문 공모전</a></li>
-                                    <li><a href="./checkout.php">공지사항</a></li>
+                                    <li><a href="./notice.php">공지사항</a></li>
                                     <li><a href="./checkout.php">이용안내</a></li>
 
                                 </ul>
@@ -220,14 +232,14 @@
                         </div>
                     </div>
                     <div class="col-lg-3">
-                    <div class="categories__item"  style="text-align : center;"><a href="#">
+                    <div class="categories__item"  style="text-align : center;"><a href="./review_contest_list.php">
                     <img src="https://cdn-icons-png.flaticon.com/512/5517/5517593.png" style="height:100px; width:100px;display: block; margin: auto;">
 
                             <h5>감상문 공모전</a></h5>
                         </div>
                     </div>
                     <div class="col-lg-3">
-                    <div class="categories__item"  style="text-align : center;"><a href="#">
+                    <div class="categories__item"  style="text-align : center;"><a href="./notice.php">
                     <img src="https://cdn-icons-png.flaticon.com/512/3893/3893612.png" style="height:100px; width:100px;display: block; margin: auto;">
 
                             <h5>공지사항</a></h5>
@@ -255,64 +267,77 @@
                     <div class="latest-product__text">
                         <h4>대출 많은 도서</h4>
                         <div class="latest-product__slider owl-carousel">
-                            <div class="latest-prdouct__slider__item">
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="img/latest-product/lp-1.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="img/latest-product/lp-2.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="img/latest-product/lp-3.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="latest-prdouct__slider__item">
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="img/latest-product/lp-1.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="img/latest-product/lp-2.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="img/latest-product/lp-3.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                            </div>
+
+                        <?php
+                                if($result->num_rows > 0){
+                                    // Output data of each row
+                                    $count = 0;
+                                    echo("<div class='latest-prdouct__slider__item'>");
+
+                                    while($row = $result->fetch_assoc()){
+                                        $count +=1;
+                                        echo(
+                                           "<a href='#' class='latest-product__item'>"
+                                           ."<div class='latest-product__item__pic'>"
+                                            ."   <img src='img/latest-product/lp-1.jpg' alt=''>"
+                                           ."</div>"
+                                           ."<div class='latest-product__item__text'>"
+                                               ."<span>".$row["subject"]."</span>"
+                                               ."<h6>" . $row["author"]. "</h6>"
+                                           ."</div>"
+                                       ."</a>" 
+                                    );
+                                        if($count%3==0){
+                                            break;
+                                        };
+                                    }
+                                    echo("</div>");
+                                    echo("<div class='latest-prdouct__slider__item'>");
+
+                                    while($row = $result->fetch_assoc()){
+                                        $count +=1;
+                                        echo(
+                                           "<a href='#' class='latest-product__item'>"
+                                           ."<div class='latest-product__item__pic'>"
+                                            ."   <img src='img/latest-product/lp-1.jpg' alt=''>"
+                                           ."</div>"
+                                           ."<div class='latest-product__item__text'>"
+                                           ."<span>".$row["subject"]."</span>"
+                                           ."<h6>" . $row["author"]. "</h6>"
+                                       ."</div>"
+                                       ."</a>" 
+                                    );
+                                        if($count%3==0){
+                                            break;
+                                        };
+                                    }
+                                    echo("</div>");
+                                    echo("<div class='latest-prdouct__slider__item'>");
+
+                                    while($row = $result->fetch_assoc()){
+                                        $count +=1;
+                                        echo(
+                                           "<a href='#' class='latest-product__item'>"
+                                           ."<div class='latest-product__item__pic'>"
+                                            ."   <img src='img/latest-product/lp-1.jpg' alt=''>"
+                                           ."</div>"
+                                           ."<div class='latest-product__item__text'>"
+                                           ."<span>".$row["subject"]."</span>"
+                                           ."<h6>" . $row["author"]. "</h6>"
+                                       ."</div>"
+                                       ."</a>" 
+                                    );
+                                        if($count%3==0){
+                                            break;
+                                        };
+                                    }
+                                    echo("</div>");
+                                }else{
+                                    echo "0 results";
+                                }
+
+                                ?>
+
                         </div>
                     </div>
                 </div>
@@ -320,64 +345,77 @@
                     <div class="latest-product__text">
                         <h4>신규 도서</h4>
                         <div class="latest-product__slider owl-carousel">
-                            <div class="latest-prdouct__slider__item">
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="img/latest-product/lp-1.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="img/latest-product/lp-2.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="img/latest-product/lp-3.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="latest-prdouct__slider__item">
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="img/latest-product/lp-1.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="img/latest-product/lp-2.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="img/latest-product/lp-3.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                            </div>
+                        <?php
+                                if($result2->num_rows > 0){
+                                    // Output data of each row
+                                    $count = 0;
+                                    echo("<div class='latest-prdouct__slider__item'>");
+
+                                    while($row = $result2->fetch_assoc()){
+                                        $count +=1;
+                                        echo(
+                                           "<a href='#' class='latest-product__item'>"
+                                           ."<div class='latest-product__item__pic'>"
+                                            ."   <img src='img/latest-product/lp-1.jpg' alt=''>"
+                                           ."</div>"
+                                           ."<div class='latest-product__item__text'>"
+                                               ."<span>".$row["subject"]."</span>"
+                                               ."<h6>" . $row["author"]. "</h6>"
+                                           ."</div>"
+                                       ."</a>" 
+                                    );
+                                        if($count%3==0){
+                                            break;
+                                        };
+                                    }
+                                    echo("</div>");
+                                    echo("<div class='latest-prdouct__slider__item'>");
+
+                                    while($row = $result2->fetch_assoc()){
+                                        $count +=1;
+                                        echo(
+                                           "<a href='#' class='latest-product__item'>"
+                                           ."<div class='latest-product__item__pic'>"
+                                            ."   <img src='img/latest-product/lp-1.jpg' alt=''>"
+                                           ."</div>"
+                                           ."<div class='latest-product__item__text'>"
+                                           ."<span>".$row["subject"]."</span>"
+                                           ."<h6>" . $row["author"]. "</h6>"
+                                       ."</div>"
+                                       ."</a>" 
+                                    );
+                                        if($count%3==0){
+                                            break;
+                                        };
+                                    }
+                                    echo("</div>");
+                                    echo("<div class='latest-prdouct__slider__item'>");
+
+                                    while($row = $result2->fetch_assoc()){
+                                        $count +=1;
+                                        echo(
+                                           "<a href='#' class='latest-product__item'>"
+                                           ."<div class='latest-product__item__pic'>"
+                                            ."   <img src='img/latest-product/lp-1.jpg' alt=''>"
+                                           ."</div>"
+                                           ."<div class='latest-product__item__text'>"
+                                           ."<span>".$row["subject"]."</span>"
+                                           ."<h6>" . $row["author"]. "</h6>"
+                                       ."</div>"
+                                       ."</a>" 
+                                    );
+                                        if($count%3==0){
+                                            break;
+                                        };
+                                    }
+                                    echo("</div>");
+                                }else{
+                                    echo "0 results";
+                                }
+
+                                ?>
+
+
                         </div>
                     </div>
                 </div>
@@ -385,65 +423,76 @@
                     <div class="latest-product__text">
                         <h4>별점 높은 도서</h4>
                         <div class="latest-product__slider owl-carousel">
-                            <div class="latest-prdouct__slider__item">
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="img/latest-product/lp-1.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="img/latest-product/lp-2.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="img/latest-product/lp-3.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="latest-prdouct__slider__item">
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="img/latest-product/lp-1.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="img/latest-product/lp-2.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="img/latest-product/lp-3.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
+                        <?php
+                                if($result3->num_rows > 0){
+                                    // Output data of each row
+                                    $count = 0;
+                                    echo("<div class='latest-prdouct__slider__item'>");
+
+                                    while($row = $result3->fetch_assoc()){
+                                        $count +=1;
+                                        echo(
+                                           "<a href='#' class='latest-product__item'>"
+                                           ."<div class='latest-product__item__pic'>"
+                                            ."   <img src='img/latest-product/lp-1.jpg' alt=''>"
+                                           ."</div>"
+                                           ."<div class='latest-product__item__text'>"
+                                               ."<span>".$row["subject"]."</span>"
+                                               ."<h6>" . $row["author"]. "</h6>"
+                                           ."</div>"
+                                       ."</a>" 
+                                    );
+                                        if($count%3==0){
+                                            break;
+                                        };
+                                    }
+                                    echo("</div>");
+                                    echo("<div class='latest-prdouct__slider__item'>");
+
+                                    while($row = $result3->fetch_assoc()){
+                                        $count +=1;
+                                        echo(
+                                           "<a href='#' class='latest-product__item'>"
+                                           ."<div class='latest-product__item__pic'>"
+                                            ."   <img src='img/latest-product/lp-1.jpg' alt=''>"
+                                           ."</div>"
+                                           ."<div class='latest-product__item__text'>"
+                                           ."<span>".$row["subject"]."</span>"
+                                           ."<h6>" . $row["author"]. "</h6>"
+                                       ."</div>"
+                                       ."</a>" 
+                                    );
+                                        if($count%3==0){
+                                            break;
+                                        };
+                                    }
+                                    echo("</div>");
+                                    echo("<div class='latest-prdouct__slider__item'>");
+
+                                    while($row = $result3->fetch_assoc()){
+                                        $count +=1;
+                                        echo(
+                                           "<a href='#' class='latest-product__item'>"
+                                           ."<div class='latest-product__item__pic'>"
+                                            ."   <img src='img/latest-product/lp-1.jpg' alt=''>"
+                                           ."</div>"
+                                           ."<div class='latest-product__item__text'>"
+                                           ."<span>".$row["subject"]."</span>"
+                                           ."<h6>" . $row["author"]. "</h6>"
+                                       ."</div>"
+                                       ."</a>" 
+                                    );
+                                        if($count%3==0){
+                                            break;
+                                        };
+                                    }
+                                    echo("</div>");
+                                }else{
+                                    echo "0 results";
+                                }
+
+                                ?>
+
                     </div>
                 </div>
             </div>

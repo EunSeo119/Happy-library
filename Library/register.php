@@ -2,15 +2,7 @@
 
 $host = 'localhost';
 $user = 'root';
-<<<<<<< HEAD
-<<<<<<< HEAD
-$pw = 'ekdms57661';
-=======
 $pw = '1234';
->>>>>>> 5337c5c2678f5b8cfc2433d6020b633141539812
-=======
-$pw = '1234';
->>>>>>> 5337c5c2678f5b8cfc2433d6020b633141539812
 $dbName = 'library';
 
 $mysqli = new mysqli($host, $user, $pw, $dbName);
