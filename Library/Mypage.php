@@ -241,54 +241,51 @@ if(empty($_SESSION['ses_userid'])){
                                             <td scope="col">반납/연장</td>
                                         </tr>
                                     </thead>
+                                    <!-- <script> 
+                                        function returnbook(){ 
+                                            $.ajax({
+                                                type:'get', url:"return.php" ,data{}, success:function(result){ 
+                                                    $("div").text(result);
+                                                    } 
+                                                }) 
+                                            } 
+                                    </script> -->
                                     <tbody>
                                     <?php
                                     $UID = $_SESSION['ses_userid'];
                                      $sql = "SELECT * FROM loan WHERE loanNum = $UID";
-                                    // $bookid=.$row['bookNum']; 
+                                    
                                      $result = mysqli_query($dbConnect, $sql);
                                      $x= 0;
+
+                                     function returnbook($e){
+                                        $sql="DELETE FROM loan WHERE id=$e";
+                                     }
                                 
                                  if (mysqli_num_rows($result) > 0) {
                                     while($row = mysqli_fetch_assoc($result)) {
                                         echo "<tr>
-                                        <td>" $x+1 "</td>";    
+                                        <td>";
+                                        echo ++$x. "</td>";    
                                         echo "<td>" . $row["loanNum"]. "</td>";
-                                        echo"    <td>". $row["bookNum"]."</td>";
-                                        echo "<td>" . $row[""]. "</td>";
-                                          echo"  <td>2021-12-01</td>
-                                            <td>2021-12-31</td>
-                                            <td>0</td>";
-                                        echo "<td><button class='btn btn-success btn-sm'>반납</button> <button class='btn btn-danger btn-sm'>연장</button></td>";
+                                        echo "<td>". $row["bookNum"]. "</td>";
+                                        echo "<td>" . $row["bookName"]. "</td>";
+                                        echo "<td>". $row["bookAuthor"]."</td>";
+                                        echo "<td>". $row["loanDate"]."</td>";
+                                        echo "<td>". $row["dueDate"]."</td>";
+                                        $re = $row["bookNum"];
+                                        echo "<td><button type='button' class='btn btn-success btn-sm' onClick='returnbook($re)'>반납</button> 
+                                        <button class='btn btn-danger btn-sm'>연장</button></td>";
                                     }
                                 }
                                 else{
                                     echo "테이블에 데이터가 없습니다.";
                                     }
                                        ?>
-                                       <td><button class="btn btn-success btn-sm">반납</button> <button class="btn btn-danger btn-sm">연장</button></td>
-                                      </tr> 
-                                       <tr>
-                                            <td>2</td>
-                                            <td>B989745445</td>
-                                            <td>사피엔스</td>
-                                            <td>유발 하라리</td>
-                                            <td>2021-11-28</td>
-                                            <td>2021-12-27</td>
-                                            <td>0</td>
-                                            <td><button class="btn btn-success btn-sm">반납</button> <button class="btn btn-danger btn-sm">연장</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>B087524215</td>
-                                            <td>총균쇠</td>
-                                            <td>재러드 다이아몬드</td>
-                                            <td>2021-11-10</td>
-                                            <td>2021-12-09</td>
-                                            <td>5</td>
-                                            <td><button class="btn btn-success btn-sm">반납</button> <button class="btn btn-danger btn-sm">연장</button></td>
-                                        </tr>
+                                        <script> function test(){ $.ajax({url:"loan.php", success:function(result){ $("div").text(result);} }) } </script>
 
+<button type='button' class='btn btn-success btn-sm' onclick="location.href='return.php?<?$_GET[$re]?>';">반납</button>
+<a href="#" class="primary-btn" id="book_id" onclick="returnbook()" type="submit" name="book_id">LOAN</a> 
                                     </tbody>
                                 </table>
                             </div>

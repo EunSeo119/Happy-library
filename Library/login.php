@@ -7,11 +7,11 @@ include "include/dbConnect.php";
 /*echo "<pre>";
 var_dump($_POST);*/
 
-$ID = $_POST['user_ID'];
+$ID = $_POST['user_id'];
 $PW = $_POST['password'];
 // $logout = $_POST['login'];   
 
-$sql = "SELECT * FROM User WHERE user_ID = '{$ID}' AND password = '{$PW}'";
+$sql = "SELECT * FROM User WHERE user_id = '{$ID}' AND password = '{$PW}'";
 $res = $dbConnect->query($sql);
 $row = $res->fetch_array(MYSQLI_BOTH);
 

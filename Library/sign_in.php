@@ -239,7 +239,7 @@
                                 </div>    
                                 <div class="col-md-6">
                                     <div class="row-md-4" style="margin-top:10px;"> 
-                                                <input type="text" class="form-control" name = "user_ID" id="id" autofocus placeholder="아이디를 입력하세요" value="" required> 
+                                                <input type="text" class="form-control" name = "user_id" id="id" autofocus placeholder="아이디를 입력하세요" value="" required> 
                                                 <div class="invalid-feedback"> 별명을 입력해주세요. </div> 
                                     </div>
                                             <div class="row-md-4" style="margin-top:10px;">  
