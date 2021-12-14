@@ -176,7 +176,7 @@ $result = $conn->query($sql);
                     <div class="product__details__pic">
                         <div class="product__details__pic__item">
                             <img class="product__details__pic__item--large"
-                                src="<?=$book_detail['image_file']?>" alt="">
+                                src="/upload/<?=$book_detail['image_file']?>" alt="">
                         </div>
                         <!-- <div class="product__details__pic__slider owl-carousel">
                             <img data-imgbigurl="img/product/details/product-details-2.jpg"
@@ -189,6 +189,7 @@ $result = $conn->query($sql);
                                 src="https://image.aladin.co.kr/product/28328/68/cover150/8936455737_1.jpg" alt="">
                         </div> -->
                     </div>
+                    
                 </div>
                 <div class="col-lg-8 col-md-8">
                     <div class="product__details__text">
