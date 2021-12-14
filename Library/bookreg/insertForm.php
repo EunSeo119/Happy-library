@@ -295,7 +295,15 @@
                                             <input type="file" class="form-control" name="image_file" placeholder="" value="" required> 
                                             
                                         </div>
-                                    </div>                                    
+                                    </div>   
+                                    
+                                    <div class="row">
+                                        <div class="col-md-9 mb-2"> 
+                                            <label for="ebook">책내용</label> 
+                                            <input style="    height: 300px;" type="text" class="form-control" name="ebook" placeholder="" value="" required> 
+                                            <div class="invalid-feedback"> 책내용을 입력해주세요. </div> 
+                                        </div>
+                                    </div>
 
                                     <hr class="mb-4"> 
                                      <div class="mb-4" style="text-align: center;">
