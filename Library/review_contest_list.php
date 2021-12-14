@@ -250,7 +250,7 @@ $result = $conn->query($sql);
 					<tr>
 						<td class="no"style=" text-align: center;"><?php echo $row['id']?></td>
 						<td class="title"style=" text-align: center;">
-							<a href="./view.php?id=<?php echo $row['id']?>"><?php echo $row['book_name']?></a>
+							<a href="./review_contest_view.php?id=<?php echo $row['id']?>"><?php echo $row['book_name']?></a>
 						</td>
                         <td class="author"style=" text-align: center;"><?php echo $row['book_author']?></td>
 						<td class="author"style=" text-align: center;"><?php echo $row['uid']?></td>

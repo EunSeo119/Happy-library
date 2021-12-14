@@ -1,3 +1,11 @@
+<?php
+ include "include/session.php";
+ include "include/dbConnect.php";
+
+if(empty($_SESSION['ses_userid'])){
+        echo ("<script>alert('로그인이 필요합니다.');
+        location.replace('sign_in.php');</script>");
+}?>
 <!DOCTYPE html>
 <html lang="zxx">
 

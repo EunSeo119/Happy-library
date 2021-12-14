@@ -41,7 +41,7 @@ $result3 = $conn->query($sql3);
 
     <style type="text/css">
  #pop{
-  width:396px; height:588px; background:white;
+  width:396px; height:588px; background-color:white;
   position:absolute; top:80px; left:200px; text-align:center;
   border:2px solid darkgray;
    }
@@ -55,7 +55,6 @@ $result3 = $conn->query($sql3);
       });
     });
  </script>
- 
 </head>
 
 <body>
@@ -145,7 +144,7 @@ $result3 = $conn->query($sql3);
                             <li><a href="#">Communication</a>
                                 <ul class="header__menu__dropdown">
                                     <li><a href="./book_application.php">희망 도서 신청</a></li>
-                                    <li><a href="./review_contest.php">감상문 공모전</a></li>
+                                    <li><a href="./review_contest_list.php">감상문 공모전</a></li>
                                     <li><a href="./notice.php">공지사항</a></li>
                                     <li><a href="./checkout.php">이용안내</a></li>
 
@@ -659,12 +658,12 @@ $result3 = $conn->query($sql3);
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
 
-    <!-- <div id="pop">
+    <div id="pop">
   <img src="./img/popup.jpg">
   <div style="float:right;">
     <button id="close" style="width:50px; margin:auto;">닫기</button>
   </div>
-    </div> -->
+    </div>
 
 
 </body>

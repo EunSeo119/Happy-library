@@ -223,9 +223,19 @@
 
     //유지현 추가
     $('#btn-loan').on('click', function(){
-        $('#loan-result').show();
-        $(this).text('대출중').prop('disabled', true).css({backgroundColor:'#C4C4C4', color:'black'});
-        $('#btn-view-ebook').show();
+        var send_data = {};
+        send_data.bookNum = $(this).attr("data-booknum");
+        send_data.userID = $(this).attr("data-userid");
+        if( ! send_data.bookNum || ! send_data.userID ) return;
+        $.post("loanaction.php", send_data, function(result) {
+            var res = $.parseJSON(result);
+            alert(res.msg);
+            if( res.success ) {
+                $('#loan-result').show();
+                $(this).text('대출중').prop('disabled', true).css({backgroundColor:'#C4C4C4', color:'black'});
+                $('#btn-view-ebook').show();
+            }
+        });
     });
     $('#icon-heart-on-book span').on('click', function(){
         if($(this).hasClass('icon_heart_alt')) {

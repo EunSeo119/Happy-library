@@ -3,13 +3,16 @@
 include "include/session.php";
 include "include/dbConnect.php";
 
-$id = $_GET[$re];
-$sql="DELETE FROM loan WHERE id=$id";             // (입력받음)insert into 테이블명 (column-list)
+$bookNum = $_GET['bookNum'];
 
- if($dbConnect->query($sql)){                                                               //만약 sql로 잘 들어갔으면
-  echo("<script>location.replace('mypage.php');</script>");                                // id님 안녕하세요.
+ $sql3="UPDATE loan SET dueDate = now() WHERE bookNum=$bookNum";
+ $sql4="UPDATE loan SET loanState = 0 WHERE bookNum=$bookNum";
+
+ $dbConnect->query($sql3);      
+ if($dbConnect->query($sql4)){                                                               //만약 sql로 잘 들어갔으면
+  echo("<script>location.replace('Mypage.php');</script>");                                // id님 안녕하세요.
  }else{                                                                                //아니면
-  echo 'fail to insert sql' .$dbConnect->error;                                                            //fail to insert sql로 표시
+  echo 'fail to insert sql' .$dbConnect->error;                                                               //fail to insert sql로 표시
  }
 
 mysqli_close($dbConnect);
