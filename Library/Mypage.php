@@ -246,8 +246,8 @@ if(empty($_SESSION['ses_userid'])){
                                     $UID = $_SESSION['ses_userid'];
                                        //  $sql = "SELECT * FROM loan WHERE loanNum = $UID";
                                      $sql =
-                                     "SELECT book_id, bookTitle, bookAuthor, loanDate, dueDate, loanNum from loan, book
-                                        where book_id = bookNum and userID = $UID and loanState = 1";
+                                     "SELECT id, subject, author, loanDate, dueDate, loanNum from loan, book
+                                        where id = bookNum and userID = $UID and loanState = 1";
 
                                      $result = mysqli_query($dbConnect, $sql);
                             
@@ -258,12 +258,12 @@ if(empty($_SESSION['ses_userid'])){
                                         echo "<tr>
                                         <td>";
                                         echo ++$x. "</td>";    
-                                        echo "<td>" . $row["book_id"]. "</td>";
-                                        echo "<td>". $row["bookTitle"]. "</td>";
-                                        echo "<td>" . $row["bookAuthor"]. "</td>";
+                                        echo "<td>" . $row["id"]. "</td>";
+                                        echo "<td>". $row["subject"]. "</td>";
+                                        echo "<td>" . $row["author"]. "</td>";
                                         echo "<td>". $row["loanDate"]."</td>";
                                         echo "<td>". $row["dueDate"]."</td>";
-                                        $re = $row['book_id']; $rl = $row['loanNum'];
+                                        $re = $row['id']; $rl = $row['loanNum'];
                                        ?>
                                         <?php
                                         echo "<td>";?>
@@ -294,8 +294,8 @@ if(empty($_SESSION['ses_userid'])){
                                     <?php
                                      $UID = $_SESSION['ses_userid'];
                                    $sql =
-                                    "SELECT book_id, bookTitle, bookAuthor, loanDate, dueDate from loan, book
-                                    where book_id=bookNum and userID = $UID and loanState = 0";
+                                    "SELECT id, subject, author, loanDate, dueDate from loan, book
+                                    where id=bookNum and userID = $UID and loanState = 0";
                                                             
                                    $result = mysqli_query($dbConnect, $sql);
                               
@@ -305,9 +305,9 @@ if(empty($_SESSION['ses_userid'])){
                                       echo "<tr>
                                       <td>";
                                       echo ++$x. "</td>";    
-                                      echo "<td>" . $row["book_id"]. "</td>";
-                                      echo "<td>". $row["bookTitle"]. "</td>";
-                                      echo "<td>" . $row["bookAuthor"]. "</td>";
+                                      echo "<td>" . $row["id"]. "</td>";
+                                      echo "<td>". $row["subject"]. "</td>";
+                                      echo "<td>" . $row["author"]. "</td>";
                                       echo "<td>". $row["loanDate"]."</td>";
                                       echo "<td>". $row["dueDate"]."</td>";
                                      ?>
