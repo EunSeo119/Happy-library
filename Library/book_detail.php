@@ -401,50 +401,22 @@ $result = $conn->query($sql);
                                 <div class="product__details__tab__desc">
                                   <!-- 은서추가2 -->
                                   
-                                  <div class="col-lg-9">
-                                    <div class="hero__search">
-                                        <div class="hero__search__form">
-                                            <form action="#">
-                                                <div class="hero__search__categories">
-                                                    All Categories
-                                                    <span class="arrow_carrot-down"></span>
-                                                </div>
-                                                <input type="text" placeholder="What do yo u need?">
-                                                <button type="submit" class="site-btn">SEARCH</button>
-                                            </form>
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="col-lg-3">
-                                      <div class="hero__categories">
-                                          <div class="hero__categories__all">
-                                              <i class="fa fa-bars"></i>
-                                              <span>star</span>
-                                          </div>
-                                          <ul>
-                                              <li><a href="#">5</a></li>
-                                              <li><a href="#">4</a></li>
-                                              <li><a href="#">3</a></li>
-                                              <li><a href="#">2</a></li>
-                                              <li><a href="#">1</a></li>
-                                          </ul>
-                                      </div>
-                                  </div>
-                                </div>
-                                                <!-- With avatar -->
-                                  <h4
-                                    class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300"
-                                  >
-                                    Table with avatars
-                                  </h4>
-
-
+                                 
+                                  <div class="col-lg-9 col-md-7">
+                                  <div  style="float: left;">
+                            <h3>리뷰</h3>
+                                            
+                        </div>
+                        <br/><br/>
+                        <hr/>
+  </div>
+  <br/><br/>
 
 <form  name="frm" method="post" class="form form-signup">
   <div style="border: 0px solid; float: left; width: 60%;">
     <input type="text" class="form-control" name="comment" placeholder="" value="" required> 
   </div>
-  <div style="border: 0px solid; float: left; width: 10%;">
+  <div style="border: 0px solid; float: left; width: ;">
     <select id="star_point" name="star_point" >
         <option value="5">5</option>
         <option value="4">4</option>
@@ -454,7 +426,7 @@ $result = $conn->query($sql);
 
     </select>
   </div>
-  <div style="border: 0px solid; float: left; width: 30%;">
+  <div style="border: 0px solid; float: left; width: ;">
     <button class="btn btn-primary btn-lg btn-block span1" id="signup-button" style="margin:auto;width:100px;" onclick="button1_click();">저장</button> 
   </div>
 </form>
@@ -467,10 +439,10 @@ $result = $conn->query($sql);
                                           <tr
                                             class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800"
                                           >
-                                            <th class="px-4 py-3">Client</th>
-                                            <th class="px-4 py-3">Amount</th>
-                                            <th class="px-4 py-3">Status</th>
-                                            <th class="px-4 py-3">Date</th>
+                                            <th class="px-4 py-3">user name</th>
+                                            <th class="px-4 py-3" style="    width: 45%;">content</th>
+                                            <th class="px-4 py-3">star point</th>
+                                            <th class="px-4 py-3">date</th>
                                           </tr>
                                         </thead>
                                         <tbody

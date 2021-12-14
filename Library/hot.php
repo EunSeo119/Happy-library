@@ -7,7 +7,7 @@ mysqli_select_db($conn, $dbname) or die('DB selection failed');
 
 //파라미터 검사
 if(!isset($_GET["keyword"])) {
-    $keyword = "";
+    $keyword = '1';
 }else{
     $keyword = $_GET["keyword"];
 
@@ -24,6 +24,7 @@ if( $keyword == '2')
     $sql = "SELECT * FROM v_review ".$sql_cond;
 else
     $sql = "SELECT * FROM book ".$sql_cond;
+    
 $result = $conn->query($sql);
 
 ?>
@@ -53,13 +54,20 @@ $result = $conn->query($sql);
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
 
-
     <script>
     function button1_click(obj) {
         keyword = obj.value;
         document.frm.action = "hot.php?keyword="+keyword;
         document.frm.submit();
     }
+
+    $(document).ready(function(){
+        //$("#keyword option:eq(2)").prop("selected", true);
+        $("#keyword").val("<?php echo($keyword); ?>").prop("selected", true);
+    });
+
+
+
     </script>      
 </head>
 
@@ -456,13 +464,13 @@ $result = $conn->query($sql);
                     
                     <div class="filter__item">
                         <div class="section-title product__discount__title">
-                            <h2>대출순위</h2>
+                            <h2>순위</h2>
                         </div>
                         <div class="row">
                             <div class="col-lg-4 col-md-5">
                                 <form action="" name="frm">
                                 <div class="filter__sort">
-                                    <span>검색방법</span>
+                                    <span>분류방법</span>
                                     <select id="keyword" name="keyword" onchange="button1_click(this);">
                                         <option value="1">신규순</option>
                                         <option value="2">별점순</option>
@@ -498,15 +506,10 @@ $result = $conn->query($sql);
                                 " <div class='col-lg-4 col-md-6 col-sm-6'>												            "
                             ."     <div class='product__item'>														                "
                             ."         <div class='product__item__pic set-bg' data-setbg='" . "/upload/" . $row["image_file"]. "'>  "
-                            ."             <ul class='product__item__pic__hover'>									  "
-                            ."                 <li><a href='#'><i class='fa fa-heart'></i></a></li>					  "
-                            ."                 <li><a href='#'><i class='fa fa-retweet'></i></a></li>				  "
-                            ."                 <li><a href='#'><i class='fa fa-shopping-cart'></i></a></li>			  "
-                            ."             </ul>																	  "
                             ."         </div>																		  "
                             ."         <div class='product__item__text'>											  "
-                            ."             <h6><a href='#'><span>" . $row["subject"]. "</span></a></h6>				  "
-                            ."             <h5>$30.00</h5>															  "
+                            ."             <h5><a href='book_detail.php'><span>" . $row["subject"]. "</span></a></h5>				  "
+                            ."             <h6>".$row["author"]."</h6>															  "
                             ."         </div>																		  "
                             ."     </div>																			  "
                             ." </div>																				  ");
