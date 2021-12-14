@@ -247,7 +247,7 @@
                                                 <div class="invalid-feedback"> 별명을 입력해주세요. </div> 
                                             </div>
                                             <div class="row-md-4" style="margin-top:10px;">
-                                            <button class="btn2   btn btn-success btn-lg btn-block" id="signup-button" style="margin:auto;width:50%;" type="submit">가입 완료</button> 
+                                            <button class="btn2   btn btn-success btn-lg btn-block" id="signup-button" style="margin:auto;width:50%;" type="submit">로그인</button> 
                                             </div>
                                     </div>  
                                 </div>                          

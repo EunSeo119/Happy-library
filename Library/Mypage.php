@@ -245,12 +245,12 @@ if(empty($_SESSION['ses_userid'])){
                                     <?php
                                     $UID = $_SESSION['ses_userid'];
                                        //  $sql = "SELECT * FROM loan WHERE loanNum = $UID";
-                                     $sql =
-                                     "SELECT DISTINCT id, subject, author, loanDate, dueDate from loan, book
-                                     where id IN (SELECT bookNum FROM loan WHERE userID = $UID and loanState = 1)";
-                                                              
+                                     $sql =                                                            
+                                     "SELECT id, subject, author, loanDate, dueDate, loanNum from loan, book
+                                        where id = bookNum and userID = $UID and loanState = 1";
+
                                      $result = mysqli_query($dbConnect, $sql);
-                                
+                            
                                      $x= 0;
                                 
                                      if (mysqli_num_rows($result) > 0) {
@@ -263,12 +263,17 @@ if(empty($_SESSION['ses_userid'])){
                                         echo "<td>" . $row["author"]. "</td>";
                                         echo "<td>". $row["loanDate"]."</td>";
                                         echo "<td>". $row["dueDate"]."</td>";
+                                        $re = $row['id']; 
+                                        $rl = $row['loanNum'];
                                        ?>
                                         <?php
                                         echo "<td>";?>
-                                         <a type="button" class='btn btn-success btn-sm' href="return.php?bookNum=<?php echo $row['id']; ?>">반납</a> 
-                                         <a type="button" class='btn btn-danger btn-sm' href="extend.php?bookNum=<?php echo $row['id']; ?>&dueDate=<?=$row["dueDate"]?>">연장</a>
+                                        <a type="button" class='btn btn-success btn-sm' href="return.php?bookNum=<?php echo $re; ?>">반납</a>
+                                        <a type="button" class='btn btn-danger btn-sm' href="extend.php?bookNum=<?php echo $rl; ?>">연장</a></td>
+                                         <!-- <a type="button" class='btn btn-success btn-sm' href="return.php?bookNum=<?php echo $row['id']; ?>">반납</a> 
+                                         <a type="button" class='btn btn-danger btn-sm' href="extend.php?bookNum=<?php echo $row['id']; ?>&dueDate=<?=$row["dueDate"]?>">연장</a> -->
                                         </td><?php
+                                         
                                     }
                                 }
                                        ?>
@@ -296,6 +301,8 @@ if(empty($_SESSION['ses_userid'])){
                                    $sql =
                                    "SELECT DISTINCT id, subject, author, loanDate, dueDate from loan, book
                                    where id IN (SELECT bookNum FROM loan WHERE userID = $UID and loanState = 0) Group by id";
+                                    "SELECT id, subject, author, loanDate, dueDate from loan, book
+                                    where id=bookNum and userID = $UID and loanState = 0";
                                                             
                                    $result = mysqli_query($dbConnect, $sql);
                               

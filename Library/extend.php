@@ -4,19 +4,25 @@ include "include/session.php";
 include "include/dbConnect.php";
 
 $bookNum = $_GET['bookNum'];
-$dueDate = $_GET['dueDate'];
+$sql="SELECT ExtendOrNot From loan WHERE loanNum = $bookNum";
 
-// $sql ="DELETE FROM loan WHERE bookNum=$bookNum";
-//  $sql2="INSERT INTO  returnBook (returnNum, bookNum, bookName, bookAuthor, loanDate, dueDate)
-//         SELECT loanNum, bookNum, bookName, bookAuthor, loanDate, dueDate FROM loan WHERE bookNum=$bookNum";
+$result = $dbConnect->query($sql);
+$row = mysqli_fetch_assoc($result);
 
-$date7 = strtotime("+7 day", strtotime($dueDate));
-$new_dueDate = date('Y-m-d', $date7);
-
- $sql3="UPDATE loan SET dueDate = '{$new_dueDate}' WHERE bookNum=$bookNum";
-
- $dbConnect->query($sql3);
- echo("<script>location.replace('Mypage.php');</script>");
+if( $row['ExtendOrNot'] =='Y')
+{
+    echo("<script>alert('더이상 연장이 불가능합니다.');</script>");
+    echo("<script>location.replace('mypage.php');</script>");
+}
+else{
+    $sql2="UPDATE loan SET dueDate =  date_add(duedate, interval 7 day),ExtendOrNot= 'Y'   WHERE loanNum = $bookNum";
+    if($dbConnect->query($sql2)){     
+                                                            
+        echo("<script>location.replace('mypage.php');</script>");                              
+       }else{                                                                                //아니면
+        echo 'fail to insert sql' .$dbConnect->error;                                                               //fail to insert sql로 표시
+       }
+    }
 
 mysqli_close($dbConnect);
 
