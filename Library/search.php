@@ -217,40 +217,22 @@ function button2_click(s) {
                                         </tr>
                                     </table>
                                     <br>
-                                    <button class="btn btn-primary btn-lg btn-block" id="signup-button" style="margin:auto;width:11%;"  onclick="button2_click();">등록</button> 
+                                    <?php
+                        if(!empty($_SESSION['ses_username'])){
+                            if($_SESSION['ses_username']=='admin'){
+                                ?>
+                                
+                                <button class="btn btn-primary btn-lg btn-block" id="signup-button" style="margin:auto;width:11%;"  onclick="button2_click();">등록</button> 
+                                <?php
+                                }
+                                }
+                        ?>
+
 
 
                                 </div> 
                             </div>
                         </div>
-
-
-
-
-                    <?php
-                    if($result->num_rows > 0){
-                        // Output data of each row
-                        while($row = $result->fetch_assoc()){
-                            $date = date_create($row["reg_date"]);
-
-                            echo(
-                                " <div class='col-lg-4 col-md-6 col-sm-6'>												            "
-                            ."     <div class='product__item'>														                "
-                            ."         <div class='product__item__pic set-bg' data-setbg='" . "/upload/" . $row["image_file"]. "'>  "
-                            ."         </div>																		  "
-                            ."         <div class='product__item__text'>											  "
-                            ."             <h5><a href='#'><span>" . $row["subject"]. "</span></a></h5>				  "
-                            ."             <h6> ". $row["author"]. "</h6>											        "
-                            ."         </div>																		  "
-                            ."     </div>																			  "
-                            ." </div>																				  ");
-                            }
-                    }else{
-                        echo "0 results";
-                    }
-
-                    ?> 
-
 
                         </div>
                     </div>

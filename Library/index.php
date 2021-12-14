@@ -222,7 +222,7 @@ $result3 = $conn->query($sql3);
                                         echo(
                                             "<a href='./book_detail.php?id=".$row["id"]."' class='latest-product__item'>"
                                            ."<div class='latest-product__item__pic'>"
-                                            ."   <img src='img/latest-product/lp-1.jpg' alt=''>"
+                                           ."   <img src='/upload/".$row["image_file"]."' alt=''>"
                                            ."</div>"
                                            ."<div class='latest-product__item__text'>"
                                                ."<span>".$row["subject"]."</span>"
@@ -257,7 +257,7 @@ $result3 = $conn->query($sql3);
                                         echo(
                                             "<a href='./book_detail.php?id=".$row["id"]."' class='latest-product__item'>"
                                            ."<div class='latest-product__item__pic'>"
-                                            ."   <img src='img/latest-product/lp-1.jpg' alt=''>"
+                                           ."   <img src='/upload/".$row["image_file"]."' alt=''>"
                                            ."</div>"
                                            ."<div class='latest-product__item__text'>"
                                            ."<span>".$row["subject"]."</span>"
@@ -292,7 +292,7 @@ $result3 = $conn->query($sql3);
                                         echo(
                                             "<a href='./book_detail.php?id=".$row["id"]."' class='latest-product__item'>"
                                            ."<div class='latest-product__item__pic'>"
-                                            ."   <img src='img/latest-product/lp-1.jpg' alt=''>"
+                                           ."   <img src='/upload/".$row["image_file"]."' alt=''>"
                                            ."</div>"
                                            ."<div class='latest-product__item__text'>"
                                            ."<span>".$row["subject"]."</span>"
@@ -344,7 +344,7 @@ $result3 = $conn->query($sql3);
                                         echo(
                                             "<a href='./book_detail.php?id=".$row["id"]."' class='latest-product__item'>"
                                            ."<div class='latest-product__item__pic'>"
-                                            ."   <img src='img/latest-product/lp-1.jpg' alt=''>"
+                                           ."   <img src='/upload/".$row["image_file"]."' alt=''>"
                                            ."</div>"
                                            ."<div class='latest-product__item__text'>"
                                                ."<span>".$row["subject"]."</span>"
@@ -379,7 +379,7 @@ $result3 = $conn->query($sql3);
                                         echo(
                                             "<a href='./book_detail.php?id=".$row["id"]."' class='latest-product__item'>"
                                            ."<div class='latest-product__item__pic'>"
-                                            ."   <img src='img/latest-product/lp-1.jpg' alt=''>"
+                                           ."   <img src='/upload/".$row["image_file"]."' alt=''>"
                                            ."</div>"
                                            ."<div class='latest-product__item__text'>"
                                            ."<span>".$row["subject"]."</span>"
@@ -414,7 +414,7 @@ $result3 = $conn->query($sql3);
                                         echo(
                                             "<a href='./book_detail.php?id=".$row["id"]."' class='latest-product__item'>"
                                            ."<div class='latest-product__item__pic'>"
-                                            ."   <img src='img/latest-product/lp-1.jpg' alt=''>"
+                                           ."   <img src='/upload/".$row["image_file"]."' alt=''>"
                                            ."</div>"
                                            ."<div class='latest-product__item__text'>"
                                            ."<span>".$row["subject"]."</span>"
@@ -466,7 +466,7 @@ $result3 = $conn->query($sql3);
                                         echo(
                                            "<a href='./book_detail.php?id=".$row["id"]."' class='latest-product__item'>"
                                            ."<div class='latest-product__item__pic'>"
-                                            ."   <img src='img/latest-product/lp-1.jpg' alt=''>"
+                                            ."   <img src='/upload/".$row["image_file"]."' alt=''>"
                                            ."</div>"
                                            ."<div class='latest-product__item__text'>"
                                                ."<span>".$row["subject"]."</span>"
@@ -494,7 +494,7 @@ $result3 = $conn->query($sql3);
                                         echo(
                                             "<a href='./book_detail.php?id=".$row["id"]."' class='latest-product__item'>"
                                             ."<div class='latest-product__item__pic'>"
-                                            ."   <img src='img/latest-product/lp-1.jpg' alt=''>"
+                                            ."   <img src='/upload/".$row["image_file"]."' alt=''>"
                                            ."</div>"
                                            ."<div class='latest-product__item__text'>"
                                            ."<span>".$row["subject"]."</span>"
@@ -521,7 +521,7 @@ $result3 = $conn->query($sql3);
                                         echo(
                                             "<a href='./book_detail.php?id=".$row["id"]."' class='latest-product__item'>"
                                             ."<div class='latest-product__item__pic'>"
-                                            ."   <img src='img/latest-product/lp-1.jpg' alt=''>"
+                                            ."   <img src='/upload/".$row["image_file"]."' alt=''>"
                                            ."</div>"
                                            ."<div class='latest-product__item__text'>"
                                            ."<span>".$row["subject"]."</span>"

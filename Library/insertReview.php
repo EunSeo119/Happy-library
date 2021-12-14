@@ -3,7 +3,7 @@
 
 $host = 'localhost';
 $user = 'root';
-$pw = 'ekdms57661!';
+$pw = '';
 $dbName = 'library';
 
 $mysqli = new mysqli($host, $user, $pw, $dbName);

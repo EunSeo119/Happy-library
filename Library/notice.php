@@ -186,7 +186,7 @@ $result = $conn->query($sql);
 			<div class="btnSet" style="float:right; border: 1px solid black;">
             <?php
                         if(!empty($_SESSION['ses_username'])){
-                            if($_SESSION['ses_username']=='daeun'){
+                            if($_SESSION['ses_username']=='admin'){
                                 ?>
                                 
 				<a href="./notice_write.php" class="btnWrite btn">글쓰기</a>
