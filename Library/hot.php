@@ -502,6 +502,11 @@ $result = $conn->query($sql);
                         while($row = $result->fetch_assoc()){
                             $date = date_create($row["reg_date"]);
 
+                            $starpoint = "";
+                            if( $keyword == '2') {
+                                $starpoint = $row["avg"];
+                            }
+
                             echo(
                                 " <div class='col-lg-4 col-md-6 col-sm-6'>												            "
                             ."     <div class='product__item'>														                "
@@ -509,7 +514,7 @@ $result = $conn->query($sql);
                             ."         </div>																		  "
                             ."         <div class='product__item__text'>											  "
                             ."             <h5><a href='book_detail.php'><span>" . $row["subject"]. "</span></a></h5>				  "
-                            ."             <h6>".$row["author"]."</h6>															  "
+                            ."             <h6>".$row["author"]."</h6><h6>".$starpoint."</h6>															  "
                             ."         </div>																		  "
                             ."     </div>																			  "
                             ." </div>																				  ");
