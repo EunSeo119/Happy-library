@@ -6,8 +6,10 @@
 // Select a database
 $dbname = "library";
 mysqli_select_db($conn, $dbname) or die('DB selection failed');
-$sql = "SELECT * FROM notice ORDER BY id DESC";
+$id=$_GET['id'];
+$sql = "SELECT * FROM notice WHERE id = " . $id;
 $result = $conn->query($sql);
+$row = $result->fetch_assoc();
 ?>
 
 <!DOCTYPE html>
@@ -230,50 +232,22 @@ $result = $conn->query($sql);
                         <h3>공지사항</h3>
                         <hr>
                     </div>
-                    <div id="boardList">
+                    <div id="boardView">
 
-			<table class="col-lg-12">
-				<thead>
-					<tr>
-						<th scope="col" class="col-lg-1" style=" text-align: center;">번호</th>
-						<th scope="col" class="col-lg-6"style=" text-align: center;">제목</th>
-						<th scope="col" class="col-lg-2"style=" text-align: center;">작성자</th>
-						<th scope="col" class="col-lg-3"style=" text-align: center;">작성일</th>
-					</tr>
-				</thead>
-				<tbody>
-						<?php
-							while($row = $result->fetch_assoc())
-							{
-						?>
-					<tr>
-						<td class="no"style=" text-align: center;"><?php echo $row['id']?></td>
-						<td class="title"style=" text-align: center;">
-							<a href="./notice_view.php?id=<?php echo $row['id']?>"><?php echo $row['title']?></a>
-						</td>
-						<td class="author"style=" text-align: center;"><?php echo $row['uid']?></td>
-						<td class="date"style=" text-align: center;"><?php echo $row['date']?></td>
-					</tr>
-						<?php
-							};
-						?>
-				</tbody>
-			</table>
+<h4><?php echo $row['title']?></h4>
 
-			<div class="btnSet">
-            <?php
-                        if(!empty($_SESSION['ses_username'])){
-                            if($_SESSION['ses_username']=='daeun'){
-                                ?>
-				<a href="./notice_write.php" class="btnWrite btn">글쓰기</a>
-                                <?php
-                                }
-                                }
-                        ?>
+<div style="justify-content: space-between;">
 
-			</div>
+<span>작성자: <?php echo $row['uid']?></span>
 
-		</div>
+<span">작성일: <?php echo $row['date']?></span>
+
+
+</div>
+
+<div id="boardContent"><?php echo $row['content']?></div>
+
+</div>
                 </div>
             </div>
         </div>
