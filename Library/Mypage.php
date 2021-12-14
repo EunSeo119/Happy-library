@@ -46,9 +46,9 @@ if(empty($_SESSION['ses_userid'])){
 
 <body>        
     <!-- Page Preloder -->
-    <div id="preloder">
+    <!-- <div id="preloder">
         <div class="loader"></div>
-    </div>
+    </div> -->
 
     <!-- Humberger Begin -->
     <div class="humberger__menu__overlay"></div>
@@ -246,8 +246,8 @@ if(empty($_SESSION['ses_userid'])){
                                     $UID = $_SESSION['ses_userid'];
                                        //  $sql = "SELECT * FROM loan WHERE loanNum = $UID";
                                      $sql =
-                                     "SELECT DISTINCT book_id, bookTitle, bookAuthor, loanDate, dueDate from loan, book
-                                     where book_id IN (SELECT bookNum FROM loan WHERE userID = $UID and loanState = 1)";
+                                     "SELECT DISTINCT id, subject, author, loanDate, dueDate from loan, book
+                                     where id IN (SELECT bookNum FROM loan WHERE userID = $UID and loanState = 1)";
                                                               
                                      $result = mysqli_query($dbConnect, $sql);
                                 
@@ -258,16 +258,17 @@ if(empty($_SESSION['ses_userid'])){
                                         echo "<tr>
                                         <td>";
                                         echo ++$x. "</td>";    
-                                        echo "<td>" . $row["book_id"]. "</td>";
-                                        echo "<td>". $row["bookTitle"]. "</td>";
-                                        echo "<td>" . $row["bookAuthor"]. "</td>";
+                                        echo "<td>" . $row["id"]. "</td>";
+                                        echo "<td>". $row["subject"]. "</td>";
+                                        echo "<td>" . $row["author"]. "</td>";
                                         echo "<td>". $row["loanDate"]."</td>";
                                         echo "<td>". $row["dueDate"]."</td>";
                                        ?>
                                         <?php
                                         echo "<td>";?>
-                                         <a type="button" class='btn btn-success btn-sm' href="return.php?bookNum=<?php echo $row['book_id']; ?>">반납</a>
-                                        <button class='btn btn-danger btn-sm'>연장</button></td><?php
+                                         <a type="button" class='btn btn-success btn-sm' href="return.php?bookNum=<?php echo $row['id']; ?>">반납</a> 
+                                         <a type="button" class='btn btn-danger btn-sm' href="extend.php?bookNum=<?php echo $row['id']; ?>&dueDate=<?=$row["dueDate"]?>">연장</a>
+                                        </td><?php
                                     }
                                 }
                                        ?>
@@ -293,8 +294,8 @@ if(empty($_SESSION['ses_userid'])){
                                     <?php
                                      $UID = $_SESSION['ses_userid'];
                                    $sql =
-                                   "SELECT DISTINCT book_id, bookTitle, bookAuthor, loanDate, dueDate from loan, book
-                                   where book_id IN (SELECT bookNum FROM loan WHERE userID = $UID and loanState = 0) Group by book_id";
+                                   "SELECT DISTINCT id, subject, author, loanDate, dueDate from loan, book
+                                   where id IN (SELECT bookNum FROM loan WHERE userID = $UID and loanState = 0) Group by id";
                                                             
                                    $result = mysqli_query($dbConnect, $sql);
                               
@@ -304,9 +305,9 @@ if(empty($_SESSION['ses_userid'])){
                                       echo "<tr>
                                       <td>";
                                       echo ++$x. "</td>";    
-                                      echo "<td>" . $row["book_id"]. "</td>";
-                                      echo "<td>". $row["bookTitle"]. "</td>";
-                                      echo "<td>" . $row["bookAuthor"]. "</td>";
+                                      echo "<td>" . $row["id"]. "</td>";
+                                      echo "<td>". $row["subject"]. "</td>";
+                                      echo "<td>" . $row["author"]. "</td>";
                                       echo "<td>". $row["loanDate"]."</td>";
                                       echo "<td>". $row["dueDate"]."</td>";
                                      ?>

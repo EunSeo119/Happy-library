@@ -16,7 +16,7 @@ $Date = date('m-d-Y');
 
  $dbConnect->query($sql3);
  if($dbConnect->query($sql4)){                                                               //만약 sql로 잘 들어갔으면
-  echo("<script>location.replace('mypage.php');</script>");                                // id님 안녕하세요.
+  echo("<script>location.replace('Mypage.php');</script>");                                // id님 안녕하세요.
  }else{                                                                                //아니면
   echo 'fail to insert sql' .$dbConnect->error;                                                               //fail to insert sql로 표시
  }
