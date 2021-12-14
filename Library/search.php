@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 include_once 'bookreg/dbconfig.php';
 
@@ -11,7 +12,7 @@ if(!isset($_GET["keyword"])) {
 }else{
     $keyword = $_GET["keyword"];
 }
-$sql = "SELECT * FROM book where author like '%".$keyword."%' ";
+$sql = "SELECT * FROM book where subject like '%".$keyword."%'  or  author like '%".$keyword."%'";
 $result = $conn->query($sql);
 
 ?>
@@ -48,6 +49,11 @@ $result = $conn->query($sql);
         document.frm.submit();
     }
     </script>      
+    <script>
+function button2_click(s) {
+	window.location.href='insertForm.php';
+}
+</script>
 </head>
 
 <body>
@@ -438,61 +444,113 @@ $result = $conn->query($sql);
                     </div>
                 </div>
                 <div class="col-lg-9 col-md-7">
-                    <div class="hero__search__form">
+                <div  style="float: left;">
+                            <h3>도서검색</h3>
+                                            
+                        </div>
+                        <br/><br/>
+                        <hr/>
+                    <div class="hero__search__form" style = " height: 64px;  position: relative;  top: 30px; left: 89px;">
                             <form action="" name="frm">
-                                <div class="hero__search__categories">
-                                    All Categories
-                                    <span class="arrow_carrot-down"></span>
-                                </div>
                                 <input type="text" id="keyword" name="keyword" placeholder="What do yo u need?">
-                                <button type="submit" class="site-btn" onclick="button1_click();">SEARCH</button>
+                                <button style = "height: 64px;" type="submit" class="site-btn" onclick="button1_click();">SEARCH</button>
                             </form>
                     </div>
                     <!-- 많이 검색한거 -->
-                    <div class="product__discount">
+                    <div class="product__discount" style = "position: relative; top: 100px;">
                         <div class="section-title product__discount__title">
-                            <h2>Recommend</h2>
                         </div>
-                        <div class="row">
-                            <div class="product__discount__slider owl-carousel">
+                        <div class="row" style="width: 850px;">
+                            <!-- <div class="product__discount__slider owl-carousel"> -->
 
 
-                                <?php
-                                if($result->num_rows > 0){
-                                    // Output data of each row
-                                    while($row = $result->fetch_assoc()){
-                                        $date = date_create($row["reg_date"]);
+                                
+<div>
+
+                        
+
+                    </div>
+                    <br/>
+                        <br><br>
+                        <hr>
+                        <div class="container"> 
+                            <div class=""  > 
+                                <div class="shoping__cart__table"> 
+
+                                
+
+                                    <table style="width: 100%;">
+                                    <hr/>
+                                        <thead>
+                                        <tr>
+                                            <th>번호</th>
+                                            <th>도서명</th>
+                                            <th>저자</th>
+                                            <th>출판사</th>
+                                            <th>등록일</th>
+                                        </tr>
+                                        </head>
+
+                                        <?php
+                                        if($result->num_rows > 0){
+                                            // Output data of each row
+                                            while($row = $result->fetch_assoc()){
+                                                $date = date_create($row["reg_date"]);
+                                                echo "<tr>";
+                                                echo "<td>" . $row["id"]. "</td>" 
+                                                . "<td>" . "<a href='book_detail.php?id=" . $row["id"]. "'>"  . $row["subject"]. "</a>" . "</td>" 
+                                                . "<td>" . $row["author"]. "</td>" 
+                                                . "<td>" . $row["publisher"]. "</td>" 
+                                                . "<td>" . date_format($date, 'Y-m-d'). "</td>";
+                                                echo "</tr>";
 
 
-                                        echo(
-                                            "<div class='col-lg-4'>														  "
-                                           ."    <div class='product__discount__item'>									  "
-                                           ."        <div class='product__discount__item__pic set-bg'					  "
-                                           ."            data-setbg='" . "/upload/" . $row["image_file"]. "'>			  "
-                                           ."            <ul class='product__item__pic__hover'>							  "
-                                           ."                <li><a href='#'><i class='fa fa-heart'></i></a></li>		  "
-                                           ."                <li><a href='#'><i class='fa fa-retweet'></i></a></li>		  "
-                                           ."                <li><a href='#'><i class='fa fa-shopping-cart'></i></a></li> "
-                                           ."            </ul>															  "
-                                           ."        </div>																  "
-                                           ."        <div class='product__discount__item__text'>						  "
-                                           ."            <span>" . $row["subject"]. "</span>											 "
-                                           ."            <h5>" . $row["author"]. "</h5>							          "
-                                           ."            <div class='product__item__price'>" . $row["publisher"] . "</div>"
-                                           ."        </div>																  "
-                                           ."    </div>																	  "
-                                           ."</div>																		  ");
+                                            }
+                                        }else{
+                                            echo "0 results";
+                                        }
+                                        ?>
 
-                                    }
-                                }else{
-                                    echo "0 results";
-                                }
-
-                                ?>
+                                        </tr>
+                                    </table>
+                                    <br>
+                                    <button class="btn btn-primary btn-lg btn-block" id="signup-button" style="margin:auto;width:11%;"  onclick="button2_click();">등록</button> 
 
 
-
+                                </div> 
                             </div>
+                        </div>
+
+
+
+
+                    <?php
+                    if($result->num_rows > 0){
+                        // Output data of each row
+                        while($row = $result->fetch_assoc()){
+                            $date = date_create($row["reg_date"]);
+
+                            echo(
+                                " <div class='col-lg-4 col-md-6 col-sm-6'>												            "
+                            ."     <div class='product__item'>														                "
+                            ."         <div class='product__item__pic set-bg' data-setbg='" . "/upload/" . $row["image_file"]. "'>  "
+                            ."         </div>																		  "
+                            ."         <div class='product__item__text'>											  "
+                            ."             <h5><a href='#'><span>" . $row["subject"]. "</span></a></h5>				  "
+                            ."             <h6> ". $row["author"]. "</h6>											        "
+                            ."         </div>																		  "
+                            ."     </div>																			  "
+                            ." </div>																				  ");
+                            }
+                    }else{
+                        echo "0 results";
+                    }
+
+                    ?> 
+
+
+<!-- 
+                            </div> -->
                         </div>
                     </div>
                     
