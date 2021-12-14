@@ -237,55 +237,40 @@ if(empty($_SESSION['ses_userid'])){
                                             <td scope="col">저자</td>
                                             <td scope="col">대출일</td>
                                             <td scope="col">반납예정일</td>
-                                            <td scope="col">연체일</td>
+                                            <!-- <td scope="col">연체일</td> -->
                                             <td scope="col">반납/연장</td>
                                         </tr>
                                     </thead>
-                                    <!-- <script> 
-                                        function returnbook(){ 
-                                            $.ajax({
-                                                type:'get', url:"return.php" ,data{}, success:function(result){ 
-                                                    $("div").text(result);
-                                                    } 
-                                                }) 
-                                            } 
-                                    </script> -->
                                     <tbody>
                                     <?php
                                     $UID = $_SESSION['ses_userid'];
-                                     $sql = "SELECT * FROM loan WHERE loanNum = $UID";
-                                    
+                                       //  $sql = "SELECT * FROM loan WHERE loanNum = $UID";
+                                     $sql =
+                                     "SELECT DISTINCT book_id, bookTitle, bookAuthor, loanDate, dueDate from loan, book
+                                     where book_id IN (SELECT bookNum FROM loan WHERE userID = $UID and loanState = 1)";
+                                                              
                                      $result = mysqli_query($dbConnect, $sql);
-                                     $x= 0;
-
-                                     function returnbook($e){
-                                        $sql="DELETE FROM loan WHERE id=$e";
-                                     }
                                 
-                                 if (mysqli_num_rows($result) > 0) {
-                                    while($row = mysqli_fetch_assoc($result)) {
+                                     $x= 0;
+                                
+                                     if (mysqli_num_rows($result) > 0) {
+                                        while($row = mysqli_fetch_assoc($result)) {
                                         echo "<tr>
                                         <td>";
                                         echo ++$x. "</td>";    
-                                        echo "<td>" . $row["loanNum"]. "</td>";
-                                        echo "<td>". $row["bookNum"]. "</td>";
-                                        echo "<td>" . $row["bookName"]. "</td>";
-                                        echo "<td>". $row["bookAuthor"]."</td>";
+                                        echo "<td>" . $row["book_id"]. "</td>";
+                                        echo "<td>". $row["bookTitle"]. "</td>";
+                                        echo "<td>" . $row["bookAuthor"]. "</td>";
                                         echo "<td>". $row["loanDate"]."</td>";
                                         echo "<td>". $row["dueDate"]."</td>";
-                                        $re = $row["bookNum"];
-                                        echo "<td><button type='button' class='btn btn-success btn-sm' onClick='returnbook($re)'>반납</button> 
-                                        <button class='btn btn-danger btn-sm'>연장</button></td>";
+                                       ?>
+                                        <?php
+                                        echo "<td>";?>
+                                         <a type="button" class='btn btn-success btn-sm' href="return.php?bookNum=<?php echo $row['book_id']; ?>">반납</a>
+                                        <button class='btn btn-danger btn-sm'>연장</button></td><?php
                                     }
                                 }
-                                else{
-                                    echo "테이블에 데이터가 없습니다.";
-                                    }
                                        ?>
-                                        <script> function test(){ $.ajax({url:"loan.php", success:function(result){ $("div").text(result);} }) } </script>
-
-<button type='button' class='btn btn-success btn-sm' onclick="location.href='return.php?<?$_GET[$re]?>';">반납</button>
-<a href="#" class="primary-btn" id="book_id" onclick="returnbook()" type="submit" name="book_id">LOAN</a> 
                                     </tbody>
                                 </table>
                             </div>
@@ -305,30 +290,31 @@ if(empty($_SESSION['ses_userid'])){
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>B10100101</td>
-                                            <td>정의는 무엇인가</td>
-                                            <td>마이클 샌델</td>
-                                            <td>2021-11-01</td>
-                                            <td>2021-11-21</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>B989745445</td>
-                                            <td>사피엔스</td>
-                                            <td>유발 하라리</td>
-                                            <td>2021-11-28</td>
-                                            <td>2021-12-27</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>B087524215</td>
-                                            <td>총균쇠</td>
-                                            <td>재러드 다이아몬드</td>
-                                            <td>2021-11-10</td>
-                                            <td>2021-12-09</td>
-                                        </tr>
+                                    <?php
+                                     $UID = $_SESSION['ses_userid'];
+                                   $sql =
+                                   "SELECT DISTINCT book_id, bookTitle, bookAuthor, loanDate, dueDate from loan, book
+                                   where book_id IN (SELECT bookNum FROM loan WHERE userID = $UID and loanState = 0) Group by book_id";
+                                                            
+                                   $result = mysqli_query($dbConnect, $sql);
+                              
+                                   $x= 0;
+                              
+                                      while($row = mysqli_fetch_assoc($result)) {
+                                      echo "<tr>
+                                      <td>";
+                                      echo ++$x. "</td>";    
+                                      echo "<td>" . $row["book_id"]. "</td>";
+                                      echo "<td>". $row["bookTitle"]. "</td>";
+                                      echo "<td>" . $row["bookAuthor"]. "</td>";
+                                      echo "<td>". $row["loanDate"]."</td>";
+                                      echo "<td>". $row["dueDate"]."</td>";
+                                     ?>
+                                         <?php
+                                    }
+                                
+                                       ?>
+                                       
 
                                     </tbody>
                                 </table>
