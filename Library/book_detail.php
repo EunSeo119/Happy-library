@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 $book_id = isset($_GET["id"]) ? (int)$_GET["id"] : 0;
 
@@ -22,12 +21,12 @@ $book_detail['userId'] = isset($_SESSION['ses_userid']) ? $_SESSION['ses_userid'
 
 
 // Select a database
-// $dbname = "library";
-// mysqli_select_db($conn, $dbname) or die('DB selection failed');
+ $dbname = "library";
+ mysqli_select_db($conn, $dbname) or die('DB selection failed');
 
 //파라미터 검사
 //review 작업 시 아래 주석 해제 필요
-/***********
+
 if(!isset($_GET["keyword"])) {
     $keyword = "";
 }else{
@@ -35,7 +34,6 @@ if(!isset($_GET["keyword"])) {
 }
 $sql = "SELECT * FROM review ";
 $result = $conn->query($sql);
-************/
 
 ?>
 
@@ -426,6 +424,7 @@ $result = $conn->query($sql);
   <br/><br/>
 
 <form  name="frm" method="post" class="form form-signup">
+  <div>
   <div style="border: 0px solid; float: left; width: 60%;">
     <input type="text" class="form-control" name="comment" placeholder="" value="" required> 
   </div>
@@ -441,6 +440,7 @@ $result = $conn->query($sql);
   </div>
   <div style="border: 0px solid; float: left; width: ;">
     <button class="btn btn-primary btn-lg btn-block span1" id="signup-button" style="margin:auto;width:100px;" onclick="button1_click();">저장</button> 
+  </div>
   </div>
 </form>
 
@@ -728,3 +728,4 @@ $result = $conn->query($sql);
 
 <?php
 $conn->close();
+?>

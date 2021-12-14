@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 
 
@@ -52,3 +51,5 @@ $mysqli = new mysqli($host, $user, $pw, $dbName);
 mysqli_close($mysqli);
 
 
+
+?>

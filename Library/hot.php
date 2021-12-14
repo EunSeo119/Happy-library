@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 include_once 'bookreg/dbconfig.php';
 

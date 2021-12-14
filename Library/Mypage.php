@@ -51,60 +51,148 @@ if(empty($_SESSION['ses_userid'])){
     </div> -->
 
     <!-- Humberger Begin -->
-    <div class="container">
+    <div class="humberger__menu__overlay"></div>
+    <div class="humberger__menu__wrapper">
+        <div class="humberger__menu__logo">
+            <a href="#"><img src="img/logo.png" alt=""></a>
+        </div>
+        <div class="humberger__menu__cart">
+            <ul>
+                <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+            </ul>
+            <div class="header__cart__price">item: <span>$150.00</span></div>
+        </div>
+        <div class="humberger__menu__widget">
+            <div class="header__top__right__language">
+                <img src="img/language.png" alt="">
+                <div>English</div>
+                <span class="arrow_carrot-down"></span>
+                <ul>
+                    <li><a href="#">Spanis</a></li>
+                    <li><a href="#">English</a></li>
+                </ul>
+            </div>
+            <div class="header__top__right__auth">
+                <a href="#"><i class="fa fa-user"></i> Login</a>
+            </div>
+        </div>
+        <nav class="humberger__menu__nav mobile-menu">
+            <ul>
+                <li class="active"><a href="./index.html">BORROW</a></li>
+                <li><a href="./shop-grid.html">RANKING</a></li>
+                <li><a href="#">communication</a>
+                    <ul class="header__menu__dropdown">
+                        <li><a href="./shop-details.html">Shop Details</a></li>
+                        <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                        <li><a href="./checkout.html">Check Out</a></li>
+                        <li><a href="./blog-details.html">Blog Details</a></li>
+                    </ul>
+                </li>
+                <li><a href="./blog.html">Login</a></li>
+            </ul>
+        </nav>
+
+        <div id="mobile-menu-wrap"></div>
+        <div class="header__top__right__social">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
+            <a href="#"><i class="fa fa-pinterest-p"></i></a>
+        </div>
+        <div class="humberger__menu__contact">
+            <ul>
+                <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
+                <li>Free Shipping for all Order of $99</li>
+            </ul>
+        </div>
+    </div>
+    <!-- Humberger End -->
+
+    <!-- Header Section Begin -->
+  <header class="header">
+        <div class="header__top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="header__top__left">
+                            <ul>
+                                <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
+                                <li>Free Shipping for all Order of $99</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="header__top__right">
+                            <div class="header__top__right__social">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                                <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                            </div>
+                            <div class="header__top__right__language">
+                                <img src="img/language.png" alt="">
+                                <div>English</div>
+                                <span class="arrow_carrot-down"></span>
+                                <ul>
+                                    <li><a href="#">Spanis</a></li>
+                                    <li><a href="#">English</a></li>
+                                </ul>
+                            </div>
+                            <div class="header__top__right__auth">
+                                <a href="#"><i class="fa fa-user"></i> Login</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo">
-                        <a href="./index.php"><img src="./img/library_logo.png" alt=""></a>
+                        <a href="./index.html">HAPPY LIBRARY</a>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li><a href="./index.php">Borrow</a>
-</li>
-                            <li><a href="./shop-grid.php">Ranking</a>
-                            <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.php">대출 많은 도서</a></li>
-                                    <li><a href="./shoping-cart.php">신규 도서</a></li>
-                                    <li><a href="./checkout.php">별점 높은 도서</a></li>
-                                </ul>
-</li>
-                            <li><a href="#">Communication</a>
+                            <li class="active"><a href="./index.html">Home</a></li>
+                            <li><a href="./shop-grid.html">BORROW</a>
                                 <ul class="header__menu__dropdown">
-                                    <li><a href="./book_application.php">희망 도서 신청</a></li>
-                                    <li><a href="./review_contest_list.php">감상문 공모전</a></li>
-                                    <li><a href="./notice.php">공지사항</a></li>
-                                    <li><a href="./checkout.php">이용안내</a></li>
-
+                                    <li><a href="./shop-details.html">Shop Details</a></li>
+                                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                                    <li><a href="./checkout.html">Check Out</a></li>
+                                    <li><a href="./blog-details.html">Blog Details</a></li>
+                                </ul></li>
+                            <li><a href="#">RANKING</a>
+                                <ul class="header__menu__dropdown">
+                                    <li><a href="./shop-details.html">Shop Details</a></li>
+                                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                                    <li><a href="./checkout.html">Check Out</a></li>
+                                    <li><a href="./blog-details.html">Blog Details</a></li>
                                 </ul>
                             </li>
-                            <li><a href="./blog.php">My page</a>
-</li>
+                            <li><a href="./blog.html">COMMUNITY</a></li>
                         </ul>
                     </nav>
                 </div>
                 <div class="col-lg-3">
                     <div class="header__cart">
-                                                    <?php
-                     if(empty($_SESSION['ses_userid'])){
-                    ?>
-                <li><a href="sign_in.php" id="signin" onclick="Login()">로그인</a></li>
-                <li><a href="sign_up.php" id="signup" onclick="Signup()">회원가입</a></li>
-                <?php
-                }else{
-                ?>
-                <li><a href="logout.php" id="signout">로그아웃</a></li>
-                <?php
-                 }
-                ?>
+                        <ul>
+                            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                        </ul>
+                        <div class="header__cart__price">item: <span>$150.00</span></div>
+                    </div>
                 </div>
             </div>
             <div class="humberger__open">
                 <i class="fa fa-bars"></i>
             </div>
         </div>
-    </header>
+    </header> 
     <!-- Header Section End -->
 
     <!-- Hero Section Begin -->
@@ -251,14 +339,14 @@ if(empty($_SESSION['ses_userid'])){
 
     </script>
 
-     <!-- Footer Section Begin -->
-     <footer class="footer spad">
+    <!-- Footer Section Begin -->
+    <footer class="footer spad">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__about__logo">
-                            <a href="./index.php"><img src="./img/library_logo.png" alt=""></a>
+                            <a href="./index.html"><img src="img/logo.png" alt=""></a>
                         </div>
                         <ul>
                             <li>Address: 60-49 Road 11378 New York</li>
