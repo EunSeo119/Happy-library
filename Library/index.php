@@ -132,44 +132,40 @@ $result3 = $conn->query($sql3);
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li><a href="./index.php">Borrow</a>
-</li>
-                            <li><a href="./shop-grid.php">Ranking</a>
-                            <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.php">대출 많은 도서</a></li>
-                                    <li><a href="./shoping-cart.php">신규 도서</a></li>
-                                    <li><a href="./checkout.php">별점 높은 도서</a></li>
-                                </ul>
-</li>
+                            <li><a href="./index.php">Borrow</a></li>
+                            <li><a href="./hot.php">Ranking</a></li>
                             <li><a href="#">Communication</a>
                                 <ul class="header__menu__dropdown">
                                     <li><a href="./book_application.php">희망 도서 신청</a></li>
                                     <li><a href="./review_contest_list.php">감상문 공모전</a></li>
                                     <li><a href="./notice.php">공지사항</a></li>
                                     <li><a href="./checkout.php">이용안내</a></li>
-
                                 </ul>
                             </li>
-                            <li><a href="./blog.php">My page</a>
-</li>
-                        </ul>
+                            <li><a href="./Mypage.php">My page</a></li>
+
+                </ul>
                     </nav>
                 </div>
-                <div class="col-lg-3">
-                    <div class="header__cart">
-                                                    <?php
+                
+                <nav class="col-lg-3">
+                <div class="header__menu">
+                    <ul>
+                    <?php
                      if(empty($_SESSION['ses_userid'])){
                     ?>
-                <a href="sign_in.php" id="signin" onclick="Login()">로그인</a>
-                <a href="sign_up.php" id="signup" onclick="Signup()">회원가입</a>
+                <li><a href="sign_in.php" id="signin" onclick="Login()">LOGIN</a></li>
+                <li><a href="sign_up.php" id="signup" onclick="Signup()">Sign UP</a></li>
                 <?php
                 }else{
                 ?>
-                <a href="logout.php" id="signout">로그아웃</a>
+                <li><a href="logout.php" id="signout">logout</a></li>
                 <?php
                  }
                 ?>
+                </ul>
                 </div>
+                </nav>
             </div>
             <div class="humberger__open">
                 <i class="fa fa-bars"></i>

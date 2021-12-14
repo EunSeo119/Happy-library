@@ -11,9 +11,11 @@ $ID = $_POST['user_id'];
 $PW = $_POST['password'];
 // $logout = $_POST['login'];   
 
-$sql = "SELECT * FROM User WHERE user_ID = '{$ID}' AND password = '{$PW}'";
+$sql = "SELECT * FROM User WHERE user_id = '{$ID}' AND password = '{$PW}'";
 $res = $dbConnect->query($sql);
 $row = $res->fetch_array(MYSQLI_BOTH);
+
+$_SESSION['ses_id'] = $row['user_id'];
 
 if ($row!=null) {
     $_SESSION['ses_userid'] = $row['id'];
