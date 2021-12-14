@@ -32,6 +32,7 @@ if(!isset($_GET["keyword"])) {
 }else{
     $keyword = $_GET["keyword"];
 }
+"CREATE INDEX review_index ON review (book_id);";
 $sql = "SELECT * FROM review Where book_id = '$book_id' ";
 $result = $conn->query($sql);
 

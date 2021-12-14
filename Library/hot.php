@@ -513,7 +513,7 @@ $result = $conn->query($sql);
                             ."         <div class='product__item__pic set-bg' data-setbg='" . "/upload/" . $row["image_file"]. "'>  "
                             ."         </div>																		  "
                             ."         <div class='product__item__text'>											  "
-                            ."             <h5><a href='book_detail.php'><span>" . $row["subject"]. "</span></a></h5>				  "
+                            ."             <h5><a href='book_detail.php?id=" . $row["id"]. "'>"  . $row["subject"]. "</a></h5>				  "
                             ."             <h6>".$row["author"]."</h6><h6>".$starpoint."</h6>															  "
                             ."         </div>																		  "
                             ."     </div>																			  "
