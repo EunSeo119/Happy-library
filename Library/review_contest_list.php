@@ -1,11 +1,14 @@
 <?php
- include "include/session.php";
- include "include/dbConnect.php";
+  include "include/session.php";
+  include "include/dbConnect.php";
+  include_once 'bookreg/dbconfig.php';
 
-if(empty($_SESSION['ses_userid'])){
-        echo ("<script>alert('로그인이 필요합니다.');
-        location.replace('sign_in.php');</script>");
-}?>
+// Select a database
+$dbname = "library";
+mysqli_select_db($conn, $dbname) or die('DB selection failed');
+$sql = "SELECT * FROM review_contest ORDER BY id DESC";
+$result = $conn->query($sql);
+?>
 
 <!DOCTYPE html>
 <html lang="zxx">
@@ -79,17 +82,17 @@ if(empty($_SESSION['ses_userid'])){
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
-                <li class="active"><a href="./index.html">BORROW</a></li>
-                <li><a href="./shop-grid.html">RANKING</a></li>
+                <li class="active"><a href="./index.php">BORROW</a></li>
+                <li><a href="./shop-grid.php">RANKING</a></li>
                 <li><a href="#">communication</a>
                     <ul class="header__menu__dropdown">
-                        <li><a href="./shop-details.html">Shop Details</a></li>
-                        <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                        <li><a href="./checkout.html">Check Out</a></li>
-                        <li><a href="./blog-details.html">Blog Details</a></li>
+                        <li><a href="./shop-details.php">Shop Details</a></li>
+                        <li><a href="./shoping-cart.php">Shoping Cart</a></li>
+                        <li><a href="./checkout.php">Check Out</a></li>
+                        <li><a href="./blog-details.php">Blog Details</a></li>
                     </ul>
                 </li>
-                <li><a href="./blog.html">Login</a></li>
+                <li><a href="./blog.php">Login</a></li>
             </ul>
         </nav>
 
@@ -151,41 +154,50 @@ if(empty($_SESSION['ses_userid'])){
 
             <div class="row">
                 <div class="col-lg-3">
-                    <div class="header__logo">
-                        <a href="./index.html">HAPPY LIBRARY</a>
+                <div class="header__logo">
+                        <a href="./index.php"><img src="./img/library_logo.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="./index.html">Home</a></li>
-                            <li><a href="./shop-grid.html">BORROW</a>
+                            <li><a href="./index.php">Borrow</a>
+</li>
+                            <li><a href="./shop-grid.php">Ranking</a>
+                            <ul class="header__menu__dropdown">
+                                    <li><a href="./shop-details.php">대출 많은 도서</a></li>
+                                    <li><a href="./shoping-cart.php">신규 도서</a></li>
+                                    <li><a href="./checkout.php">별점 높은 도서</a></li>
+                                </ul>
+</li>
+                            <li><a href="#">Communication</a>
                                 <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">Shop Details</a></li>
-                                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                                    <li><a href="./checkout.html">Check Out</a></li>
-                                    <li><a href="./blog-details.html">Blog Details</a></li>
-                                </ul></li>
-                            <li><a href="#">RANKING</a>
-                                <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">Shop Details</a></li>
-                                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                                    <li><a href="./checkout.html">Check Out</a></li>
-                                    <li><a href="./blog-details.html">Blog Details</a></li>
+                                    <li><a href="./book_application.php">희망 도서 신청</a></li>
+                                    <li><a href="./review_contest_list.php">감상문 공모전</a></li>
+                                    <li><a href="./notice.php">공지사항</a></li>
+                                    <li><a href="./checkout.php">이용안내</a></li>
+
                                 </ul>
                             </li>
-                            <li><a href="./blog.html">COMMUNITY</a></li>
+                            <li><a href="./blog.php">My page</a>
+</li>
                         </ul>
                     </nav>
                 </div>
                 <div class="col-lg-3">
                     <div class="header__cart">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
-                        </ul>
-                        <div class="header__cart__price">item: <span>$150.00</span></div>
-                    </div>
+                                                    <?php
+                     if(empty($_SESSION['ses_userid'])){
+                    ?>
+                <a href="sign_in.php" id="signin" onclick="Login()">로그인</a>
+                <a href="sign_up.php" id="signup" onclick="Signup()">회원가입</a>
+                <?php
+                }else{
+                ?>
+                <a href="logout.php" id="signout">로그아웃</a>
+                <?php
+                 }
+                ?>
                 </div>
             </div>
             <div class="humberger__open">
@@ -203,139 +215,62 @@ if(empty($_SESSION['ses_userid'])){
                     <div class="hero__categories">
                         <div class="hero__categories__all">
                             <i class="fa fa-bars"></i>
-                            <span>My Page</span>
+                            <span>Communication</span>
                         </div>
                         <ul>
-                            <!-- <li><a href="#">회원정보</a></li> -->
-                            <li><a href="#currnet-loan-list">대출내역</a></li>
-                            <li><a href="#old-loan-list">반납내역</a></li>
+                            <li><a href="./book_application.php">희망 도서 신청</a></li>
+                            <li><a href="./review_contest_list.php">감상문 공모전</a></li>
+                            <li><a href="./notice.php">공지사항</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-9">
-                    <div class="container">
-                        <h3>마이페이지</h3>
+
+                    <div>
+                        <h3>감상문 공모전</h3>
                         <hr>
-
-                        <?php
-                        if(!empty($_SESSION['ses_username'])){
-                        ?>
-                        <h4 class="text-3xl font-bold pt-8 lg:pt-0"><?php echo $_SESSION['ses_username'] ?></h4>
-                        <?php
-                        }
-                        ?>
-                        
-                        <div style="margin-top:20px;" id="currnet-loan-list"> 
-                            <label>대출 내역</label>
-                            <div>
-                                <table class="table table-bordered table-sm text-center">
-                                    <thead>
-                                        <tr class='table-active'>
-                                            <td scope="col">번호</td>
-                                            <td scope="col">등록번호</td>
-                                            <td scope="col">자료명</td>
-                                            <td scope="col">저자</td>
-                                            <td scope="col">대출일</td>
-                                            <td scope="col">반납예정일</td>
-                                            <td scope="col">연체일</td>
-                                            <td scope="col">반납/연장</td>
-                                        </tr>
-                                    </thead>
-                                    <!-- <script> 
-                                        function returnbook(){ 
-                                            $.ajax({
-                                                type:'get', url:"return.php" ,data{}, success:function(result){ 
-                                                    $("div").text(result);
-                                                    } 
-                                                }) 
-                                            } 
-                                    </script> -->
-                                    <tbody>
-                                    <?php
-                                    $UID = $_SESSION['ses_userid'];
-                                     $sql = "SELECT * FROM loan WHERE loanNum = $UID";
-                                    
-                                     $result = mysqli_query($dbConnect, $sql);
-                                     $x= 0;
-
-                                     function returnbook($e){
-                                        $sql="DELETE FROM loan WHERE id=$e";
-                                     }
-                                
-                                 if (mysqli_num_rows($result) > 0) {
-                                    while($row = mysqli_fetch_assoc($result)) {
-                                        echo "<tr>
-                                        <td>";
-                                        echo ++$x. "</td>";    
-                                        echo "<td>" . $row["loanNum"]. "</td>";
-                                        echo "<td>". $row["bookNum"]. "</td>";
-                                        echo "<td>" . $row["bookName"]. "</td>";
-                                        echo "<td>". $row["bookAuthor"]."</td>";
-                                        echo "<td>". $row["loanDate"]."</td>";
-                                        echo "<td>". $row["dueDate"]."</td>";
-                                        $re = $row["bookNum"];
-                                        echo "<td><button type='button' class='btn btn-success btn-sm' onClick='returnbook($re)'>반납</button> 
-                                        <button class='btn btn-danger btn-sm'>연장</button></td>";
-                                    }
-                                }
-                                else{
-                                    echo "테이블에 데이터가 없습니다.";
-                                    }
-                                       ?>
-                                        <script> function test(){ $.ajax({url:"loan.php", success:function(result){ $("div").text(result);} }) } </script>
-
-<button type='button' class='btn btn-success btn-sm' onclick="location.href='return.php?<?$_GET[$re]?>';">반납</button>
-<a href="#" class="primary-btn" id="book_id" onclick="returnbook()" type="submit" name="book_id">LOAN</a> 
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div style="margin-top:50px;" id="old-loan-list"> 
-                            <label>반납 내역</label>
-                            <div>
-                                <table class="table table-bordered table-sm text-center">
-                                    <thead>
-                                        <tr class='table-active'>
-                                            <td scope="col">번호</td>
-                                            <td scope="col">등록번호</td>
-                                            <td scope="col">자료명</td>
-                                            <td scope="col">저자</td>
-                                            <td scope="col">대출일</td>
-                                            <td scope="col">반납일</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>B10100101</td>
-                                            <td>정의는 무엇인가</td>
-                                            <td>마이클 샌델</td>
-                                            <td>2021-11-01</td>
-                                            <td>2021-11-21</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>B989745445</td>
-                                            <td>사피엔스</td>
-                                            <td>유발 하라리</td>
-                                            <td>2021-11-28</td>
-                                            <td>2021-12-27</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>B087524215</td>
-                                            <td>총균쇠</td>
-                                            <td>재러드 다이아몬드</td>
-                                            <td>2021-11-10</td>
-                                            <td>2021-12-09</td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
                     </div>
+                    <div id="boardList">
+
+			<table class="col-lg-12">
+				<thead>
+					<tr>
+						<th scope="col" class="col-lg-1" style=" text-align: center;">번호</th>
+						<th scope="col" class="col-lg-4"style=" text-align: center;">책 제목</th>
+                        <th scope="col" class="col-lg-2"style=" text-align: center;">책 저자</th>
+						<th scope="col" class="col-lg-2"style=" text-align: center;">작성자</th>
+						<th scope="col" class="col-lg-3"style=" text-align: center;">작성일</th>
+					</tr>
+				</thead>
+				<tbody>
+						<?php
+							while($row = $result->fetch_assoc())
+							{
+						?>
+					<tr>
+						<td class="no"style=" text-align: center;"><?php echo $row['id']?></td>
+						<td class="title"style=" text-align: center;">
+							<a href="./view.php?id=<?php echo $row['id']?>"><?php echo $row['book_name']?></a>
+						</td>
+                        <td class="author"style=" text-align: center;"><?php echo $row['book_author']?></td>
+						<td class="author"style=" text-align: center;"><?php echo $row['uid']?></td>
+						<td class="date"style=" text-align: center;"><?php echo $row['date']?></td>
+					</tr>
+						<?php
+							};
+						?>
+				</tbody>
+			</table>
+
+			<div class="btnSet">
+
+				<a href="./review_contest.php" class="btnWrite btn">글쓰기</a>
+
+			</div>
+
+		</div>
                 </div>
+            </div>
         </div>
     </section>
     <!-- Hero Section End -->
@@ -352,7 +287,7 @@ if(empty($_SESSION['ses_userid'])){
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__about__logo">
-                            <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                            <a href="./index.php"><img src="img/logo.png" alt=""></a>
                         </div>
                         <ul>
                             <li>Address: 60-49 Road 11378 New York</li>
@@ -424,6 +359,6 @@ if(empty($_SESSION['ses_userid'])){
     <script src="js/main.js"></script>
 
 
-
 </body>
+
 </html>

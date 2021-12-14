@@ -236,7 +236,7 @@
                                     <div class="row">
                                         <div class="col-md-9 mb-3"> 
                                             <label for="userid">ID</label> 
-                                            <input type="text" class="form-control" name="user_ID" placeholder="" value="" required> 
+                                            <input type="text" class="form-control" name="user_id" placeholder="" value="" required> 
                                             <div class="invalid-feedback"> 이름을 입력해주세요. </div> 
                                         </div>
                                         <div class="col-md-3 text-center">

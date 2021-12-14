@@ -9,7 +9,7 @@ $mysqli = new mysqli($host, $user, $pw, $dbName);
 
  $mysqli -> set_charset("utf8");
 
- $user_ID=$_POST["user_ID"];
+ $user_ID=$_POST["user_id"];
  $password=($_POST["password"]);
  $user_name=($_POST["user_name"]);
  $EMAIL=$_POST['email'];
