@@ -110,7 +110,7 @@ if(empty($_SESSION['ses_userid'])){
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>Book Detail</h2>
+                        <h2>My Page</h2>
                         <div class="breadcrumb__option">
                             <a href="./index.php">Home</a>
                            <span>Mypage</span>
