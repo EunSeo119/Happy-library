@@ -1,6 +1,13 @@
 <?php
- include "include/session.php";
- include "include/dbConnect.php";
+  include "include/session.php";
+  include "include/dbConnect.php";
+  include_once 'bookreg/dbconfig.php';
+
+// Select a database
+$dbname = "library";
+mysqli_select_db($conn, $dbname) or die('DB selection failed');
+$sql = "SELECT * FROM notice ORDER BY id DESC";
+$result = $conn->query($sql);
 ?>
 
 <!DOCTYPE html>
@@ -75,17 +82,17 @@
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
-                <li class="active"><a href="./index.html">BORROW</a></li>
-                <li><a href="./shop-grid.html">RANKING</a></li>
+                <li class="active"><a href="./index.php">BORROW</a></li>
+                <li><a href="./shop-grid.php">RANKING</a></li>
                 <li><a href="#">communication</a>
                     <ul class="header__menu__dropdown">
-                        <li><a href="./shop-details.html">Shop Details</a></li>
-                        <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                        <li><a href="./checkout.html">Check Out</a></li>
-                        <li><a href="./blog-details.html">Blog Details</a></li>
+                        <li><a href="./shop-details.php">Shop Details</a></li>
+                        <li><a href="./shoping-cart.php">Shoping Cart</a></li>
+                        <li><a href="./checkout.php">Check Out</a></li>
+                        <li><a href="./blog-details.php">Blog Details</a></li>
                     </ul>
                 </li>
-                <li><a href="./blog.html">Login</a></li>
+                <li><a href="./blog.php">Login</a></li>
             </ul>
         </nav>
 
@@ -147,41 +154,50 @@
 
             <div class="row">
                 <div class="col-lg-3">
-                    <div class="header__logo">
-                        <a href="./index.html">HAPPY LIBRARY</a>
+                <div class="header__logo">
+                        <a href="./index.php"><img src="./img/library_logo.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="./index.html">Home</a></li>
-                            <li><a href="./shop-grid.html">BORROW</a>
+                            <li><a href="./index.php">Borrow</a>
+</li>
+                            <li><a href="./shop-grid.php">Ranking</a>
+                            <ul class="header__menu__dropdown">
+                                    <li><a href="./shop-details.php">대출 많은 도서</a></li>
+                                    <li><a href="./shoping-cart.php">신규 도서</a></li>
+                                    <li><a href="./checkout.php">별점 높은 도서</a></li>
+                                </ul>
+</li>
+                            <li><a href="#">Communication</a>
                                 <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">Shop Details</a></li>
-                                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                                    <li><a href="./checkout.html">Check Out</a></li>
-                                    <li><a href="./blog-details.html">Blog Details</a></li>
-                                </ul></li>
-                            <li><a href="#">RANKING</a>
-                                <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">Shop Details</a></li>
-                                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                                    <li><a href="./checkout.html">Check Out</a></li>
-                                    <li><a href="./blog-details.html">Blog Details</a></li>
+                                    <li><a href="./book_application.php">희망 도서 신청</a></li>
+                                    <li><a href="./review_contest_list.php">감상문 공모전</a></li>
+                                    <li><a href="./notice.php">공지사항</a></li>
+                                    <li><a href="./checkout.php">이용안내</a></li>
+
                                 </ul>
                             </li>
-                            <li><a href="./blog.html">COMMUNITY</a></li>
+                            <li><a href="./blog.php">My page</a>
+</li>
                         </ul>
                     </nav>
                 </div>
                 <div class="col-lg-3">
                     <div class="header__cart">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
-                        </ul>
-                        <div class="header__cart__price">item: <span>$150.00</span></div>
-                    </div>
+                                                    <?php
+                     if(empty($_SESSION['ses_userid'])){
+                    ?>
+                <a href="sign_in.php" id="signin" onclick="Login()">로그인</a>
+                <a href="sign_up.php" id="signup" onclick="Signup()">회원가입</a>
+                <?php
+                }else{
+                ?>
+                <a href="logout.php" id="signout">로그아웃</a>
+                <?php
+                 }
+                ?>
                 </div>
             </div>
             <div class="humberger__open">
@@ -199,91 +215,68 @@
                     <div class="hero__categories">
                         <div class="hero__categories__all">
                             <i class="fa fa-bars"></i>
-                            <span>All departments</span>
+                            <span>Communication</span>
                         </div>
                         <ul>
-                            <li><a href="./sign_in.php">로그인</a></li>
-                            <li><a href="./Sign_up.php">회원가입</a></li>
+                            <li><a href="./book_application.php">희망 도서 신청</a></li>
+                            <li><a href="./review_contest_list.php">감상문 공모전</a></li>
+                            <li><a href="./notice.php">공지사항</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-9">
-                    <div class="hero__search">
-                        <div class="hero__search__form">
-                            <form action="#">
-                                <div class="hero__search__categories">
-                                    All Categories
-                                    <span class="arrow_carrot-down"></span>
-                                </div>
-                                <input type="text" placeholder="What do yo u need?">
-                                <button type="submit" class="site-btn">SEARCH</button>
-                            </form>
-                        </div>
-                        <div class="hero__search__phone">
-                            <div class="hero__search__phone__icon">
-                                <i class="fa fa-phone"></i>
-                            </div>
-                            <div class="hero__search__phone__text">
-                                <h5>+65 11.188.888</h5>
-                                <span>support 24/7 time</span>
-                            </div>
-                        </div>
-                    </div>
+                    
                     <div>
-                        <h3>회원가입</h3>
+                        <h3>공지사항</h3>
                         <hr>
                     </div>
-                    <?php
-                    $sql = "SELECT book_id, bookTitle, bookAuthor, book_state FROM book";
-                    $result = mysqli_query($dbConnect, $sql);
-                   
-                   
-                    if (mysqli_num_rows($result) > 0) {
-                    while($row = mysqli_fetch_assoc($result)) {
-                    echo "제목: " . $row["bookTitle"]. " 저자:" . $row["bookAuthor"]. "<br>";
-                    }
-                    }else{
-                    echo "테이블에 데이터가 없습니다.";
-                    }
+                    <div id="boardList">
 
-                    if($_POST["test1"]) {
-                        $sql ="UPDATE book SET 'bookAuthor' = 'dfl' where 'book_id' = 1";
-                        echo "테이블에 데이터가 없습니다.";
+			<table class="col-lg-12">
+				<thead>
+					<tr>
+						<th scope="col" class="col-lg-1" style=" text-align: center;">번호</th>
+						<th scope="col" class="col-lg-6"style=" text-align: center;">제목</th>
+						<th scope="col" class="col-lg-2"style=" text-align: center;">작성자</th>
+						<th scope="col" class="col-lg-3"style=" text-align: center;">작성일</th>
+					</tr>
+				</thead>
+				<tbody>
+						<?php
+							while($row = $result->fetch_assoc())
+							{
+						?>
+					<tr>
+						<td class="no"style=" text-align: center;"><?php echo $row['id']?></td>
+						<td class="title"style=" text-align: center;">
+							<a href="./view.php?id=<?php echo $row['id']?>"><?php echo $row['title']?></a>
+						</td>
+						<td class="author"style=" text-align: center;"><?php echo $row['uid']?></td>
+						<td class="date"style=" text-align: center;"><?php echo $row['date']?></td>
+					</tr>
+						<?php
+							};
+						?>
+				</tbody>
+			</table>
 
-                        $sql = "insert into loan (loanNum, bookNum, loanDate, dueDate, overdueDate, ExtendOrNot)";             // (입력받음)insert into 테이블명 (column-list)
-                        $sql = $sql. "values('$user_ID', '$password', '$user_name','$EMAIL', now())";
-                       
-                    }
-                    ?>
-                      <form action="<?php echo $_SERVER['PHP_SELF']?>" method="POST">
-                     <button class="btn2 btn btn-success btn-lg btn-block" value ="test1" name="test1"  style="margin:auto;width:50%;" type="submit">가입 완료</button>
-                     </form>
+			<div class="btnSet">
 
-                     <!-- <script>
-                        function clickMe(){
-                            var result ="<?php ?>"
-                            document.write(result);
-                            }
-                    </script> -->
+				<a href="./write.php" class="btnWrite btn">글쓰기</a>
 
-                    <?php
-                    // function php_func(){
-                    // echo "Stay Safe";
-                    //  $sql ="UPDATE book SET book_state = 1 where book_id = 1"; 
-                    //      echo "테이블에 데이터가 없습니다."; 
-                    //      $result = mysqli_query($dbConnect, $sql);
+			</div>
 
-                    //     if (mysqli_num_rows($result) > 0) {
-                    //     while($row = mysqli_fetch_assoc($result)) {
-                    //     echo "제목: " . $row["book_state"]. " 저자:" . $row["bookAuthor"]. "<br>";
-                    //     }
-                    // }
-                    // }
-                    ?>
-                    
+		</div>
+                </div>
+            </div>
         </div>
     </section>
     <!-- Hero Section End -->
+
+    <script>
+
+
+    </script>
 
     <!-- Footer Section Begin -->
     <footer class="footer spad">
@@ -292,7 +285,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__about__logo">
-                            <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                            <a href="./index.php"><img src="img/logo.png" alt=""></a>
                         </div>
                         <ul>
                             <li>Address: 60-49 Road 11378 New York</li>
@@ -364,9 +357,6 @@
     <script src="js/main.js"></script>
 
 
-
 </body>
 
 </html>
-
-

@@ -2,7 +2,7 @@
 include_once 'bookreg/dbconfig.php';
 
 // Select a database
-$dbname = "testdb";
+$dbname = "library";
 mysqli_select_db($conn, $dbname) or die('DB selection failed');
 
 //파라미터 검사

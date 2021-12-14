@@ -1,15 +1,14 @@
 <?php
-include_once 'dbconfig.php';
+  include "include/session.php";
+  include "include/dbConnect.php";
+  include_once 'bookreg/dbconfig.php';
 
 // Select a database
 $dbname = "library";
 mysqli_select_db($conn, $dbname) or die('DB selection failed');
-
-$sql = "SELECT * FROM book";
+$sql = "SELECT * FROM review_contest ORDER BY id DESC";
 $result = $conn->query($sql);
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="zxx">
@@ -26,15 +25,15 @@ $result = $conn->query($sql);
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
-     <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
-     <link rel="stylesheet" href="../css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="../css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="../css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="../css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="../css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="../css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="../css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="../css/style.css" type="text/css"> 
+     <link rel="stylesheet" href="./css/bootstrap.min.css" type="text/css">
+     <link rel="stylesheet" href="./css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="./css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="./css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="./css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="./css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="./css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="./css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="./css/style.css" type="text/css"> 
 
     <style> 
     body {  
@@ -46,13 +45,6 @@ $result = $conn->query($sql);
          background: #fff; 
         } 
          </style>
-
-<script>
-function button1_click(s) {
-	window.location.href='insertForm.php';
-}
-</script>
-
 </head>
 
 <body>        
@@ -90,17 +82,17 @@ function button1_click(s) {
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
-                <li class="active"><a href="./index.html">BORROW</a></li>
-                <li><a href="./shop-grid.html">RANKING</a></li>
+                <li class="active"><a href="./index.php">BORROW</a></li>
+                <li><a href="./shop-grid.php">RANKING</a></li>
                 <li><a href="#">communication</a>
                     <ul class="header__menu__dropdown">
-                        <li><a href="./shop-details.html">Shop Details</a></li>
-                        <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                        <li><a href="./checkout.html">Check Out</a></li>
-                        <li><a href="./blog-details.html">Blog Details</a></li>
+                        <li><a href="./shop-details.php">Shop Details</a></li>
+                        <li><a href="./shoping-cart.php">Shoping Cart</a></li>
+                        <li><a href="./checkout.php">Check Out</a></li>
+                        <li><a href="./blog-details.php">Blog Details</a></li>
                     </ul>
                 </li>
-                <li><a href="./blog.html">Login</a></li>
+                <li><a href="./blog.php">Login</a></li>
             </ul>
         </nav>
 
@@ -162,41 +154,50 @@ function button1_click(s) {
 
             <div class="row">
                 <div class="col-lg-3">
-                    <div class="header__logo">
-                        <a href="./index.html">HAPPY LIBRARY</a>
+                <div class="header__logo">
+                        <a href="./index.php"><img src="./img/library_logo.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="./index.html">Home</a></li>
-                            <li><a href="./shop-grid.html">BORROW</a>
+                            <li><a href="./index.php">Borrow</a>
+</li>
+                            <li><a href="./shop-grid.php">Ranking</a>
+                            <ul class="header__menu__dropdown">
+                                    <li><a href="./shop-details.php">대출 많은 도서</a></li>
+                                    <li><a href="./shoping-cart.php">신규 도서</a></li>
+                                    <li><a href="./checkout.php">별점 높은 도서</a></li>
+                                </ul>
+</li>
+                            <li><a href="#">Communication</a>
                                 <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">Shop Details</a></li>
-                                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                                    <li><a href="./checkout.html">Check Out</a></li>
-                                    <li><a href="./blog-details.html">Blog Details</a></li>
-                                </ul></li>
-                            <li><a href="#">RANKING</a>
-                                <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">Shop Details</a></li>
-                                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                                    <li><a href="./checkout.html">Check Out</a></li>
-                                    <li><a href="./blog-details.html">Blog Details</a></li>
+                                    <li><a href="./book_application.php">희망 도서 신청</a></li>
+                                    <li><a href="./review_contest_list.php">감상문 공모전</a></li>
+                                    <li><a href="./notice.php">공지사항</a></li>
+                                    <li><a href="./checkout.php">이용안내</a></li>
+
                                 </ul>
                             </li>
-                            <li><a href="./blog.html">COMMUNITY</a></li>
+                            <li><a href="./blog.php">My page</a>
+</li>
                         </ul>
                     </nav>
                 </div>
                 <div class="col-lg-3">
                     <div class="header__cart">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
-                        </ul>
-                        <div class="header__cart__price">item: <span>$150.00</span></div>
-                    </div>
+                                                    <?php
+                     if(empty($_SESSION['ses_userid'])){
+                    ?>
+                <a href="sign_in.php" id="signin" onclick="Login()">로그인</a>
+                <a href="sign_up.php" id="signup" onclick="Signup()">회원가입</a>
+                <?php
+                }else{
+                ?>
+                <a href="logout.php" id="signout">로그아웃</a>
+                <?php
+                 }
+                ?>
                 </div>
             </div>
             <div class="humberger__open">
@@ -214,107 +215,62 @@ function button1_click(s) {
                     <div class="hero__categories">
                         <div class="hero__categories__all">
                             <i class="fa fa-bars"></i>
-                            <span>All departments</span>
+                            <span>Communication</span>
                         </div>
                         <ul>
-                            <li><a href="#">Fresh Meat</a></li>
-                            <li><a href="#">Vegetables</a></li>
-                            <li><a href="#">Fruit & Nut Gifts</a></li>
-                            <li><a href="#">Fresh Berries</a></li>
-                            <li><a href="#">Ocean Foods</a></li>
-                            <li><a href="#">Butter & Eggs</a></li>
-                            <li><a href="#">Fastfood</a></li>
-                            <li><a href="#">Fresh Onion</a></li>
-                            <li><a href="#">Papayaya & Crisps</a></li>
-                            <li><a href="#">Oatmeal</a></li>
-                            <li><a href="#">Fresh Bananas</a></li>
+                            <li><a href="./book_application.php">희망 도서 신청</a></li>
+                            <li><a href="./review_contest_list.php">감상문 공모전</a></li>
+                            <li><a href="./notice.php">공지사항</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-9">
-                    <div class="hero__search">
-                        <div class="hero__search__form">
-                            <form action="#">
-                                <div class="hero__search__categories">
-                                    All Categories
-                                    <span class="arrow_carrot-down"></span>
-                                </div>
-                                <input type="text" placeholder="What do yo u need?">
-                                <button type="submit" class="site-btn">SEARCH</button>
-                            </form>
-                        </div>
-                        <div class="hero__search__phone">
-                            <div class="hero__search__phone__icon">
-                                <i class="fa fa-phone"></i>
-                            </div>
-                            <div class="hero__search__phone__text">
-                                <h5>+65 11.188.888</h5>
-                                <span>support 24/7 time</span>
-                            </div>
-                        </div>
-                    </div>
-
 
                     <div>
-
-                        <div  style="float: left;">
-                            <h3>도서등록</h3>
-                                            
-                        </div>
-
-                    </div>
-                        <br><br>
+                        <h3>감상문 공모전</h3>
                         <hr>
-                        <div class="container"> 
-                            <div class=""  > 
-                                <div class="shoping__cart__table"> 
+                    </div>
+                    <div id="boardList">
 
-                                
+			<table class="col-lg-12">
+				<thead>
+					<tr>
+						<th scope="col" class="col-lg-1" style=" text-align: center;">번호</th>
+						<th scope="col" class="col-lg-4"style=" text-align: center;">책 제목</th>
+                        <th scope="col" class="col-lg-2"style=" text-align: center;">책 저자</th>
+						<th scope="col" class="col-lg-2"style=" text-align: center;">작성자</th>
+						<th scope="col" class="col-lg-3"style=" text-align: center;">작성일</th>
+					</tr>
+				</thead>
+				<tbody>
+						<?php
+							while($row = $result->fetch_assoc())
+							{
+						?>
+					<tr>
+						<td class="no"style=" text-align: center;"><?php echo $row['id']?></td>
+						<td class="title"style=" text-align: center;">
+							<a href="./view.php?id=<?php echo $row['id']?>"><?php echo $row['book_name']?></a>
+						</td>
+                        <td class="author"style=" text-align: center;"><?php echo $row['book_author']?></td>
+						<td class="author"style=" text-align: center;"><?php echo $row['uid']?></td>
+						<td class="date"style=" text-align: center;"><?php echo $row['date']?></td>
+					</tr>
+						<?php
+							};
+						?>
+				</tbody>
+			</table>
 
-                                    <table style="width: 100%;">
-                                        <thead>
-                                        <tr>
-                                            <th>번호</th>
-                                            <th>도서명</th>
-                                            <th>저자</th>
-                                            <th>출판사</th>
-                                            <th>등록일</th>
-                                        </tr>
-                                        </head>
+			<div class="btnSet">
 
-                                        <?php
-                                        if($result->num_rows > 0){
-                                            // Output data of each row
-                                            while($row = $result->fetch_assoc()){
-                                                $date = date_create($row["reg_date"]);
-                                                echo "<tr>";
-                                                echo "<td>" . $row["id"]. "</td>" 
-                                                . "<td>" . "<a href='../book_detail.php?id=" . $row["id"]. "'>"  . $row["subject"]. "</a>" . "</td>" 
-                                                . "<td>" . $row["author"]. "</td>" 
-                                                . "<td>" . $row["publisher"]. "</td>" 
-                                                . "<td>" . date_format($date, 'Y-m-d'). "</td>";
-                                                echo "</tr>";
+				<a href="./review_contest.php" class="btnWrite btn">글쓰기</a>
 
+			</div>
 
-                                            }
-                                        }else{
-                                            echo "0 results";
-                                        }
-                                        ?>
-
-                                        </tr>
-                                    </table>
-                                    <br>
-                                    <button class="btn btn-primary btn-lg btn-block" id="signup-button" style="margin:auto;width:11%;"  onclick="button1_click();">등록</button> 
-
-
-                                </div> 
-                            </div>
-                        </div>
+		</div>
                 </div>
-                
             </div>
-
         </div>
     </section>
     <!-- Hero Section End -->
@@ -331,7 +287,7 @@ function button1_click(s) {
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__about__logo">
-                            <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                            <a href="./index.php"><img src="img/logo.png" alt=""></a>
                         </div>
                         <ul>
                             <li>Address: 60-49 Road 11378 New York</li>
@@ -393,23 +349,16 @@ function button1_click(s) {
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->
-    <script src="../js/jquery-3.3.1.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/jquery.nice-select.min.js"></script>
-    <script src="../js/jquery-ui.min.js"></script>
-    <script src="../js/jquery.slicknav.js"></script>
-    <script src="../js/mixitup.min.js"></script>
-    <script src="../js/owl.carousel.min.js"></script>
-    <script src="../js/main.js"></script>
-
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/jquery.slicknav.js"></script>
+    <script src="js/mixitup.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/main.js"></script>
 
 
 </body>
 
 </html>
-
-
-
-<?php
-$conn->close();
-?>

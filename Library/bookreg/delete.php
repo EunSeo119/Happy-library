@@ -2,7 +2,7 @@
 include_once 'dbconfig.php';
 
 // Select a database
-$dbname = "testdb";
+$dbname = "library";
 mysqli_select_db($conn, $dbname) or die('DB selection failed');
 
 $sql = "DELETE FROM users WHERE id = 5 AND name = 'John'";
