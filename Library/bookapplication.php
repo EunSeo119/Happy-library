@@ -14,7 +14,7 @@ include "include/dbConnect.php";
  $uid=$_SESSION['ses_userid'];
 
  $sql = "insert into book_application (book_name, book_author , book_publisher, book_year, book_ISBN, book_reason, uid)";             // (입력받음)insert into 테이블명 (column-list)
- $sql = $sql. "values('$book_name', '$book_author', '$book_publisher','$book_year','$book_ISBN','$book_reason', 'asdf')";         // calues(column-list에 넣을 value-list)
+ $sql = $sql. "values('$book_name', '$book_author', '$book_publisher','$book_year','$book_ISBN','$book_reason', '$uid')";         // calues(column-list에 넣을 value-list)
 
  if($dbConnect->query($sql)){                                                               //만약 sql로 잘 들어갔으면
    echo("<script>location.replace('./index.php');</script>");                                // id님 안녕하세요.

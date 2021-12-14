@@ -1,13 +1,11 @@
 <?php
-  include "include/session.php";
-  include "include/dbConnect.php";
-  include_once 'bookreg/dbconfig.php';
+ include "include/session.php";
+ include "include/dbConnect.php";
 
-// Select a database
-$dbname = "library";
-mysqli_select_db($conn, $dbname) or die('DB selection failed');
-$sql = "SELECT * FROM notice ORDER BY id DESC";
-$result = $conn->query($sql);
+if(empty($_SESSION['ses_userid'])){
+        echo ("<script>alert('로그인이 필요합니다.');
+        location.replace('sign_in.php');</script>");
+}
 ?>
 
 <!DOCTYPE html>
@@ -227,54 +225,43 @@ $result = $conn->query($sql);
                 <div class="col-lg-9">
                     
                     <div>
-                        <h3>공지사항</h3>
+                        <h3>감상문 공모전</h3>
                         <hr>
                     </div>
-                    <div id="boardList">
+                    <form action="noticeWrite.php" method="post" class="form form-notice">
+                    <div class="container"> 
+                        <div class="input-form-backgroud row"  > 
+                            <div class="input-form col-md-12 mx-auto"> 
+                                <form class="validation-form" novalidate> 
+                                    <div class="row">
+                                        <div class="col-md-3 mb-3"> 
+                                            <label for="userid">제목</label> 
+                                        </div>
+                                        <div class="col-md-9">
+                                        <input type="text" class="form-control" name="title" placeholder="" value="" required> 
+                                        </div>
+                                    </div>
+                                    <div class="mb-2"></div>
 
-			<table class="col-lg-12">
-				<thead>
-					<tr>
-						<th scope="col" class="col-lg-1" style=" text-align: center;">번호</th>
-						<th scope="col" class="col-lg-6"style=" text-align: center;">제목</th>
-						<th scope="col" class="col-lg-2"style=" text-align: center;">작성자</th>
-						<th scope="col" class="col-lg-3"style=" text-align: center;">작성일</th>
-					</tr>
-				</thead>
-				<tbody>
-						<?php
-							while($row = $result->fetch_assoc())
-							{
-						?>
-					<tr>
-						<td class="no"style=" text-align: center;"><?php echo $row['id']?></td>
-						<td class="title"style=" text-align: center;">
-							<a href="./notice_view.php?id=<?php echo $row['id']?>"><?php echo $row['title']?></a>
-						</td>
-						<td class="author"style=" text-align: center;"><?php echo $row['uid']?></td>
-						<td class="date"style=" text-align: center;"><?php echo $row['date']?></td>
-					</tr>
-						<?php
-							};
-						?>
-				</tbody>
-			</table>
+                                    <div class="row">
+                                        <div class="col-md-3 mb-3"> 
+                                            <label for="userid">내용</label> 
+                                        </div>
+                                        <div class="col-md-9">
+                                        <textarea style="height:500px;word-wrap:break-word" class="form-control" name="content" placeholder="" value="" required></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="mb-2"></div>
 
-			<div class="btnSet">
-            <?php
-                        if(!empty($_SESSION['ses_username'])){
-                            if($_SESSION['ses_username']=='daeun'){
-                                ?>
-				<a href="./notice_write.php" class="btnWrite btn">글쓰기</a>
-                                <?php
-                                }
-                                }
-                        ?>
+                                    <div class="mb-4"></div>
 
-			</div>
-
-		</div>
+                                      <button class="btn btn-primary btn-lg btn-block" id="signup-button" style="margin:auto;width:30%;" type="submit">신청하기</button> 
+                                    </form> 
+                                </div> 
+                            </div>
+                        </div>
                 </div>
+                </form>
             </div>
         </div>
     </section>
@@ -362,6 +349,7 @@ $result = $conn->query($sql);
     <script src="js/mixitup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+
 
 
 </body>

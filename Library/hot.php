@@ -2,7 +2,7 @@
 include_once 'bookreg/dbconfig.php';
 
 // Select a database
-$dbname = "testdb";
+$dbname = "library";
 mysqli_select_db($conn, $dbname) or die('DB selection failed');
 
 //파라미터 검사
@@ -14,13 +14,16 @@ if(!isset($_GET["keyword"])) {
     if( $keyword == '1')
         $sql_cond = "order by reg_date desc";
     else if( $keyword == '2')
-        $sql_cond = "order by star_point desc";
+        $sql_cond = "order by avg desc";
     else 
         $sql_cond = "order by reg_date asc";
 
 }
 
-$sql = "SELECT * FROM book ".$sql_cond;
+if( $keyword == '2')
+    $sql = "SELECT * FROM v_review ".$sql_cond;
+else
+    $sql = "SELECT * FROM book ".$sql_cond;
 $result = $conn->query($sql);
 
 ?>
