@@ -32,7 +32,7 @@ if(!isset($_GET["keyword"])) {
 }else{
     $keyword = $_GET["keyword"];
 }
-$sql = "SELECT * FROM review ";
+$sql = "SELECT * FROM review Where book_id = '$book_id' ";
 $result = $conn->query($sql);
 
 ?>
