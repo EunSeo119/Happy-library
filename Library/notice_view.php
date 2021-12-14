@@ -158,15 +158,17 @@ $row = $result->fetch_assoc();
                     <div id="boardView">
 
 <h4><?php echo $row['title']?></h4>
+<hr>
 
-<div style="justify-content: space-between;">
+<div style="justify-content: space-between; display:flex;">
 
-<span>작성자: <?php echo $row['uid']?></span>
+<span>작성자 : <?php echo $row['user_name']?></span>
 
-<span">작성일: <?php echo $row['date']?></span>
+<span">작성일 : <?php echo $row['date']?></span>
 
 
 </div>
+<hr>
 
 <div id="boardContent"><?php echo $row['content']?></div>
 

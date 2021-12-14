@@ -174,7 +174,7 @@ $result = $conn->query($sql);
 							<a href="./review_contest_view.php?id=<?php echo $row['id']?>"><?php echo $row['book_name']?></a>
 						</td>
                         <td class="author"style=" text-align: center;"><?php echo $row['book_author']?></td>
-						<td class="author"style=" text-align: center;"><?php echo $row['uid']?></td>
+						<td class="author"style=" text-align: center;"><?php echo $row['user_name']?></td>
 						<td class="date"style=" text-align: center;"><?php echo $row['date']?></td>
 					</tr>
 						<?php
@@ -182,8 +182,9 @@ $result = $conn->query($sql);
 						?>
 				</tbody>
 			</table>
+            <div class="mb-4"></div>
 
-			<div class="btnSet">
+			<div class="btnSet" style="float:right; border: 1px solid black;">
 
 				<a href="./review_contest.php" class="btnWrite btn">글쓰기</a>
 

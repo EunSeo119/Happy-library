@@ -127,6 +127,7 @@ $row = $result->fetch_assoc();
         </div>
     </section>
     <!-- Breadcrumb Section End -->
+    <div class="mb-4"></div>
 
     <!-- Hero Section Begin -->
     <section class="hero">
@@ -154,15 +155,18 @@ $row = $result->fetch_assoc();
                     <div id="boardView">
 
 <h4><?php echo $row['book_name']?> / <?php echo $row['book_author']?></h4>
+<hr>
 
-<div style="justify-content: space-between;">
 
-<span>작성자: <?php echo $row['uid']?></span>
+<div style="justify-content: space-between; display:flex;">
 
-<span">작성일: <?php echo $row['date']?></span>
+<span>작성자 : <?php echo $row['user_name']?></span>
+
+<span">작성일 : <?php echo $row['date']?></span>
 
 
 </div>
+<hr>
 
 <div id="boardContent"><?php echo $row['book_review']?></div>
 

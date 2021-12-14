@@ -14,6 +14,12 @@ if( $book_id ) {
         $result = mysqli_query($dbConnect, $sql);
         $book_detail = mysqli_fetch_assoc($result);
     //}
+    $sql2 = "SELECT * FROM v_review where id={$book_id}";
+    //if( $result = mysqli_query($dbConnect, $sql) ) {
+        $result2 = mysqli_query($dbConnect, $sql2);
+        $book_detail2 = mysqli_fetch_assoc($result2);
+    //}
+
 }
 $book_detail['userId'] = isset($_SESSION['ses_userid']) ? $_SESSION['ses_userid'] : 0;
 
@@ -32,6 +38,7 @@ if(!isset($_GET["keyword"])) {
 }else{
     $keyword = $_GET["keyword"];
 }
+"CREATE INDEX review_index ON review (book_id);";
 $sql = "SELECT * FROM review Where book_id = '$book_id' ";
 $result = $conn->query($sql);
 
@@ -151,7 +158,7 @@ $result = $conn->query($sql);
                         <h2>Book Detail</h2>
                         <div class="breadcrumb__option">
                             <a href="./index.php">Home</a>
-                            <a href="./index.php">Books</a>
+                            <a href="./search.php">Books</a>
                             <span>Book Detail</span>
                         </div>
                     </div>
@@ -188,11 +195,7 @@ $result = $conn->query($sql);
                         <h3><?=$book_detail['subject']?></h3>
                         <div class="product__details__rating">
                             <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-half-o"></i>
-                            <span>(18 reviews)</span>
+                            <span><?=$book_detail2['avg']?><span>
                         </div>
                         <!-- <div class="product__details__price">$50.00</div> -->
                         <p>information</p>
@@ -235,7 +238,7 @@ $result = $conn->query($sql);
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab"
-                                    aria-selected="false">Reviews <span>(1)</span></a>
+                                    aria-selected="false">Reviews</a>
                             </li>
                         </ul>
                         <div class="tab-content">

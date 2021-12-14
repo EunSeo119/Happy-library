@@ -193,13 +193,16 @@ $result = $conn->query($sql);
 
                     <?php
                     if($result->num_rows > 0){
+
                         // Output data of each row
                         while($row = $result->fetch_assoc()){
                             $date = date_create($row["reg_date"]);
-
-                            $starpoint = "";
-                            if( $keyword == '2') {
-                                $starpoint = $row["avg"];
+                            $star = "SELECT avg FROM v_review WHERE id=".$row["id"]."" ;
+                            $star_result = $conn->query($star);
+                            $starpoint = 0;
+                            if($star_row = $star_result->fetch_assoc()
+                            ) {
+                                $starpoint = $star_row["avg"];
                             }
 
                             echo(
@@ -208,8 +211,15 @@ $result = $conn->query($sql);
                             ."         <div class='product__item__pic set-bg' data-setbg='" . "/upload/" . $row["image_file"]. "'>  "
                             ."         </div>																		  "
                             ."         <div class='product__item__text'>											  "
-                            ."             <h5><a href='book_detail.php'><span>" . $row["subject"]. "</span></a></h5>				  "
-                            ."             <h6>".$row["author"]."</h6><h6>".$starpoint."</h6>															  "
+                            ."             <h5><a href='book_detail.php?id=" . $row["id"]. "'>"  . $row["subject"]. "</a></h5>				  "
+                            ."             <h6>".$row["author"]."</h6>"
+                            ."<div class='product__details__text'>"
+                            ."<div class='product__details__rating'>"
+                            ."<i class='fa fa-star'></i>"
+                            ."<h6 style='display:inline;'>".$starpoint."<h6>"
+                        ."</div>"
+                        ."</div>"
+
                             ."         </div>																		  "
                             ."     </div>																			  "
                             ." </div>																				  ");

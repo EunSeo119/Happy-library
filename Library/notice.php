@@ -172,7 +172,7 @@ $result = $conn->query($sql);
 						<td class="title"style=" text-align: center;">
 							<a href="./notice_view.php?id=<?php echo $row['id']?>"><?php echo $row['title']?></a>
 						</td>
-						<td class="author"style=" text-align: center;"><?php echo $row['uid']?></td>
+						<td class="author"style=" text-align: center;"><?php echo $row['user_name']?></td>
 						<td class="date"style=" text-align: center;"><?php echo $row['date']?></td>
 					</tr>
 						<?php
@@ -181,11 +181,14 @@ $result = $conn->query($sql);
 				</tbody>
 			</table>
 
-			<div class="btnSet">
+            <div class="mb-4"></div>
+
+			<div class="btnSet" style="float:right; border: 1px solid black;">
             <?php
                         if(!empty($_SESSION['ses_username'])){
                             if($_SESSION['ses_username']=='daeun'){
                                 ?>
+                                
 				<a href="./notice_write.php" class="btnWrite btn">글쓰기</a>
                                 <?php
                                 }

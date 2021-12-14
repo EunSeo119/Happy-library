@@ -172,7 +172,7 @@ if(empty($_SESSION['ses_userid'])){
 
                                     <div class="mb-4"></div>
 
-                                      <button class="btn btn-primary btn-lg btn-block" id="signup-button" style="margin:auto;width:30%;" type="submit">신청하기</button> 
+                                      <button class="btn btn-primary btn-lg btn-block" id="signup-button" style="margin:auto;width:30%;" type="submit">등록하기</button> 
                                     </form> 
                                 </div> 
                             </div>

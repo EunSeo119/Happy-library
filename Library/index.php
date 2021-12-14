@@ -210,6 +210,14 @@ $result3 = $conn->query($sql3);
                                     echo("<div class='latest-prdouct__slider__item'>");
 
                                     while($row = $result->fetch_assoc()){
+                                        $star = "SELECT avg FROM v_review WHERE id=".$row["id"]."" ;
+                                        $star_result = $conn->query($star);
+                                        $starpoint = 0;
+                                        if($star_row = $star_result->fetch_assoc()
+                                        ) {
+                                            $starpoint = $star_row["avg"];
+                                        }
+            
                                         $count +=1;
                                         echo(
                                             "<a href='./book_detail.php?id=".$row["id"]."' class='latest-product__item'>"
@@ -219,6 +227,13 @@ $result3 = $conn->query($sql3);
                                            ."<div class='latest-product__item__text'>"
                                                ."<span>".$row["subject"]."</span>"
                                                ."<h6>" . $row["author"]. "</h6>"
+                                               ."<div class='product__details__text'>"
+                                               ."<div class='product__details__rating'>"
+                                               ."<i class='fa fa-star'></i>"
+                                               ."<h6 style='display:inline;'>".$starpoint."<h6>"
+                                           ."</div>"
+                                           ."</div>"
+
                                            ."</div>"
                                        ."</a>" 
                                     );
@@ -230,6 +245,14 @@ $result3 = $conn->query($sql3);
                                     echo("<div class='latest-prdouct__slider__item'>");
 
                                     while($row = $result->fetch_assoc()){
+                                        $star = "SELECT avg FROM v_review WHERE id=".$row["id"]."" ;
+                                        $star_result = $conn->query($star);
+                                        $starpoint = 0;
+                                        if($star_row = $star_result->fetch_assoc()
+                                        ) {
+                                            $starpoint = $star_row["avg"];
+                                        }
+            
                                         $count +=1;
                                         echo(
                                             "<a href='./book_detail.php?id=".$row["id"]."' class='latest-product__item'>"
@@ -239,6 +262,13 @@ $result3 = $conn->query($sql3);
                                            ."<div class='latest-product__item__text'>"
                                            ."<span>".$row["subject"]."</span>"
                                            ."<h6>" . $row["author"]. "</h6>"
+                                           ."<div class='product__details__text'>"
+                                           ."<div class='product__details__rating'>"
+                                           ."<i class='fa fa-star'></i>"
+                                           ."<h6 style='display:inline;'>".$starpoint."<h6>"
+                                       ."</div>"
+                                       ."</div>"
+
                                        ."</div>"
                                        ."</a>" 
                                     );
@@ -250,6 +280,14 @@ $result3 = $conn->query($sql3);
                                     echo("<div class='latest-prdouct__slider__item'>");
 
                                     while($row = $result->fetch_assoc()){
+                                        $star = "SELECT avg FROM v_review WHERE id=".$row["id"]."" ;
+                                        $star_result = $conn->query($star);
+                                        $starpoint = 0;
+                                        if($star_row = $star_result->fetch_assoc()
+                                        ) {
+                                            $starpoint = $star_row["avg"];
+                                        }
+            
                                         $count +=1;
                                         echo(
                                             "<a href='./book_detail.php?id=".$row["id"]."' class='latest-product__item'>"
@@ -259,6 +297,13 @@ $result3 = $conn->query($sql3);
                                            ."<div class='latest-product__item__text'>"
                                            ."<span>".$row["subject"]."</span>"
                                            ."<h6>" . $row["author"]. "</h6>"
+                                           ."<div class='product__details__text'>"
+                                           ."<div class='product__details__rating'>"
+                                           ."<i class='fa fa-star'></i>"
+                                           ."<h6 style='display:inline;'>".$starpoint."<h6>"
+                                       ."</div>"
+                                       ."</div>"
+
                                        ."</div>"
                                        ."</a>" 
                                     );
@@ -287,6 +332,14 @@ $result3 = $conn->query($sql3);
                                     echo("<div class='latest-prdouct__slider__item'>");
 
                                     while($row = $result2->fetch_assoc()){
+                                        $star = "SELECT avg FROM v_review WHERE id=".$row["id"]."" ;
+                                        $star_result = $conn->query($star);
+                                        $starpoint = 0;
+                                        if($star_row = $star_result->fetch_assoc()
+                                        ) {
+                                            $starpoint = $star_row["avg"];
+                                        }
+            
                                         $count +=1;
                                         echo(
                                             "<a href='./book_detail.php?id=".$row["id"]."' class='latest-product__item'>"
@@ -296,6 +349,13 @@ $result3 = $conn->query($sql3);
                                            ."<div class='latest-product__item__text'>"
                                                ."<span>".$row["subject"]."</span>"
                                                ."<h6>" . $row["author"]. "</h6>"
+                                               ."<div class='product__details__text'>"
+                                               ."<div class='product__details__rating'>"
+                                               ."<i class='fa fa-star'></i>"
+                                               ."<h6 style='display:inline;'>".$starpoint."<h6>"
+                                           ."</div>"
+                                           ."</div>"
+
                                            ."</div>"
                                        ."</a>" 
                                     );
@@ -307,6 +367,14 @@ $result3 = $conn->query($sql3);
                                     echo("<div class='latest-prdouct__slider__item'>");
 
                                     while($row = $result2->fetch_assoc()){
+                                        $star = "SELECT avg FROM v_review WHERE id=".$row["id"]."" ;
+                                        $star_result = $conn->query($star);
+                                        $starpoint = 0;
+                                        if($star_row = $star_result->fetch_assoc()
+                                        ) {
+                                            $starpoint = $star_row["avg"];
+                                        }
+            
                                         $count +=1;
                                         echo(
                                             "<a href='./book_detail.php?id=".$row["id"]."' class='latest-product__item'>"
@@ -316,6 +384,13 @@ $result3 = $conn->query($sql3);
                                            ."<div class='latest-product__item__text'>"
                                            ."<span>".$row["subject"]."</span>"
                                            ."<h6>" . $row["author"]. "</h6>"
+                                           ."<div class='product__details__text'>"
+                                           ."<div class='product__details__rating'>"
+                                           ."<i class='fa fa-star'></i>"
+                                           ."<h6 style='display:inline;'>".$starpoint."<h6>"
+                                       ."</div>"
+                                       ."</div>"
+
                                        ."</div>"
                                        ."</a>" 
                                     );
@@ -327,6 +402,14 @@ $result3 = $conn->query($sql3);
                                     echo("<div class='latest-prdouct__slider__item'>");
 
                                     while($row = $result2->fetch_assoc()){
+                                        $star = "SELECT avg FROM v_review WHERE id=".$row["id"]."" ;
+                                        $star_result = $conn->query($star);
+                                        $starpoint = 0;
+                                        if($star_row = $star_result->fetch_assoc()
+                                        ) {
+                                            $starpoint = $star_row["avg"];
+                                        }
+        
                                         $count +=1;
                                         echo(
                                             "<a href='./book_detail.php?id=".$row["id"]."' class='latest-product__item'>"
@@ -336,6 +419,13 @@ $result3 = $conn->query($sql3);
                                            ."<div class='latest-product__item__text'>"
                                            ."<span>".$row["subject"]."</span>"
                                            ."<h6>" . $row["author"]. "</h6>"
+                                           ."<div class='product__details__text'>"
+                                           ."<div class='product__details__rating'>"
+                                           ."<i class='fa fa-star'></i>"
+                                           ."<h6 style='display:inline;'>".$starpoint."<h6>"
+                                       ."</div>"
+                                       ."</div>"
+
                                        ."</div>"
                                        ."</a>" 
                                     );
@@ -360,12 +450,19 @@ $result3 = $conn->query($sql3);
                         <div class="latest-product__slider owl-carousel">
                         <?php
                                 if($result3->num_rows > 0){
+        
                                     // Output data of each row
                                     $count = 0;
                                     echo("<div class='latest-prdouct__slider__item'>");
 
                                     while($row = $result3->fetch_assoc()){
                                         $count +=1;
+                                        $starpoint = 0;
+                                        if($row["avg"]
+                                        ) {
+                                            $starpoint = $row["avg"];
+                                        }
+
                                         echo(
                                            "<a href='./book_detail.php?id=".$row["id"]."' class='latest-product__item'>"
                                            ."<div class='latest-product__item__pic'>"
@@ -374,6 +471,13 @@ $result3 = $conn->query($sql3);
                                            ."<div class='latest-product__item__text'>"
                                                ."<span>".$row["subject"]."</span>"
                                                ."<h6>" . $row["author"]. "</h6>"
+                                               ."<div class='product__details__text'>"
+                                               ."<div class='product__details__rating'>"
+                                               ."<i class='fa fa-star'></i>"
+                                               ."<h6 style='display:inline;'>".$starpoint."<h6>"
+                                           ."</div>"
+                                           ."</div>"
+
                                            ."</div>"
                                        ."</a>" 
                                     );
@@ -385,6 +489,7 @@ $result3 = $conn->query($sql3);
                                     echo("<div class='latest-prdouct__slider__item'>");
 
                                     while($row = $result3->fetch_assoc()){
+                                        
                                         $count +=1;
                                         echo(
                                             "<a href='./book_detail.php?id=".$row["id"]."' class='latest-product__item'>"
@@ -394,6 +499,13 @@ $result3 = $conn->query($sql3);
                                            ."<div class='latest-product__item__text'>"
                                            ."<span>".$row["subject"]."</span>"
                                            ."<h6>" . $row["author"]. "</h6>"
+                                           ."<div class='product__details__text'>"
+                                           ."<div class='product__details__rating'>"
+                                           ."<i class='fa fa-star'></i>"
+                                           ."<h6 style='display:inline;'>".$starpoint."<h6>"
+                                       ."</div>"
+                                       ."</div>"
+
                                        ."</div>"
                                        ."</a>" 
                                     );
@@ -414,6 +526,13 @@ $result3 = $conn->query($sql3);
                                            ."<div class='latest-product__item__text'>"
                                            ."<span>".$row["subject"]."</span>"
                                            ."<h6>" . $row["author"]. "</h6>"
+                                           ."<div class='product__details__text'>"
+                                           ."<div class='product__details__rating'>"
+                                           ."<i class='fa fa-star'></i>"
+                                           ."<h6 style='display:inline;'>".$starpoint."<h6>"
+                                       ."</div>"
+                                       ."</div>"
+
                                        ."</div>"
                                        ."</a>" 
                                     );
