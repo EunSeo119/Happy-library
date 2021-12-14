@@ -14,8 +14,8 @@ $mysqli = new mysqli($host, $user, $pw, $dbName);
  $user_name=($_POST["user_name"]);
  $EMAIL=$_POST['email'];
 
- $sql = "insert into user (user_id, password , user_name, email, reg_date)";             // (입력받음)insert into 테이블명 (column-list)
- $sql = $sql. "values('$user_ID', '$password', '$user_name','$EMAIL', now())";         // calues(column-list에 넣을 value-list)
+ $sql = "insert into user (user_id, password , user_name, email)";             // (입력받음)insert into 테이블명 (column-list)
+ $sql = $sql. "values('$user_ID', '$password', '$user_name','$EMAIL')";         // calues(column-list에 넣을 value-list)
 
  if($mysqli->query($sql)){                                                               //만약 sql로 잘 들어갔으면
    echo("<script>location.replace('./index.php');</script>");                                // id님 안녕하세요.
