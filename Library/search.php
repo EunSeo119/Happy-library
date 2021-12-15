@@ -210,7 +210,7 @@ function button2_click(s) {
 
                                             }
                                         }else{
-                                            echo "0 results";
+                                            echo "";
                                         }
                                         ?>
 
