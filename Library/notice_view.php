@@ -10,6 +10,10 @@ $id=$_GET['id'];
 $sql = "SELECT * FROM notice WHERE id = " . $id;
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
+$user = "SELECT user_name FROM user WHERE id=".$id;
+$user_result = $conn->query($user);
+$user_row = $user_result->fetch_assoc()
+
 ?>
 
 <!DOCTYPE html>
@@ -162,7 +166,7 @@ $row = $result->fetch_assoc();
 
 <div style="justify-content: space-between; display:flex;">
 
-<span>작성자 : <?php echo $row['user_name']?></span>
+<span>작성자 : <?php echo $user_row['user_name']?></span>
 
 <span">작성일 : <?php echo $row['date']?></span>
 

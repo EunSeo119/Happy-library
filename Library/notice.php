@@ -166,13 +166,17 @@ $result = $conn->query($sql);
 						<?php
 							while($row = $result->fetch_assoc())
 							{
+                                $user = "SELECT user_name FROM user WHERE id=".$row["id"]."" ;
+                                $user_result = $conn->query($user);
+                                $user_row = $user_result->fetch_assoc()
+
 						?>
 					<tr>
 						<td class="no"style=" text-align: center;"><?php echo $row['id']?></td>
 						<td class="title"style=" text-align: center;">
 							<a href="./notice_view.php?id=<?php echo $row['id']?>"><?php echo $row['title']?></a>
 						</td>
-						<td class="author"style=" text-align: center;"><?php echo $row['user_name']?></td>
+						<td class="author"style=" text-align: center;"><?php echo $user_row['user_name']?></td>
 						<td class="date"style=" text-align: center;"><?php echo $row['date']?></td>
 					</tr>
 						<?php
