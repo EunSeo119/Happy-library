@@ -19,6 +19,7 @@ if( $book_id ) {
         $result2 = mysqli_query($dbConnect, $sql2);
         $book_detail2 = mysqli_fetch_assoc($result2);
     //}
+    
 
 }
 $book_detail['userId'] = isset($_SESSION['ses_userid']) ? $_SESSION['ses_userid'] : 0;

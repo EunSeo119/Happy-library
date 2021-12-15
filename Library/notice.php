@@ -166,7 +166,7 @@ $result = $conn->query($sql);
 						<?php
 							while($row = $result->fetch_assoc())
 							{
-                                $user = "SELECT user_name FROM user WHERE id=".$row["id"]."" ;
+                                $user = "SELECT user_name FROM user WHERE id=".$row["uid"] ;
                                 $user_result = $conn->query($user);
                                 $user_row = $user_result->fetch_assoc()
 
