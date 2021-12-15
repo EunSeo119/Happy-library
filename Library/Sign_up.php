@@ -193,7 +193,7 @@
                                         <label class="custom-control-label" for="aggrement">개인정보 수집 및 이용에 동의합니다.</label>
                                      </div> 
                                      <div class="mb-4"></div>
-                                      <button class="btn2   btn btn-success btn-lg btn-block" autofocus id="signup-button" style="margin:auto;width:30%;" type="submit">로그인</button> 
+                                      <button class="btn2   btn btn-success btn-lg btn-block" autofocus id="signup-button" style="margin:auto;width:30%;" type="submit">회원가입</button> 
                                     </form> 
                                 </div> 
                             </div>
